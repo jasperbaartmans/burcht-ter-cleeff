@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import LogoIcon from '@/components/ui/LogoIcon'
 
 const navLinks = [
   { href: '/', label: 'Ontdek' },
@@ -21,21 +22,7 @@ export default function Navbar() {
       <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-center relative">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <svg
-            width="34"
-            height="40"
-            viewBox="0 0 34 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <rect x="3" y="22" width="28" height="16" fill="white" />
-            <rect x="3" y="16" width="5" height="8" fill="white" />
-            <rect x="10" y="16" width="5" height="8" fill="white" />
-            <rect x="19" y="16" width="5" height="8" fill="white" />
-            <rect x="26" y="16" width="5" height="8" fill="white" />
-            <rect x="14" y="28" width="6" height="10" fill="transparent" />
-          </svg>
+          <LogoIcon className="text-white" />
           <span className="text-body3 font-walsheim font-medium tracking-widest text-white uppercase">
             Burcht ter Cleeff
           </span>
@@ -110,13 +97,7 @@ export default function Navbar() {
           {/* Top bar */}
           <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
             <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
-              <svg width="27" height="32" viewBox="0 0 34 40" fill="none" aria-hidden="true">
-                <rect x="3" y="22" width="28" height="16" fill="white" />
-                <rect x="3" y="16" width="5" height="8" fill="white" />
-                <rect x="10" y="16" width="5" height="8" fill="white" />
-                <rect x="19" y="16" width="5" height="8" fill="white" />
-                <rect x="26" y="16" width="5" height="8" fill="white" />
-              </svg>
+              <LogoIcon className="text-white" />
               <span className="text-body3 font-walsheim font-medium tracking-widest text-white uppercase">
                 Burcht ter Cleeff
               </span>
