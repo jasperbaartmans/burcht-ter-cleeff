@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="nl">
       <body className={`${gtWalsheim.variable} font-walsheim antialiased bg-ivory text-black`}>
         <Navbar />
-        <main>{children}</main>
+        <main className="relative">{children}</main>
         <Footer />
       </body>
     </html>
