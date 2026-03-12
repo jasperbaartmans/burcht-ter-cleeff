@@ -35,7 +35,7 @@ export default function StatusBadge({
   return (
     <span
       className={[
-        'inline-flex items-center gap-1.5 rounded-full px-3 py-1.5',
+        'inline-flex items-center gap-1.5 rounded-full py-[10px] pl-4 pr-[26px]',
         'text-body3 font-helvetica font-medium',
         config[variant],
         className,
