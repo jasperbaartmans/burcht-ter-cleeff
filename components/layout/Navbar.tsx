@@ -85,65 +85,92 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 ml-auto"
+          className="md:hidden flex items-center justify-center w-8 h-8 ml-auto"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label={menuOpen ? 'Menu sluiten' : 'Menu openen'}
           aria-expanded={menuOpen}
         >
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-200 ${
-              menuOpen ? 'rotate-45 translate-y-2' : ''
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-200 ${
-              menuOpen ? 'opacity-0' : ''
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-200 ${
-              menuOpen ? '-rotate-45 -translate-y-2' : ''
-            }`}
-          />
+          {menuOpen ? (
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M8 8L24 24M24 8L8 24" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <>
+              <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '-8px' }} />
+              <span className="block w-6 h-0.5 bg-white absolute" />
+              <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '8px' }} />
+            </>
+          )}
         </button>
       </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 top-[69px] bg-black z-40 flex flex-col px-6 pt-8 gap-6">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href
-            return (
+        <div className="md:hidden fixed inset-0 bg-sienna z-40 flex flex-col">
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
+            <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
+              <svg width="27" height="32" viewBox="0 0 34 40" fill="none" aria-hidden="true">
+                <rect x="3" y="22" width="28" height="16" fill="white" />
+                <rect x="3" y="16" width="5" height="8" fill="white" />
+                <rect x="10" y="16" width="5" height="8" fill="white" />
+                <rect x="19" y="16" width="5" height="8" fill="white" />
+                <rect x="26" y="16" width="5" height="8" fill="white" />
+              </svg>
+              <span className="text-body3 font-walsheim font-medium tracking-widest text-white uppercase">
+                Burcht ter Cleeff
+              </span>
+            </Link>
+            <button
+              onClick={() => setMenuOpen(false)}
+              aria-label="Menu sluiten"
+              className="flex items-center justify-center w-8 h-8"
+            >
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <path d="M8 8L24 24M24 8L8 24" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Nav links */}
+          <div className="flex flex-col px-6 pt-8 gap-2">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`text-h3 font-walsheim transition-colors ${
-                  isActive ? 'text-forest' : 'text-white'
-                }`}
+                className="text-h3 font-walsheim text-white/60 hover:text-white transition-colors py-1"
               >
                 {link.label}
               </Link>
-            )
-          })}
-          <div className="mt-4 pt-4 border-t border-white/20">
+            ))}
+          </div>
+
+          {/* Acties */}
+          <div className="flex flex-col px-6 pt-10 gap-4">
             <Link
               href="/mijn-omgeving"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-2 text-white/70 text-body2 hover:text-white transition-colors"
+              className="flex items-center gap-3 text-white text-body2 font-walsheim"
             >
-              <span className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+              <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-              <span>Inloggen</span>
+              Inloggen
+            </Link>
+            <Link
+              href="/dagticket"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-3 text-white text-body2 font-walsheim"
+            >
+              <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              Koop een kaartje
             </Link>
           </div>
         </div>
