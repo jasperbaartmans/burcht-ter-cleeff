@@ -28,7 +28,7 @@ export default function Hero() {
               href="/dagticket"
               className="flex items-center gap-3 text-white group"
             >
-              <span className="w-12 h-12 rounded-full border border-white flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors">
+              <span className="w-12 h-12 rounded-full border border-white group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
                     d="M5 12H19M19 12L13 6M19 12L13 18"

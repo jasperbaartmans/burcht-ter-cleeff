@@ -52,9 +52,9 @@ export default function Navbar() {
         <div className="hidden md:flex items-center ml-auto self-center">
           <Link
             href="/mijn-omgeving"
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
           >
-            <span className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center shrink-0">
+            <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
                   d="M5 12H19M19 12L13 6M19 12L13 18"
