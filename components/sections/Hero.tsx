@@ -19,8 +19,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
 
       {/* Content — twee kolommen onderaan */}
-      <div className="absolute inset-0 flex flex-col justify-end px-10 pb-[73px]">
-        <div className="flex items-end justify-between gap-8">
+      <div className="absolute inset-0 flex flex-col justify-end pb-[73px]">
+        <div className="max-w-[1360px] mx-auto w-full px-10 flex items-end justify-between gap-8">
 
           {/* Links: Koop een kaartje */}
           <div className="shrink-0">

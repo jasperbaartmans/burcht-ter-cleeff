@@ -91,7 +91,7 @@ export default function Navbar() {
       </div>
 
       {/* Scheidingslijn */}
-      <div className="hidden md:block w-full h-px bg-white opacity-50" />
+      <div className="hidden md:block h-px bg-white opacity-50 max-w-[1360px] mx-auto w-full" />
 
       {/* Mobile menu */}
       {menuOpen && (
