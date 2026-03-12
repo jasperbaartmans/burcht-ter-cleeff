@@ -19,9 +19,9 @@ export default function Navbar() {
   return (
     <nav className="absolute top-0 left-0 right-0 z-50">
       {/* Desktop */}
-      <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-center relative">
+      <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-stretch relative">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 self-center">
           <LogoIcon className="text-white" />
           <span className="text-[20px] font-walsheim font-medium tracking-[-0.6px] text-white uppercase leading-none">
             Burcht ter Cleeff
@@ -29,28 +29,27 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links — absoluut gecentreerd */}
-        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        <div className="hidden md:flex items-stretch gap-9 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => {
             const isActive = pathname === link.href
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-body2 font-walsheim relative pb-1 transition-colors hover:text-white ${
-                  isActive ? 'text-white' : 'text-white/70'
+                className={`flex items-center text-body2 font-walsheim transition-colors hover:text-white border-b-4 ${
+                  isActive
+                    ? 'text-white border-white'
+                    : 'text-white/70 border-transparent'
                 }`}
               >
                 {link.label}
-                {isActive && (
-                  <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-white rounded-full" />
-                )}
               </Link>
             )
           })}
         </div>
 
         {/* Inloggen */}
-        <div className="hidden md:flex items-center ml-auto">
+        <div className="hidden md:flex items-center ml-auto self-center">
           <Link
             href="/mijn-omgeving"
             className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
@@ -90,6 +89,9 @@ export default function Navbar() {
           )}
         </button>
       </div>
+
+      {/* Scheidingslijn */}
+      <div className="hidden md:block w-full h-px bg-white opacity-50" />
 
       {/* Mobile menu */}
       {menuOpen && (
