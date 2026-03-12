@@ -29,7 +29,7 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links — absoluut gecentreerd */}
-        <div className="hidden md:flex items-stretch gap-9 absolute left-1/2 -translate-x-1/2">
+        <div className="hidden md:flex items-stretch gap-9 absolute left-1/2 -translate-x-1/2 h-full">
           {navLinks.map((link) => {
             const isActive = pathname === link.href
             return (
@@ -71,7 +71,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex items-center justify-center w-8 h-8 ml-auto"
+          className="md:hidden flex items-center justify-center w-8 h-8 ml-auto self-center"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label={menuOpen ? 'Menu sluiten' : 'Menu openen'}
           aria-expanded={menuOpen}
