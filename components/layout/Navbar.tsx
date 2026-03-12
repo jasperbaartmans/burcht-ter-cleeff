@@ -23,7 +23,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <LogoIcon className="text-white" />
-          <span className="text-body3 font-walsheim font-medium tracking-widest text-white uppercase">
+          <span className="text-[20px] font-walsheim font-medium tracking-[-0.6px] text-white uppercase leading-none">
             Burcht ter Cleeff
           </span>
         </Link>
@@ -98,7 +98,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
             <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
               <LogoIcon className="text-white" />
-              <span className="text-body3 font-walsheim font-medium tracking-widest text-white uppercase">
+              <span className="text-[20px] font-walsheim font-medium tracking-[-0.6px] text-white uppercase leading-none">
                 Burcht ter Cleeff
               </span>
             </Link>
