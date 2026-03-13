@@ -175,6 +175,74 @@ export default function StijlgidsPage() {
         </div>
       </Section>
 
+      {/* Forms */}
+      <Section title="Forms">
+        <div className="flex flex-wrap gap-8">
+
+          {/* Select / dropdown */}
+          <div className="flex flex-col gap-3">
+            <p className="text-body3 font-helvetica text-black/40 uppercase tracking-widest">Select</p>
+            <div className="flex flex-col gap-3 p-8 bg-white rounded-2xl w-64">
+
+              {/* Default */}
+              <div className="relative">
+                <select className="w-full h-11 px-4 pr-10 bg-white border border-grey rounded-full text-body2 font-walsheim text-black/40 appearance-none focus:outline-none cursor-pointer">
+                  <option>Label</option>
+                </select>
+                <svg className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9L12 15L18 9" stroke="#262628" strokeOpacity="0.4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+
+              {/* Active / focused */}
+              <div className="relative">
+                <select className="w-full h-11 px-4 pr-10 bg-white border border-black rounded-full text-body2 font-walsheim text-black appearance-none focus:outline-none cursor-pointer">
+                  <option>Label</option>
+                </select>
+                <svg className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9L12 15L18 9" stroke="#262628" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="absolute -bottom-4 left-2 text-body3 font-helvetica text-black/30">active</span>
+              </div>
+
+              {/* Error */}
+              <div className="relative mt-2">
+                <select className="w-full h-11 px-4 pr-10 bg-white border border-sienna rounded-full text-body2 font-walsheim text-sienna appearance-none focus:outline-none cursor-pointer">
+                  <option>Label</option>
+                </select>
+                <svg className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9L12 15L18 9" stroke="#853F21" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="absolute -bottom-4 left-2 text-body3 font-helvetica text-black/30">error</span>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Toggle */}
+          <div className="flex flex-col gap-3">
+            <p className="text-body3 font-helvetica text-black/40 uppercase tracking-widest">Toggle</p>
+            <div className="flex flex-col gap-4 p-8 bg-white rounded-2xl">
+              {/* Off */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-6 bg-grey rounded-full relative cursor-pointer shrink-0">
+                  <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm" />
+                </div>
+                <span className="text-body3 font-helvetica text-black/40">off</span>
+              </div>
+              {/* On */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-6 bg-forest rounded-full relative cursor-pointer shrink-0">
+                  <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm" />
+                </div>
+                <span className="text-body3 font-helvetica text-black/40">on</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </Section>
+
       {/* Status badges */}
       <Section title="Status badges">
         <div className="space-y-6">
@@ -193,6 +261,72 @@ export default function StijlgidsPage() {
               <StatusBadge status="gesloten" label="Gesloten tot 09:00u" variant="outline" />
               <StatusBadge status="verhuurd" label="Verhuurd tot 13:00u" variant="outline" />
             </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Kalender dagcellen */}
+      <Section title="Kalender — dagcellen">
+        <div className="p-8 bg-white rounded-2xl">
+          <p className="text-body3 font-helvetica text-black/40 mb-6 uppercase tracking-widest">Dag-states</p>
+          <div className="flex items-center gap-2">
+
+            {/* Vorige navigatie */}
+            <button className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-grey transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18L9 12L15 6" stroke="#262628" strokeOpacity="0.4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            {/* Default */}
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="w-9 h-9 flex items-center justify-center rounded-full">
+                <span className="text-body2 font-walsheim text-black/40">22</span>
+              </div>
+              <span className="text-body3 font-helvetica text-black/30">default</span>
+            </div>
+
+            {/* Selected */}
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="w-9 h-9 flex items-center justify-center rounded-full bg-forest">
+                <span className="text-body2 font-walsheim text-white">22</span>
+              </div>
+              <span className="text-body3 font-helvetica text-black/30">selected</span>
+            </div>
+
+            {/* Beschikbaar (groene dot) */}
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="w-9 h-9 flex items-center justify-center rounded-full relative">
+                <span className="text-body2 font-walsheim text-forest">22</span>
+                <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-forest" />
+              </div>
+              <span className="text-body3 font-helvetica text-black/30">open</span>
+            </div>
+
+            {/* Verhuurd/gesloten (rode dot) */}
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="w-9 h-9 flex items-center justify-center rounded-full relative">
+                <span className="text-body2 font-walsheim text-forest">22</span>
+                <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-sienna" />
+              </div>
+              <span className="text-body3 font-helvetica text-black/30">verhuurd</span>
+            </div>
+
+            {/* Disabled */}
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="w-9 h-9 flex items-center justify-center rounded-full">
+                <span className="text-body2 font-walsheim text-black/20">22</span>
+              </div>
+              <span className="text-body3 font-helvetica text-black/30">disabled</span>
+            </div>
+
+            {/* Volgende navigatie */}
+            <button className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-grey transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M9 18L15 12L9 6" stroke="#262628" strokeOpacity="0.4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
           </div>
         </div>
       </Section>
