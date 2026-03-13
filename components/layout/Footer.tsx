@@ -37,7 +37,7 @@ export default function Footer() {
                 <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
                   Openingstijden
                 </p>
-                <ul className="space-y-1 text-body2">
+                <ul className="space-y-1 text-body2 font-walsheim">
                   <li>Ma–vr: 10:00–18:00</li>
                   <li>Za–zo: 09:00–18:00</li>
                   <li className="text-white/60 text-body3 font-helvetica">
@@ -53,7 +53,7 @@ export default function Footer() {
                 <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
                   Bezoekadres
                 </p>
-                <address className="not-italic text-body2 leading-relaxed">
+                <address className="not-italic text-body2 font-walsheim leading-relaxed">
                   Burcht ter Cleeff<br />
                   Tolweg 9<br />
                   1967 NG Heemskerk
@@ -63,7 +63,7 @@ export default function Footer() {
                 <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
                   Postadres
                 </p>
-                <address className="not-italic text-body2 leading-relaxed">
+                <address className="not-italic text-body2 font-walsheim leading-relaxed">
                   Postbus 123<br />
                   1960 AA Heemskerk
                 </address>
@@ -76,7 +76,7 @@ export default function Footer() {
                 <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
                   Contact
                 </p>
-                <ul className="space-y-1 text-body2">
+                <ul className="space-y-1 text-body2 font-walsheim">
                   <li>
                     <a
                       href="mailto:info@burchtercleeff.nl"
@@ -99,7 +99,7 @@ export default function Footer() {
                 <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
                   Navigatie
                 </p>
-                <ul className="space-y-1 text-body2">
+                <ul className="space-y-1 text-body2 font-walsheim">
                   {[
                     { href: '/', label: 'Ontdek' },
                     { href: '/verhuur', label: 'Verhuur' },

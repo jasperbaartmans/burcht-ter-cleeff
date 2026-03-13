@@ -22,7 +22,7 @@ function Swatch({ name, hex, className }: { name: string; hex: string; className
   return (
     <div className="flex flex-col gap-2">
       <div className={`w-20 h-20 rounded-xl ${className} border border-black/10`} />
-      <span className="text-body3 font-walsheim font-medium text-black">{name}</span>
+      <span className="text-body3 font-helvetica font-medium text-black">{name}</span>
       <span className="text-body3 font-helvetica text-black/50">{hex}</span>
     </div>
   )
@@ -32,7 +32,7 @@ export default function StijlgidsPage() {
   return (
     <div className="bg-ivory min-h-screen pt-24 pb-32 px-10 max-w-[1360px] mx-auto">
       <div className="mb-16">
-        <p className="text-body3 font-walsheim text-black/40 uppercase tracking-widest mb-3">Intern — niet geïndexeerd</p>
+        <p className="text-body3 font-helvetica text-black/40 uppercase tracking-widest mb-3">Intern — niet geïndexeerd</p>
         <h1 className="text-h2 font-walsheim text-black">Stijlgids</h1>
         <p className="text-body1 text-black/60 mt-2 max-w-xl">
           Overzicht van alle kleuren, typografie, componenten en hover states. Gebruik dit als referentie bij het bouwen van nieuwe pagina's.
