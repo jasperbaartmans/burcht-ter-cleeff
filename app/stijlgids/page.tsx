@@ -55,22 +55,42 @@ export default function StijlgidsPage() {
 
       {/* Typografie */}
       <Section title="Typografie">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col divide-y divide-grey">
           {[
-            { label: 'H1 — 72px / -2.16px', cls: 'text-h1' },
-            { label: 'H2 — 56px / -1.68px', cls: 'text-h2' },
-            { label: 'H3 — 40px / -0.8px', cls: 'text-h3' },
-            { label: 'H4 — 29px / -0.29px', cls: 'text-h4' },
-            { label: 'Sub1 — 20px medium', cls: 'text-sub1' },
-            { label: 'Sub2 — 18px medium', cls: 'text-sub2' },
-            { label: 'Sub3 — 16px medium', cls: 'text-sub3' },
-            { label: 'Body1 — 20px regular', cls: 'text-body1' },
-            { label: 'Body2 — 17px regular', cls: 'text-body2' },
-            { label: 'Body3 — 14px medium', cls: 'text-body3' },
-          ].map(({ label, cls }) => (
-            <div key={cls} className="flex items-baseline gap-6">
-              <span className="text-body3 text-black/40 w-52 shrink-0">{label}</span>
-              <span className={`${cls} font-walsheim text-black`}>Avontuur en ontspanning</span>
+            { name: 'H1',       cls: 'text-h1',    font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Regular', size: 72,  lh: 70,  ls: '-3%', ps: 0  },
+            { name: 'H2',       cls: 'text-h2',    font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Regular', size: 56,  lh: 60,  ls: '-3%', ps: 0  },
+            { name: 'H3',       cls: 'text-h3',    font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Medium',  size: 40,  lh: 44,  ls: '-2%', ps: 0  },
+            { name: 'H4',       cls: 'text-h4',    font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Medium',  size: 29,  lh: 30,  ls: '-1%', ps: 0  },
+            { name: 'Subtitle 1', cls: 'text-sub1', font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Medium',  size: 20,  lh: 20,  ls: '-1%', ps: 0  },
+            { name: 'Subtitle 2', cls: 'text-sub2', font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Medium',  size: 18,  lh: 30,  ls: '-1%', ps: 0  },
+            { name: 'Subtitle 3', cls: 'text-sub3', font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Medium',  size: 16,  lh: 20,  ls: '-1%', ps: 0  },
+            { name: 'Body 1',   cls: 'text-body1', font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Regular', size: 20,  lh: 26,  ls: '-3%', ps: 12 },
+            { name: 'Body 2',   cls: 'text-body2', font: 'GT Walsheim Pro', fontCls: 'font-walsheim', weight: 'Regular', size: 17,  lh: 23,  ls: '-3%', ps: 8  },
+            { name: 'Body 3',   cls: 'text-body3', font: 'Helvetica Neue',  fontCls: 'font-helvetica', weight: 'Medium',  size: 14,  lh: 20,  ls: '-1%', ps: 6  },
+          ].map(({ name, cls, font, fontCls, weight, size, lh, ls, ps }) => (
+            <div key={name} className="flex items-center justify-between py-6 gap-8">
+              {/* Tekstvoorbeeld */}
+              <span className={`${cls} ${fontCls} text-black shrink-0`}>{name}</span>
+              {/* Specs */}
+              <div className="flex gap-8 text-body3 font-helvetica text-black/50 shrink-0 ml-auto">
+                <div className="flex flex-col gap-0.5 min-w-[120px]">
+                  <span className="text-black font-medium">{font}</span>
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex gap-6">
+                    <span>Weight <span className="text-black">{weight}</span></span>
+                    <span>Letter-spacing <span className="text-black">{ls}</span></span>
+                  </div>
+                  <div className="flex gap-6">
+                    <span>Size <span className="text-black">{size}</span></span>
+                    <span>Paragraph-spacing <span className="text-black">{ps}</span></span>
+                  </div>
+                  <div className="flex gap-6">
+                    <span>Line-height <span className="text-black">{lh}</span></span>
+                    <span>Case <span className="text-black">Sentence</span></span>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

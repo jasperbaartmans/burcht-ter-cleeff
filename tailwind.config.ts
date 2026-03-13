@@ -28,7 +28,7 @@ const config: Config = {
         'h3':    ['40px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '500' }],
         'h4':    ['29px', { lineHeight: '30px', letterSpacing: '-0.01em', fontWeight: '500' }],
         'sub1':  ['20px', { lineHeight: '20px', letterSpacing: '-0.01em', fontWeight: '500' }],
-        'sub2':  ['18px', { lineHeight: '20px', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'sub2':  ['18px', { lineHeight: '30px', letterSpacing: '-0.01em', fontWeight: '500' }],
         'sub3':  ['16px', { lineHeight: '20px', letterSpacing: '-0.01em', fontWeight: '500' }],
         'body1': ['20px', { lineHeight: '26px', letterSpacing: '-0.03em', fontWeight: '400' }],
         'body2': ['17px', { lineHeight: '23px', letterSpacing: '-0.03em', fontWeight: '400' }],
