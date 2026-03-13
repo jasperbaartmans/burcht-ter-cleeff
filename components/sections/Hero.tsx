@@ -4,7 +4,7 @@ import StatusBadge from '@/components/ui/StatusBadge'
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[900px] overflow-hidden">
+    <section className="relative w-full h-svh min-h-[500px] overflow-hidden">
       {/* Achtergrond foto */}
       <Image
         src="/images/hero.jpg"
@@ -19,11 +19,22 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
 
       {/* Content — twee kolommen onderaan */}
-      <div className="absolute inset-0 flex flex-col justify-end pb-[73px]">
-        <div className="max-w-[1360px] mx-auto w-full px-10 flex items-end justify-between gap-8">
+      <div className="absolute inset-0 flex flex-col justify-end pb-8 md:pb-[73px]">
+        <div className="max-w-[1360px] mx-auto w-full px-6 md:px-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8">
 
-          {/* Links: Koop een kaartje */}
-          <div className="shrink-0">
+          {/* H1 + badge — bovenaan op mobiel, rechts op desktop */}
+          <div className="flex flex-col items-start gap-3 md:gap-4 md:max-w-[580px] order-1 md:order-2">
+            <h1
+              className="text-[36px] leading-[40px] tracking-[-0.03em] md:text-h1 font-walsheim text-white"
+              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.50)' }}
+            >
+              De speeltuin voor ouderwets plezier en avontuur.
+            </h1>
+            <StatusBadge status="open" label="Open tot 18:00u" />
+          </div>
+
+          {/* Koop een kaartje — onderaan op mobiel, links op desktop */}
+          <div className="shrink-0 order-2 md:order-1">
             <Link
               href="/dagticket"
               className="flex items-center gap-3 text-white group"
@@ -41,17 +52,6 @@ export default function Hero() {
               </span>
               <span className="text-body2 font-walsheim">Koop een kaartje</span>
             </Link>
-          </div>
-
-          {/* Rechts: H1 + badge */}
-          <div className="flex flex-col items-start gap-4 max-w-[580px]">
-            <h1
-              className="text-h1 font-walsheim text-white"
-              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.50)' }}
-            >
-              De speeltuin voor ouderwets plezier en avontuur.
-            </h1>
-            <StatusBadge status="open" label="Open tot 18:00u" />
           </div>
 
         </div>
