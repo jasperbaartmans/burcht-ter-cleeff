@@ -46,8 +46,8 @@ export default function StijlgidsPage() {
           <Swatch name="White" hex="#FFFFFF" className="bg-white" />
           <Swatch name="Ivory" hex="#F3EEE2" className="bg-ivory" />
           <Swatch name="Grey" hex="#E0E1DA" className="bg-grey" />
-          <Swatch name="Forest" hex="#789928" className="bg-forest" />
-          <Swatch name="Moss" hex="#8D9462" className="bg-moss" />
+          <Swatch name="Forest" hex="#78992B" className="bg-forest" />
+          <Swatch name="Moss" hex="#8D9482" className="bg-moss" />
           <Swatch name="Sienna" hex="#853F21" className="bg-sienna" />
           <Swatch name="Caramel" hex="#B07826" className="bg-caramel" />
         </div>
@@ -227,6 +227,66 @@ export default function StijlgidsPage() {
             </div>
             <span className="text-body3 text-white/60">Op forest</span>
           </div>
+        </div>
+      </Section>
+
+      {/* Icons */}
+      <Section title="Icons">
+        <div className="p-8 bg-white rounded-2xl">
+          <div className="flex flex-wrap gap-6">
+            {[
+              { name: 'arrow-left',      d: 'M19 12H5M5 12L11 18M5 12L11 6' },
+              { name: 'arrow-right',     d: 'M5 12H19M19 12L13 6M19 12L13 18' },
+              { name: 'corner-up-left',  d: 'M9 14L4 9L9 4M20 20V13A4 4 0 0 0 16 9H4' },
+              { name: 'corner-up-right', d: 'M15 14L20 9L15 4M4 20V13A4 4 0 0 0 8 9H20' },
+              { name: 'arrow-up',        d: 'M12 19V5M5 12L12 5L19 12' },
+              { name: 'arrow-down',      d: 'M12 5V19M19 12L12 19L5 12' },
+              { name: 'chevron-left',    d: 'M15 18L9 12L15 6' },
+              { name: 'chevron-right',   d: 'M9 18L15 12L9 6' },
+              { name: 'chevron-down',    d: 'M6 9L12 15L18 9' },
+              { name: 'x',              d: 'M18 6L6 18M6 6L18 18' },
+              { name: 'plus',           d: 'M12 5V19M5 12H19' },
+              { name: 'minus',          d: 'M5 12H19' },
+              { name: 'menu',           d: 'M4 6H20M4 12H20M4 18H20' },
+              { name: 'search',         d: 'M21 21L16.65 16.65M19 11A8 8 0 1 1 3 11A8 8 0 0 1 19 11' },
+              { name: 'info',           d: 'M12 16V12M12 8H12.01M22 12A10 10 0 1 1 2 12A10 10 0 0 1 22 12Z' },
+              { name: 'check',          d: 'M20 6L9 17L4 12' },
+              { name: 'arrow-down-tray',d: 'M21 15V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V15M7 10L12 15L17 10M12 15V3' },
+              { name: 'rotate-ccw',     d: 'M3 12A9 9 0 1 0 6.22 6M3 3V6H6' },
+            ].map(({ name, d }) => (
+              <div key={name} className="flex flex-col items-center gap-2">
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label={name}>
+                    <path d={d} stroke="#262628" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <span className="text-body3 font-helvetica text-black/40 text-center">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Symbols */}
+      <Section title="Symbols">
+        <div className="p-8 bg-white rounded-2xl">
+          <p className="text-body3 font-helvetica text-black/40 mb-6 uppercase tracking-widest">Faciliteit- en activiteitssymbolen — forest kleur</p>
+          <div className="flex flex-wrap gap-6">
+            {[
+              'Knutselen', 'Wandelen', 'Glijbaan', 'Water', 'Locatie',
+              'Picknicktafel', 'Afval', 'Kamperen', 'Fitness', 'Fietsen',
+              'Verboden', 'Persoon', 'Kleding', 'Huisdieren verboden',
+              'Lijst', 'Gebouw',
+            ].map((label) => (
+              <div key={label} className="flex flex-col items-center gap-2">
+                <div className="w-10 h-10 rounded bg-forest/10 flex items-center justify-center">
+                  <span className="text-body3 font-helvetica text-forest/50">SVG</span>
+                </div>
+                <span className="text-body3 font-helvetica text-black/40 text-center max-w-[60px]">{label}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-body3 font-helvetica text-black/30 mt-6">SVG-bestanden toevoegen in <code className="bg-grey px-1 rounded">/public/icons/symbols/</code></p>
         </div>
       </Section>
 
