@@ -48,25 +48,40 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Inloggen */}
+        {/* Inloggen / Account */}
         <div className="hidden md:flex items-center ml-auto self-center">
-          <Link
-            href="/mijn-omgeving"
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
-          >
-            <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M5 12H19M19 12L13 6M19 12L13 18"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-            <span className="text-body2 font-walsheim">Inloggen</span>
-          </Link>
+          {pathname.startsWith('/mijn-omgeving') ? (
+            <Link
+              href="/mijn-omgeving"
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+            >
+              <span className="w-8 h-8 rounded-full bg-forest border border-forest flex items-center justify-center shrink-0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="8" r="4" stroke="white" strokeWidth="1.5" />
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </span>
+              <span className="text-body2 font-walsheim text-white">James Hoofdveld</span>
+            </Link>
+          ) : (
+            <Link
+              href="/mijn-omgeving"
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+            >
+              <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+              <span className="text-body2 font-walsheim">Inloggen</span>
+            </Link>
+          )}
         </div>
 
         {/* Mobile hamburger */}
