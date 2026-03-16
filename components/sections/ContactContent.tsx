@@ -1,14 +1,23 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useFormState, useFormStatus } from 'react-dom'
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
 import { sendContactEmail } from '@/app/actions/sendContactEmail'
 
 const initialState = { success: false }
 
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <Button type="submit" variant="primary" size="md" disabled={pending}>
+      {pending ? 'Versturen…' : 'Verstuur'}
+    </Button>
+  )
+}
+
 export default function ContactContent() {
-  const [state, action, pending] = useActionState(sendContactEmail, initialState)
+  const [state, action] = useFormState(sendContactEmail, initialState)
 
   const inputClass =
     'w-full bg-white rounded-xl px-4 py-3 text-body2 font-walsheim text-black placeholder:text-black/30 border border-transparent focus:outline-none focus:border-forest transition-colors'
@@ -104,9 +113,7 @@ export default function ContactContent() {
               )}
 
               <div className="flex justify-end">
-                <Button type="submit" variant="primary" size="md" disabled={pending}>
-                  {pending ? 'Versturen…' : 'Verstuur'}
-                </Button>
+                <SubmitButton />
               </div>
             </form>
           )}
