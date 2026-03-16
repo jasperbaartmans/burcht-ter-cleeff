@@ -1,184 +1,143 @@
-import Link from 'next/link'
+import LogoIcon from '@/components/ui/LogoIcon'
 import StatusBadge from '@/components/ui/StatusBadge'
-import NewsletterBar from '@/components/sections/NewsletterBar'
+import FooterNewsletter from './FooterNewsletter'
 
 export default function Footer() {
   return (
     <footer className="bg-sienna text-white">
-      {/* Main footer content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16">
+      {/* Kantelen top border */}
+      <div className="flex overflow-hidden">
+        {Array.from({ length: 54 }).map((_, i) => (
+          <div
+            key={i}
+            className={`flex-1 h-5 ${i % 2 === 0 ? 'bg-white' : 'bg-transparent'}`}
+          />
+        ))}
+      </div>
 
-          {/* Links: kasteel battlements illustratie */}
-          <div className="flex-shrink-0 flex items-end">
-            <CastleIllustration />
+      {/* Main content */}
+      <div className="max-w-[1360px] mx-auto px-6 py-12 flex flex-col md:flex-row gap-0">
+
+        {/* Left: illustratie placeholder */}
+        <div className="hidden md:flex w-1/2 items-end justify-start">
+          <CastleIllustration />
+        </div>
+
+        {/* Right: info */}
+        <div className="flex flex-col gap-8 md:w-1/2 py-4">
+
+          {/* Logo */}
+          <div className="flex items-center gap-2.5">
+            <LogoIcon className="text-white" />
+            <span className="text-[20px] font-walsheim font-medium tracking-[-0.6px] text-white uppercase leading-none">
+              Burcht ter Cleeff
+            </span>
           </div>
 
-          {/* Rechts: info kolommen */}
-          <div className="flex flex-col md:flex-row gap-8 md:gap-12 flex-1">
-
-            {/* Logo + openingstijden */}
-            <div className="flex flex-col gap-4 flex-1">
-              <div className="flex items-center gap-2">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect x="4" y="18" width="24" height="12" fill="white" />
-                  <rect x="4" y="14" width="4" height="6" fill="white" />
-                  <rect x="10" y="14" width="4" height="6" fill="white" />
-                  <rect x="18" y="14" width="4" height="6" fill="white" />
-                  <rect x="24" y="14" width="4" height="6" fill="white" />
-                  <rect x="13" y="22" width="6" height="8" fill="#853F21" />
-                </svg>
-                <span className="text-sub2 font-walsheim font-medium uppercase tracking-tight">
-                  Burcht ter Cleeff
+          {/* Info tabel */}
+          <div className="flex flex-col divide-y divide-white/10">
+            <InfoRow
+              label="Openingstijden"
+              value="Iedere dag vanaf 09:00 tot 18:00 uur, tenzij anders vermeld op de website ivm verhuur"
+            />
+            <InfoRow label="Adres" value="Van Dortstraat 3, 2023 JN Haarlem" />
+            <InfoRow label="Postadres" value="Van Dortstraat 40, 2023 JN Haarlem" />
+            <InfoRow
+              label="Contact"
+              value={
+                <span className="flex flex-col gap-1">
+                  <a
+                    href="mailto:info@burchtercleeff.nl"
+                    className="hover:text-white/70 transition-colors"
+                  >
+                    info@burchtercleeff.nl
+                  </a>
+                  <a
+                    href="mailto:verhuur@burchtercleeff.nl"
+                    className="hover:text-white/70 transition-colors"
+                  >
+                    verhuur@burchtercleeff.nl
+                  </a>
                 </span>
-              </div>
-
-              <div>
-                <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
-                  Openingstijden
-                </p>
-                <ul className="space-y-1 text-body2 font-walsheim">
-                  <li>Ma–vr: 10:00–18:00</li>
-                  <li>Za–zo: 09:00–18:00</li>
-                  <li className="text-white/60 text-body3 font-helvetica">
-                    Gesloten op feestdagen
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Adres */}
-            <div className="flex flex-col gap-4 flex-1">
-              <div>
-                <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
-                  Bezoekadres
-                </p>
-                <address className="not-italic text-body2 font-walsheim leading-relaxed">
-                  Burcht ter Cleeff<br />
-                  Tolweg 9<br />
-                  1967 NG Heemskerk
-                </address>
-              </div>
-              <div>
-                <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
-                  Postadres
-                </p>
-                <address className="not-italic text-body2 font-walsheim leading-relaxed">
-                  Postbus 123<br />
-                  1960 AA Heemskerk
-                </address>
-              </div>
-            </div>
-
-            {/* Contact */}
-            <div className="flex flex-col gap-4 flex-1">
-              <div>
-                <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
-                  Contact
-                </p>
-                <ul className="space-y-1 text-body2 font-walsheim">
-                  <li>
-                    <a
-                      href="mailto:info@burchtercleeff.nl"
-                      className="hover:text-white/80 transition-colors underline underline-offset-2"
-                    >
-                      info@burchtercleeff.nl
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="mailto:verhuur@burchtercleeff.nl"
-                      className="hover:text-white/80 transition-colors underline underline-offset-2"
-                    >
-                      verhuur@burchtercleeff.nl
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <nav>
-                <p className="text-body3 font-helvetica text-white/70 uppercase tracking-wider mb-2">
-                  Navigatie
-                </p>
-                <ul className="space-y-1 text-body2 font-walsheim">
-                  {[
-                    { href: '/', label: 'Ontdek' },
-                    { href: '/verhuur', label: 'Verhuur' },
-                    { href: '/speelregels', label: 'Speelregels' },
-                    { href: '/contact', label: 'Contact' },
-                  ].map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className="hover:text-white/80 transition-colors">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
+              }
+            />
           </div>
         </div>
       </div>
 
-      {/* Footer bar */}
+      {/* Bottom bar */}
       <div className="border-t border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="max-w-[1360px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
           <StatusBadge status="open" label="Open tot 18:00u" variant="outline" />
-          <NewsletterBar />
+          <div className="flex-1" />
+          <FooterNewsletter />
         </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="max-w-7xl mx-auto px-6 pb-6">
-        <p className="text-body3 font-helvetica text-white/40">
-          © {new Date().getFullYear()} Stichting Burcht ter Cleeff. Alle rechten voorbehouden.
-        </p>
       </div>
     </footer>
+  )
+}
+
+function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <div className="flex gap-8 py-4">
+      <span className="text-body3 font-helvetica text-white/50 w-28 shrink-0">{label}</span>
+      <span className="text-body2 font-walsheim leading-snug">{value}</span>
+    </div>
   )
 }
 
 function CastleIllustration() {
   return (
     <svg
-      width="120"
-      height="160"
-      viewBox="0 0 120 160"
+      width="280"
+      height="220"
+      viewBox="0 0 280 220"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Kasteel Burcht ter Cleeff illustratie"
+      aria-label="Kasteel Burcht ter Cleeff illustratie — placeholder"
+      className="opacity-80"
     >
-      {/* Flagpole */}
-      <line x1="60" y1="0" x2="60" y2="40" stroke="white" strokeWidth="2" />
-      {/* Flag */}
-      <polygon points="60,4 90,14 60,24" fill="white" opacity="0.9" />
+      {/* Vlagmast */}
+      <line x1="60" y1="20" x2="60" y2="80" stroke="white" strokeWidth="3" />
+      {/* Vlag */}
+      <polygon points="60,24 110,40 60,56" fill="white" opacity="0.9" />
 
-      {/* Battlements (kantelen) */}
-      <rect x="10" y="40" width="12" height="16" fill="white" opacity="0.85" />
-      <rect x="30" y="40" width="12" height="16" fill="white" opacity="0.85" />
-      <rect x="50" y="40" width="12" height="16" fill="white" opacity="0.85" />
-      <rect x="70" y="40" width="12" height="16" fill="white" opacity="0.85" />
-      <rect x="90" y="40" width="12" height="16" fill="white" opacity="0.85" />
+      {/* Golvende banner / decoratie */}
+      <path
+        d="M20 140 Q50 120 80 140 Q110 160 140 140 Q170 120 200 140 Q230 160 260 140"
+        stroke="#B07826"
+        strokeWidth="18"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <path
+        d="M20 160 Q50 140 80 160 Q110 180 140 160 Q170 140 200 160 Q230 180 260 160"
+        stroke="#B07826"
+        strokeWidth="18"
+        fill="none"
+        strokeLinecap="round"
+        opacity="0.6"
+      />
 
-      {/* Main wall top */}
-      <rect x="10" y="56" width="100" height="4" fill="white" opacity="0.7" />
+      {/* Kantelen */}
+      {[20, 46, 72, 98, 124, 150, 176, 202, 228].map((x, i) => (
+        <rect key={i} x={x} y={84} width="18" height="24" fill="white" opacity="0.8" />
+      ))}
 
-      {/* Main body */}
-      <rect x="10" y="60" width="100" height="60" fill="white" opacity="0.15" />
-      <rect x="10" y="60" width="100" height="60" stroke="white" strokeWidth="1.5" opacity="0.6" />
+      {/* Muur */}
+      <rect x="20" y="108" width="228" height="72" fill="white" opacity="0.12" />
+      <rect x="20" y="108" width="228" height="72" stroke="white" strokeWidth="1.5" opacity="0.4" />
 
-      {/* Gate */}
-      <rect x="45" y="90" width="30" height="30" rx="15" fill="white" opacity="0.2" />
-      <rect x="45" y="90" width="30" height="30" rx="15" stroke="white" strokeWidth="1.5" opacity="0.5" />
+      {/* Poort */}
+      <rect x="108" y="130" width="52" height="50" rx="26" fill="white" fillOpacity="0.15" stroke="white" strokeWidth="1.5" strokeOpacity="0.5" />
 
-      {/* Windows */}
-      <rect x="20" y="72" width="16" height="20" rx="8" fill="white" opacity="0.2" stroke="white" strokeWidth="1" />
-      <rect x="84" y="72" width="16" height="20" rx="8" fill="white" opacity="0.2" stroke="white" strokeWidth="1" />
+      {/* Ramen */}
+      <rect x="38" y="118" width="28" height="36" rx="14" fill="white" opacity="0.15" stroke="white" strokeWidth="1" />
+      <rect x="202" y="118" width="28" height="36" rx="14" fill="white" opacity="0.15" stroke="white" strokeWidth="1" />
 
-      {/* Base */}
-      <rect x="5" y="120" width="110" height="8" fill="white" opacity="0.4" />
-
-      {/* Ground */}
-      <rect x="0" y="128" width="120" height="4" rx="2" fill="white" opacity="0.2" />
+      {/* Basis */}
+      <rect x="14" y="180" width="240" height="12" fill="white" opacity="0.3" />
+      <rect x="0" y="192" width="280" height="6" rx="3" fill="white" opacity="0.15" />
     </svg>
   )
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Button from '@/components/ui/Button'
 import StatusBadge from '@/components/ui/StatusBadge'
 import LogoIcon from '@/components/ui/LogoIcon'
+import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'Stijlgids — Burcht ter Cleeff',
@@ -30,12 +31,13 @@ function Swatch({ name, hex, className }: { name: string; hex: string; className
 
 export default function StijlgidsPage() {
   return (
-    <div className="bg-ivory min-h-screen pt-24 pb-32 px-10 max-w-[1360px] mx-auto">
+    <div className="bg-ivory min-h-screen">
+    <div className="pt-24 pb-32 px-10 max-w-[1360px] mx-auto">
       <div className="mb-16">
         <p className="text-body3 font-helvetica text-black/40 uppercase tracking-widest mb-3">Intern — niet geïndexeerd</p>
         <h1 className="text-h2 font-walsheim text-black">Stijlgids</h1>
         <p className="text-body1 text-black/60 mt-2 max-w-xl">
-          Overzicht van alle kleuren, typografie, componenten en hover states. Gebruik dit als referentie bij het bouwen van nieuwe pagina's.
+          Overzicht van alle kleuren, typografie, componenten en hover states. Gebruik dit als referentie bij het bouwen van nieuwe pagina&apos;s.
         </p>
       </div>
 
@@ -446,6 +448,17 @@ export default function StijlgidsPage() {
           ))}
         </div>
       </Section>
+    </div>
+
+    {/* Footer component — full-width preview */}
+    <div>
+      <div className="px-10 max-w-[1360px] mx-auto mb-8">
+        <h2 className="text-h4 font-walsheim text-black mb-1">Footer</h2>
+        <div className="w-full h-px bg-grey" />
+      </div>
+      <Footer />
+    </div>
+
     </div>
   )
 }
