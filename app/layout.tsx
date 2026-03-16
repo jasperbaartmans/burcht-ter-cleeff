@@ -35,14 +35,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider localization={nlNL}>
-      <html lang="nl">
-        <body className={`${gtWalsheim.variable} font-walsheim antialiased bg-ivory text-black`}>
+    <html lang="nl">
+      <body className={`${gtWalsheim.variable} font-walsheim antialiased bg-ivory text-black`}>
+        <ClerkProvider localization={nlNL}>
           <Navbar />
           <main className="relative">{children}</main>
           <Footer />
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   )
 }
