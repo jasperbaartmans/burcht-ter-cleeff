@@ -44,9 +44,14 @@ export default function ContactContent() {
           </p>
 
           {state.success ? (
-            <p className="text-body2 font-walsheim text-forest">
-              Bedankt! Je bericht is verstuurd. We nemen zo snel mogelijk contact met je op.
-            </p>
+            <div className="flex flex-col gap-3 py-4">
+              <p className="text-[22px] leading-[28px] tracking-[-0.02em] font-walsheim text-black">
+                <span className="text-forest">Bedankt voor je bericht!</span>
+              </p>
+              <p className="text-body2 font-walsheim text-black/70">
+                We hebben je bericht ontvangen en komen binnen enkele dagen bij je terug.
+              </p>
+            </div>
           ) : (
             <form action={action} className="flex flex-col gap-5">
               {/* Naam */}
