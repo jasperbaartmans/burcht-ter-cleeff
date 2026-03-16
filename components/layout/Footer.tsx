@@ -1,5 +1,6 @@
 import LogoIcon from '@/components/ui/LogoIcon'
 import StatusBadge from '@/components/ui/StatusBadge'
+import FlagIcon from '@/components/ui/FlagIcon'
 import FooterNewsletter from './FooterNewsletter'
 
 export default function Footer() {
@@ -72,6 +73,11 @@ export default function Footer() {
           <div className="flex-1" />
           <FooterNewsletter />
         </div>
+      </div>
+
+      {/* Vlag decoratie */}
+      <div className="max-w-[1360px] mx-auto px-6 pb-4">
+        <FlagIcon className="w-12 h-auto opacity-60" color="white" />
       </div>
     </footer>
   )
