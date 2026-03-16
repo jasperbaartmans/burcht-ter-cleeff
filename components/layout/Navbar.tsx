@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useUser, SignOutButton, Show, SignInButton } from '@clerk/nextjs'
+import { useUser, SignOutButton, SignInButton } from '@clerk/nextjs'
 import LogoIcon from '@/components/ui/LogoIcon'
 
 const navLinks = [
@@ -69,23 +69,24 @@ export default function Navbar() {
 
         {/* Inloggen / Account */}
         <div className="hidden md:flex items-center ml-auto self-center gap-4">
-          <Show when="signed-in">
-            <Link
-              href="/mijn-omgeving"
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
-            >
-              <span className="w-8 h-8 rounded-full bg-forest border border-forest flex items-center justify-center shrink-0 text-white">
-                {userIcon}
-              </span>
-              <span className="text-body2 font-walsheim text-white">{displayName}</span>
-            </Link>
-            <SignOutButton redirectUrl="/">
-              <button className="text-body3 font-walsheim text-white/50 hover:text-white transition-colors">
-                Uitloggen
-              </button>
-            </SignOutButton>
-          </Show>
-          <Show when="signed-out">
+          {isSignedIn ? (
+            <>
+              <Link
+                href="/mijn-omgeving"
+                className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+              >
+                <span className="w-8 h-8 rounded-full bg-forest border border-forest flex items-center justify-center shrink-0 text-white">
+                  {userIcon}
+                </span>
+                <span className="text-body2 font-walsheim text-white">{displayName}</span>
+              </Link>
+              <SignOutButton redirectUrl="/">
+                <button className="text-body3 font-walsheim text-white/50 hover:text-white transition-colors">
+                  Uitloggen
+                </button>
+              </SignOutButton>
+            </>
+          ) : (
             <SignInButton mode="redirect">
               <button className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group">
                 <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
@@ -94,7 +95,7 @@ export default function Navbar() {
                 <span className="text-body2 font-walsheim">Inloggen</span>
               </button>
             </SignInButton>
-          </Show>
+          )}
         </div>
 
         {/* Mobile hamburger */}
@@ -159,30 +160,31 @@ export default function Navbar() {
 
           {/* Acties */}
           <div className="flex flex-col px-6 pt-10 gap-4">
-            <Show when="signed-in">
-              <Link
-                href="/mijn-omgeving"
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-3 text-white text-body2 font-walsheim"
-              >
-                <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <circle cx="12" cy="8" r="4" stroke="white" strokeWidth="1.5" />
-                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </span>
-                {displayName}
-              </Link>
-              <SignOutButton redirectUrl="/">
-                <button
+            {isSignedIn ? (
+              <>
+                <Link
+                  href="/mijn-omgeving"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-3 text-white/60 text-body2 font-walsheim"
+                  className="flex items-center gap-3 text-white text-body2 font-walsheim"
                 >
-                  Uitloggen
-                </button>
-              </SignOutButton>
-            </Show>
-            <Show when="signed-out">
+                  <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <circle cx="12" cy="8" r="4" stroke="white" strokeWidth="1.5" />
+                      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                  {displayName}
+                </Link>
+                <SignOutButton redirectUrl="/">
+                  <button
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 text-white/60 text-body2 font-walsheim"
+                  >
+                    Uitloggen
+                  </button>
+                </SignOutButton>
+              </>
+            ) : (
               <SignInButton mode="redirect">
                 <button
                   onClick={() => setMenuOpen(false)}
@@ -196,7 +198,7 @@ export default function Navbar() {
                   Inloggen
                 </button>
               </SignInButton>
-            </Show>
+            )}
             <Link
               href="/dagticket"
               onClick={() => setMenuOpen(false)}
