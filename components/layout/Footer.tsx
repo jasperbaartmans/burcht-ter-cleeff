@@ -1,5 +1,5 @@
 import LogoIcon from '@/components/ui/LogoIcon'
-import StatusBadge from '@/components/ui/StatusBadge'
+import StatusBadgeLive from '@/components/ui/StatusBadgeLive'
 import FlagIcon from '@/components/ui/FlagIcon'
 import FooterNewsletter from './FooterNewsletter'
 
@@ -69,7 +69,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/20">
         <div className="max-w-[1360px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
-          <StatusBadge status="open" label="Open tot 18:00u" variant="outline" />
+          <StatusBadgeLive />
           <div className="flex-1" />
           <FooterNewsletter />
         </div>
