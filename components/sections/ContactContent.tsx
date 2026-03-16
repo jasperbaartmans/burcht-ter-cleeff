@@ -3,9 +3,9 @@
 import { useFormState, useFormStatus } from 'react-dom'
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
-import { sendContactEmail } from '@/app/actions/sendContactEmail'
+import { sendContactEmail, type ContactFormState } from '@/app/actions/sendContactEmail'
 
-const initialState = { success: false }
+const initialState: ContactFormState = { success: false }
 
 function SubmitButton() {
   const { pending } = useFormStatus()
