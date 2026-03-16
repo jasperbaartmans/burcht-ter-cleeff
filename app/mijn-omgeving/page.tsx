@@ -1,3 +1,5 @@
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 import AccountHero from '@/components/sections/AccountHero'
 import AccountProfile from '@/components/sections/AccountProfile'
 import AccountVerhuur from '@/components/sections/AccountVerhuur'
@@ -9,7 +11,10 @@ export const metadata = {
   description: 'Beheer je profiel, reserveringen, kaartjes en notificaties.',
 }
 
-export default function MijnOmgevingPage() {
+export default async function MijnOmgevingPage() {
+  const { userId } = await auth()
+  if (!userId) redirect('/inloggen')
+
   return (
     <>
       <AccountHero />

@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useUser } from '@clerk/nextjs'
 import Toggle from '@/components/ui/Toggle'
 
 const inputClass =
@@ -9,7 +10,24 @@ const inputClass =
 const labelClass = 'text-body3 font-walsheim text-forest mb-1 block'
 
 export default function AccountProfile() {
+  const { user } = useUser()
   const [abonnement, setAbonnement] = useState(true)
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+
+  useEffect(() => {
+    if (user) {
+      setFirstName(user.firstName ?? '')
+      setLastName(user.lastName ?? '')
+    }
+  }, [user])
+
+  async function handleSave() {
+    if (!user) return
+    await user.update({ firstName, lastName })
+  }
+
+  const email = user?.primaryEmailAddress?.emailAddress ?? ''
 
   return (
     <SectionRow label="Profiel">
@@ -17,19 +35,39 @@ export default function AccountProfile() {
         {/* Voornaam */}
         <div>
           <label htmlFor="voornaam" className={labelClass}>Voornaam</label>
-          <input id="voornaam" type="text" defaultValue="James" className={inputClass} />
+          <input
+            id="voornaam"
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            onBlur={handleSave}
+            className={inputClass}
+          />
         </div>
 
         {/* Achternaam */}
         <div>
           <label htmlFor="achternaam" className={labelClass}>Achternaam</label>
-          <input id="achternaam" type="text" defaultValue="Hoofdveld" className={inputClass} />
+          <input
+            id="achternaam"
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            onBlur={handleSave}
+            className={inputClass}
+          />
         </div>
 
-        {/* E-mail */}
+        {/* E-mail — read-only (beheerd door Clerk) */}
         <div>
           <label htmlFor="email" className={labelClass}>E-mail</label>
-          <input id="email" type="email" defaultValue="j.hoofdveld@gmail.com" className={inputClass} />
+          <input
+            id="email"
+            type="email"
+            value={email}
+            readOnly
+            className={`${inputClass} opacity-60 cursor-default`}
+          />
         </div>
 
         {/* Abonnement */}

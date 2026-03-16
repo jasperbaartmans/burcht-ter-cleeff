@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import { ClerkProvider } from '@clerk/nextjs'
+import { nlNL } from '@clerk/localizations'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
@@ -33,12 +35,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="nl">
-      <body className={`${gtWalsheim.variable} font-walsheim antialiased bg-ivory text-black`}>
-        <Navbar />
-        <main className="relative">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider localization={nlNL}>
+      <html lang="nl">
+        <body className={`${gtWalsheim.variable} font-walsheim antialiased bg-ivory text-black`}>
+          <Navbar />
+          <main className="relative">{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
