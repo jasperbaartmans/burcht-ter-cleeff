@@ -16,6 +16,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    if (!url || !key || url.includes('jouw-project')) {
+      setIsLoaded(true)
+      return
+    }
+
     const supabase = createClient()
 
     supabase.auth.getUser().then(({ data }) => {
