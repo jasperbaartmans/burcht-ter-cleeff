@@ -25,7 +25,7 @@ export default function FeatureCards() {
   return (
     <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-h2 font-walsheim text-black mb-10 md:mb-14 max-w-2xl">
+        <h2 className="text-h2 font-dm-sans text-black mb-10 md:mb-14 max-w-2xl">
           Avontuur en ontspanning in Speeltuin Burcht ter Cleeff
         </h2>
 
@@ -42,8 +42,8 @@ export default function FeatureCards() {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <p className="text-sub1 font-walsheim font-medium text-black">{card.label}</p>
-                <p className="text-body2 font-walsheim text-black/70">{card.body}</p>
+                <p className="text-sub1 font-dm-sans font-medium text-black">{card.label}</p>
+                <p className="text-body2 font-dm-sans text-black/70">{card.body}</p>
               </div>
             </article>
           ))}

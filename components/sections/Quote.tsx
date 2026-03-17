@@ -67,7 +67,7 @@ export default function Quote() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Links: grote H2-tekst met groene iconen inline */}
         <div>
-          <h2 className="text-h2 font-walsheim text-black leading-tight">
+          <h2 className="text-h2 font-dm-sans text-black leading-tight">
             Kinderen spelen{' '}
             <IconStar />
             {' '}beter buiten, vrijer{' '}
@@ -80,11 +80,11 @@ export default function Quote() {
 
         {/* Rechts: body tekst */}
         <div className="flex flex-col gap-4 md:pt-2">
-          <p className="text-body1 font-walsheim text-black/80">
+          <p className="text-body1 font-dm-sans text-black/80">
             Bij Burcht ter Cleeff geloven we dat spelen meer is dan vermaak. Het is de manier
             waarop kinderen de wereld ontdekken, vriendschappen sluiten en zichzelf uitdagen.
           </p>
-          <p className="text-body2 font-walsheim text-black/60">
+          <p className="text-body2 font-dm-sans text-black/60">
             Onze speeltuin biedt een unieke combinatie van historische omgeving en creatieve
             speelruimte. Laat uw kind rennen, klimmen, dromen — terwijl u geniet van de rust
             van ons prachtige kasteelterrein.

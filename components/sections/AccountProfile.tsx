@@ -5,9 +5,9 @@ import { useUser } from '@clerk/nextjs'
 import Toggle from '@/components/ui/Toggle'
 
 const inputClass =
-  'w-full bg-white rounded-xl px-4 py-3 text-body2 font-walsheim text-black border border-grey focus:outline-none focus:border-forest transition-colors'
+  'w-full bg-white rounded-xl px-4 py-3 text-body2 font-dm-sans text-black border border-grey focus:outline-none focus:border-forest transition-colors'
 
-const labelClass = 'text-body3 font-walsheim text-forest mb-1 block'
+const labelClass = 'text-body3 font-dm-sans text-forest mb-1 block'
 
 export default function AccountProfile() {
   const { user } = useUser()
@@ -74,7 +74,7 @@ export default function AccountProfile() {
         <div className="flex items-center justify-between py-1">
           <div>
             <p className={labelClass}>Abonnement</p>
-            <p className="text-body2 font-walsheim text-black">Extra regel uitleg</p>
+            <p className="text-body2 font-dm-sans text-black">Extra regel uitleg</p>
           </div>
           <Toggle checked={abonnement} onChange={setAbonnement} />
         </div>
@@ -83,7 +83,7 @@ export default function AccountProfile() {
         <div className="flex items-center justify-between py-1">
           <div>
             <p className={labelClass}>Status</p>
-            <p className="text-body2 font-walsheim text-black">Betaald t/m 19 augustus 2024</p>
+            <p className="text-body2 font-dm-sans text-black">Betaald t/m 19 augustus 2024</p>
           </div>
           <span className="w-6 h-6 rounded-full bg-forest flex items-center justify-center shrink-0">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -100,7 +100,7 @@ export function SectionRow({ label, children }: { label: string; children: React
   return (
     <div className="flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-grey">
       <div className="md:w-32 shrink-0">
-        <span className="text-body2 font-walsheim text-black">{label}</span>
+        <span className="text-body2 font-dm-sans text-black">{label}</span>
       </div>
       <div className="flex-1 max-w-[560px]">{children}</div>
     </div>

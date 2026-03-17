@@ -25,7 +25,7 @@ export default function Hero() {
           {/* H1 + badge — bovenaan op mobiel, rechts op desktop */}
           <div className="flex flex-col items-start gap-3 md:gap-4 md:max-w-[580px] order-1 md:order-2">
             <h1
-              className="text-[36px] leading-[40px] tracking-[-0.03em] md:text-h1 font-walsheim text-white"
+              className="text-[36px] leading-[40px] tracking-[-0.03em] md:text-h1 font-dm-sans text-white"
               style={{ textShadow: '0 1px 3px rgba(0,0,0,0.50)' }}
             >
               De speeltuin voor ouderwets plezier en avontuur.
@@ -50,7 +50,7 @@ export default function Hero() {
                   />
                 </svg>
               </span>
-              <span className="text-body2 font-walsheim">Koop een kaartje</span>
+              <span className="text-body2 font-dm-sans">Koop een kaartje</span>
             </Link>
           </div>
 

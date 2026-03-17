@@ -20,7 +20,7 @@ export default function ContactContent() {
   const [state, action] = useFormState(sendContactEmail, initialState)
 
   const inputClass =
-    'w-full bg-white rounded-xl px-4 py-3 text-body2 font-walsheim text-black placeholder:text-black/30 border border-transparent focus:outline-none focus:border-forest transition-colors'
+    'w-full bg-white rounded-xl px-4 py-3 text-body2 font-dm-sans text-black placeholder:text-black/30 border border-transparent focus:outline-none focus:border-forest transition-colors'
 
   return (
     <section className="bg-white py-14 md:py-20 px-6 md:px-10">
@@ -28,16 +28,16 @@ export default function ContactContent() {
 
         {/* Form card — first on mobile */}
         <div className="bg-ivory rounded-2xl p-7 md:p-10 flex flex-col gap-6 order-1 md:order-2">
-          <p className="text-body2 font-walsheim text-black/70">
+          <p className="text-body2 font-dm-sans text-black/70">
             Vul het formulier in of neem direct contact op via de mail.
           </p>
 
           {state.success ? (
             <div className="flex flex-col gap-3 py-4">
-              <p className="text-[22px] leading-[28px] tracking-[-0.02em] font-walsheim text-black">
+              <p className="text-[22px] leading-[28px] tracking-[-0.02em] font-dm-sans text-black">
                 <span className="text-forest">Bedankt voor je bericht!</span>
               </p>
-              <p className="text-body2 font-walsheim text-black/70">
+              <p className="text-body2 font-dm-sans text-black/70">
                 We hebben je bericht ontvangen en komen binnen enkele dagen bij je terug.
               </p>
             </div>
@@ -45,7 +45,7 @@ export default function ContactContent() {
             <form action={action} className="flex flex-col gap-5">
               {/* Naam */}
               <div className="flex flex-col gap-1">
-                <label htmlFor="naam" className="text-body2 font-walsheim text-forest">
+                <label htmlFor="naam" className="text-body2 font-dm-sans text-forest">
                   Naam
                 </label>
                 <input
@@ -60,7 +60,7 @@ export default function ContactContent() {
 
               {/* E-mail */}
               <div className="flex flex-col gap-1">
-                <label htmlFor="email" className="text-body2 font-walsheim text-forest">
+                <label htmlFor="email" className="text-body2 font-dm-sans text-forest">
                   E-mail
                 </label>
                 <input
@@ -75,7 +75,7 @@ export default function ContactContent() {
 
               {/* Telefoon */}
               <div className="flex flex-col gap-1">
-                <label htmlFor="telefoon" className="text-body2 font-walsheim text-forest">
+                <label htmlFor="telefoon" className="text-body2 font-dm-sans text-forest">
                   Telefoon
                 </label>
                 <input
@@ -89,7 +89,7 @@ export default function ContactContent() {
 
               {/* Bericht */}
               <div className="flex flex-col gap-1">
-                <label htmlFor="bericht" className="text-body2 font-walsheim text-forest">
+                <label htmlFor="bericht" className="text-body2 font-dm-sans text-forest">
                   Bericht
                 </label>
                 <textarea
@@ -103,7 +103,7 @@ export default function ContactContent() {
               </div>
 
               {state.error && (
-                <p className="text-body3 font-walsheim text-sienna">{state.error}</p>
+                <p className="text-body3 font-dm-sans text-sienna">{state.error}</p>
               )}
 
               <div className="flex justify-end">

@@ -42,7 +42,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 self-center">
           <LogoIcon className="text-white" />
-          <span className="text-[20px] font-walsheim font-medium tracking-[-0.6px] text-white uppercase leading-none">
+          <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
             Burcht ter Cleeff
           </span>
         </Link>
@@ -55,7 +55,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center text-body2 font-walsheim transition-colors hover:text-white border-b-4 ${
+                className={`flex items-center text-body2 font-dm-sans transition-colors hover:text-white border-b-4 ${
                   isActive
                     ? 'text-white border-white'
                     : 'text-white/70 border-transparent'
@@ -78,10 +78,10 @@ export default function Navbar() {
                 <span className="w-8 h-8 rounded-full bg-forest border border-forest flex items-center justify-center shrink-0 text-white">
                   {userIcon}
                 </span>
-                <span className="text-body2 font-walsheim text-white">{displayName}</span>
+                <span className="text-body2 font-dm-sans text-white">{displayName}</span>
               </Link>
               <SignOutButton redirectUrl="/">
-                <button className="text-body3 font-walsheim text-white/50 hover:text-white transition-colors">
+                <button className="text-body3 font-dm-sans text-white/50 hover:text-white transition-colors">
                   Uitloggen
                 </button>
               </SignOutButton>
@@ -92,7 +92,7 @@ export default function Navbar() {
                 <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
                   {arrowIcon}
                 </span>
-                <span className="text-body2 font-walsheim">Inloggen</span>
+                <span className="text-body2 font-dm-sans">Inloggen</span>
               </button>
             </SignInButton>
           )}
@@ -129,7 +129,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
             <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
               <LogoIcon className="text-white" />
-              <span className="text-[20px] font-walsheim font-medium tracking-[-0.6px] text-white uppercase leading-none">
+              <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
                 Burcht ter Cleeff
               </span>
             </Link>
@@ -151,7 +151,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-h3 font-walsheim text-white/60 hover:text-white transition-colors py-1"
+                className="text-h3 font-dm-sans text-white/60 hover:text-white transition-colors py-1"
               >
                 {link.label}
               </Link>
@@ -165,7 +165,7 @@ export default function Navbar() {
                 <Link
                   href="/mijn-omgeving"
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-3 text-white text-body2 font-walsheim"
+                  className="flex items-center gap-3 text-white text-body2 font-dm-sans"
                 >
                   <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -178,7 +178,7 @@ export default function Navbar() {
                 <SignOutButton redirectUrl="/">
                   <button
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center gap-3 text-white/60 text-body2 font-walsheim"
+                    className="flex items-center gap-3 text-white/60 text-body2 font-dm-sans"
                   >
                     Uitloggen
                   </button>
@@ -188,7 +188,7 @@ export default function Navbar() {
               <SignInButton mode="redirect">
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-3 text-white text-body2 font-walsheim"
+                  className="flex items-center gap-3 text-white text-body2 font-dm-sans"
                 >
                   <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -202,7 +202,7 @@ export default function Navbar() {
             <Link
               href="/dagticket"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 text-white text-body2 font-walsheim"
+              className="flex items-center gap-3 text-white text-body2 font-dm-sans"
             >
               <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">

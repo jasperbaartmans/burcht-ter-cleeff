@@ -40,15 +40,15 @@ const arrowSizeClasses: Record<Size, string> = {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'bg-forest text-white hover:bg-[#6a8822] active:scale-95 rounded-full font-walsheim font-medium transition-colors',
+    'bg-forest text-white hover:bg-[#6a8822] active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
   ghost:
-    'border border-forest text-forest hover:bg-forest hover:text-white active:scale-95 rounded-full font-walsheim font-medium transition-colors',
+    'border border-forest text-forest hover:bg-forest hover:text-white active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
   caramel:
-    'bg-caramel text-white hover:bg-[#9a6820] active:scale-95 rounded-full font-walsheim font-medium transition-colors',
+    'bg-caramel text-white hover:bg-[#9a6820] active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
   sienna:
-    'bg-sienna text-white hover:bg-[#722f17] active:scale-95 rounded-full font-walsheim font-medium transition-colors',
+    'bg-sienna text-white hover:bg-[#722f17] active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
   'text-arrow':
-    'text-forest hover:text-[#6a8822] font-walsheim font-medium flex items-center gap-2 group transition-colors',
+    'text-forest hover:text-[#6a8822] font-dm-sans font-medium flex items-center gap-2 group transition-colors',
   arrow:
     'bg-forest text-white hover:bg-[#6a8822] active:scale-95 rounded-full flex items-center justify-center transition-colors',
 }

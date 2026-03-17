@@ -12,7 +12,7 @@ export default function AccountNotificaties() {
   return (
     <SectionRow label="Notificaties">
       <div className="flex flex-col gap-1">
-        <p className="text-body3 font-walsheim text-forest mb-3">E-mails</p>
+        <p className="text-body3 font-dm-sans text-forest mb-3">E-mails</p>
 
         <ToggleRow
           label="Nieuwsbrief"
@@ -45,7 +45,7 @@ function ToggleRow({
 }) {
   return (
     <div className="flex items-center justify-between py-3 border-b border-grey last:border-0">
-      <span className="text-body2 font-walsheim text-black">{label}</span>
+      <span className="text-body2 font-dm-sans text-black">{label}</span>
       <Toggle checked={checked} onChange={onChange} />
     </div>
   )

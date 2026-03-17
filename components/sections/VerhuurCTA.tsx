@@ -20,18 +20,18 @@ export default function VerhuurCTA() {
           {/* Tekst rechts */}
           <div className="flex flex-col gap-5">
             <div>
-              <p className="text-body3 font-helvetica text-black/50 uppercase tracking-wider mb-3">
+              <p className="text-body3 font-dm-sans text-black/50 uppercase tracking-wider mb-3">
                 Voor groepen &amp; bedrijven
               </p>
-              <h3 className="text-h3 font-walsheim font-medium text-black mb-4">
+              <h3 className="text-h3 font-dm-sans font-medium text-black mb-4">
                 Verhuurmogelijkheden
               </h3>
-              <p className="text-body1 font-walsheim text-black/70">
+              <p className="text-body1 font-dm-sans text-black/70">
                 Organiseer uw bedrijfsuitje, verjaardag of schoolreisje op het unieke terrein
                 van Burcht ter Cleeff. Wij zorgen voor een onvergetelijke dag.
               </p>
             </div>
-            <ul className="space-y-2 text-body2 font-walsheim text-black/60">
+            <ul className="space-y-2 text-body2 font-dm-sans text-black/60">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0" />
                 Exclusieve huur van het terrein

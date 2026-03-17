@@ -122,10 +122,10 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   return (
     <div className={`${bg} rounded-2xl p-5 flex flex-col gap-3`}>
       <div className="flex items-start justify-between gap-2">
-        <p className={`text-sub2 font-walsheim leading-snug ${titleColor}`}>{titel}</p>
+        <p className={`text-sub2 font-dm-sans leading-snug ${titleColor}`}>{titel}</p>
         <span className="shrink-0 mt-0.5">{icon}</span>
       </div>
-      <p className={`text-body2 font-walsheim ${textColor}`}>{tekst}</p>
+      <p className={`text-body2 font-dm-sans ${textColor}`}>{tekst}</p>
     </div>
   )
 }
@@ -138,7 +138,7 @@ export default function SpeelregelsGrid() {
       <div className="max-w-[1360px] mx-auto">
 
         {/* Sectie-titel */}
-        <h2 className="text-h3 font-walsheim text-black text-center mb-12">
+        <h2 className="text-h3 font-dm-sans text-black text-center mb-12">
           Dit zijn onze{' '}
           <span className="text-forest">speelregels</span>
         </h2>

@@ -35,7 +35,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex items-center gap-2.5">
             <LogoIcon className="text-white" />
-            <span className="text-[20px] font-walsheim font-medium tracking-[-0.6px] text-white uppercase leading-none">
+            <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
               Burcht ter Cleeff
             </span>
           </div>
@@ -93,8 +93,8 @@ export default function Footer() {
 function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex gap-8 py-4">
-      <span className="text-body3 font-helvetica text-white/50 w-28 shrink-0">{label}</span>
-      <span className="text-body2 font-walsheim leading-snug">{value}</span>
+      <span className="text-body3 font-dm-sans text-white/50 w-28 shrink-0">{label}</span>
+      <span className="text-body2 font-dm-sans leading-snug">{value}</span>
     </div>
   )
 }

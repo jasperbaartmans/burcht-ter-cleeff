@@ -31,10 +31,10 @@ export default function VerhuurStappen() {
 
         {/* Koptekst */}
         <div className="mb-10 md:mb-14">
-          <h2 className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-walsheim text-black">
+          <h2 className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-dm-sans text-black">
             Boek direct een datum in
           </h2>
-          <p className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-walsheim text-forest">
+          <p className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-dm-sans text-forest">
             4 simpele stappen
           </p>
         </div>
@@ -57,12 +57,12 @@ export default function VerhuurStappen() {
             <ol className="space-y-6">
               {stappen.map((stap) => (
                 <li key={stap.nr} className="flex items-start gap-4">
-                  <span className="w-7 h-7 rounded-full bg-forest text-white text-body3 font-walsheim flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-7 h-7 rounded-full bg-forest text-white text-body3 font-dm-sans flex items-center justify-center shrink-0 mt-0.5">
                     {stap.nr}
                   </span>
                   <div>
-                    <p className="text-sub2 font-walsheim text-black">{stap.titel}</p>
-                    <p className="text-body2 font-walsheim text-black/60 mt-0.5">{stap.omschrijving}</p>
+                    <p className="text-sub2 font-dm-sans text-black">{stap.titel}</p>
+                    <p className="text-body2 font-dm-sans text-black/60 mt-0.5">{stap.omschrijving}</p>
                   </div>
                 </li>
               ))}

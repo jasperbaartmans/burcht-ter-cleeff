@@ -36,7 +36,7 @@ export default function StatusBadge({
     <span
       className={[
         'inline-flex items-center gap-1.5 rounded-full py-[10px] pl-4 pr-[26px]',
-        'text-body3 font-helvetica font-medium',
+        'text-body3 font-dm-sans font-medium',
         config[variant],
         className,
       ].join(' ')}

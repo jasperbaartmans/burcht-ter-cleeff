@@ -81,7 +81,7 @@ export default function MiniCalendar({
             <path d="M10 3L5 8L10 13" stroke="#262628" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
-        <span className="text-body3 font-walsheim font-medium text-black">
+        <span className="text-body3 font-dm-sans font-medium text-black">
           {MONTHS_NL[month]} {year}
         </span>
         <button
@@ -98,7 +98,7 @@ export default function MiniCalendar({
       {/* Day headers */}
       <div className="grid grid-cols-7 mb-1">
         {DAYS_NL.map((d, i) => (
-          <div key={i} className="text-center text-body3 font-walsheim text-black/40 py-1">
+          <div key={i} className="text-center text-body3 font-dm-sans text-black/40 py-1">
             {d}
           </div>
         ))}
@@ -119,7 +119,7 @@ export default function MiniCalendar({
                 <button
                   onClick={() => handleSelect(day)}
                   className={[
-                    'w-8 h-8 rounded-full flex items-center justify-center text-body3 font-walsheim transition-colors',
+                    'w-8 h-8 rounded-full flex items-center justify-center text-body3 font-dm-sans transition-colors',
                     isSelected
                       ? 'bg-forest text-white'
                       : isToday

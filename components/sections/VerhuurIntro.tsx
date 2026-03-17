@@ -55,7 +55,7 @@ export default function VerhuurIntro() {
 
         {/* Links: grote H2 met inline iconen */}
         <div>
-          <h2 className="text-[32px] leading-[38px] tracking-[-0.03em] md:text-h2 font-walsheim text-black">
+          <h2 className="text-[32px] leading-[38px] tracking-[-0.03em] md:text-h2 font-dm-sans text-black">
             Brengen jullie de vlaggetjes en het lekkers mee? Dan zorgen onze basisvoorzieningen
             {' '}<IconCastle />{' '}<IconLamp />{' '}<IconTable />{' '}
             ervoor dat het je aan niets ontbreekt.
@@ -64,12 +64,12 @@ export default function VerhuurIntro() {
 
         {/* Rechts: body tekst */}
         <div className="flex flex-col gap-5 md:pt-2">
-          <p className="text-body1 font-walsheim text-black/80">
+          <p className="text-body1 font-dm-sans text-black/80">
             Stel je een zonovergoten ochtend voor waarin je kinderen zich uitleven in een prachtige
             speeltuin, omringd door het geluid van lachende vrienden en vrolijke vlaggetjes. Zo ziet
             jullie feestje er misschien binnenkort wel uit.
           </p>
-          <p className="text-body2 font-walsheim text-black/60">
+          <p className="text-body2 font-dm-sans text-black/60">
             Onze speeltuin biedt de perfecte locatie voor een onvergetelijk kinderfeestje, waar
             kinderen zich kunnen verliezen in eindeloze avonturen. Je kunt de speeltuin huren voor
             een besloten evenement, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.

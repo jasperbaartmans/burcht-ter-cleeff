@@ -26,8 +26,8 @@ export default function AccountKaartjes() {
           className="flex items-center justify-between group"
         >
           <div>
-            <p className="text-body3 font-walsheim text-forest mb-1">Bestellen</p>
-            <p className="text-body2 font-walsheim text-black/60">
+            <p className="text-body3 font-dm-sans text-forest mb-1">Bestellen</p>
+            <p className="text-body2 font-dm-sans text-black/60">
               Bestel gemakkelijk online je kaartjes
             </p>
           </div>
@@ -42,13 +42,13 @@ export default function AccountKaartjes() {
 
         {/* Historie */}
         <div>
-          <p className="text-body3 font-walsheim text-forest mb-3">Historie</p>
+          <p className="text-body3 font-dm-sans text-forest mb-3">Historie</p>
           <div className="flex flex-col divide-y divide-grey">
             {kaartjesHistorie.map((item) => (
               <div key={item.date} className="flex items-center justify-between py-3">
-                <span className="text-body2 font-walsheim text-black">{item.date}</span>
+                <span className="text-body2 font-dm-sans text-black">{item.date}</span>
                 <div className="flex items-center gap-4">
-                  <span className="text-body2 font-walsheim text-black/40">
+                  <span className="text-body2 font-dm-sans text-black/40">
                     {item.aantal} {item.aantal === 1 ? 'ticket' : 'tickets'}
                   </span>
                   <button

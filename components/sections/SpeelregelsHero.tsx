@@ -16,7 +16,7 @@ export default function SpeelregelsHero() {
       <div className="absolute inset-0 flex flex-col justify-end pb-10 md:pb-16">
         <div className="max-w-[1360px] mx-auto w-full px-6 md:px-10">
           <h1
-            className="text-[42px] leading-[46px] tracking-[-0.03em] md:text-h1 font-walsheim text-white"
+            className="text-[42px] leading-[46px] tracking-[-0.03em] md:text-h1 font-dm-sans text-white"
             style={{ textShadow: '0 1px 4px rgba(0,0,0,0.45)' }}
           >
             Speelregels
