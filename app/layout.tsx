@@ -1,17 +1,11 @@
 import type { Metadata } from 'next'
-import { DM_Sans } from 'next/font/google'
+import '@fontsource/dm-sans/400.css'
+import '@fontsource/dm-sans/500.css'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { nlNL } from '@clerk/localizations'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: 'Burcht ter Cleeff — Speeltuin',
@@ -26,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl">
-      <body className={`${dmSans.variable} font-dm-sans antialiased bg-ivory text-black`}>
+      <body className={`font-dm-sans antialiased bg-ivory text-black`}>
         <ClerkProvider localization={nlNL}>
           <Navbar />
           <main className="relative">{children}</main>
