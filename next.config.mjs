@@ -6,12 +6,10 @@ const nextConfig = {
     unoptimized: false,
   },
   serverExternalPackages: ['nodemailer'],
-  webpack(config, { webpack }) {
-    // @next/env gebruikt __dirname via ncc, wat niet bestaat in Edge Runtime (middleware)
-    config.plugins.push(
-      new webpack.DefinePlugin({ __dirname: JSON.stringify('/') })
-    )
-    return config
+  experimental: {
+    // Middleware draaien in Node.js runtime i.p.v. Edge Runtime
+    // Fix voor: ReferenceError: __dirname is not defined
+    nodeMiddleware: true,
   },
 }
 
