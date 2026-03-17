@@ -69,7 +69,7 @@ export default function VerhuurStappen() {
             </ol>
 
             <div className="pt-8">
-              <Button as="link" href="/verhuur/boeken" variant="primary" size="md">
+              <Button as="link" href="/mijn-omgeving" variant="primary" size="md">
                 Boek nu
               </Button>
             </div>
