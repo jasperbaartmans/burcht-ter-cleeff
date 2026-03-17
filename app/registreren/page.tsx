@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
@@ -11,7 +10,6 @@ const inputClass =
 const labelClass = 'text-body3 font-dm-sans text-forest mb-1 block'
 
 export default function RegistrerenPage() {
-  const router = useRouter()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
