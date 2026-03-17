@@ -23,12 +23,16 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  const { data: { user } } = await supabase.auth.getUser()
+  try {
+    const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user && request.nextUrl.pathname.startsWith('/mijn-omgeving')) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/inloggen'
-    return NextResponse.redirect(url)
+    if (!user && request.nextUrl.pathname.startsWith('/mijn-omgeving')) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/inloggen'
+      return NextResponse.redirect(url)
+    }
+  } catch {
+    // Supabase nog niet geconfigureerd — pagina gewoon laden
   }
 
   return supabaseResponse
