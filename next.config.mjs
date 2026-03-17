@@ -6,11 +6,6 @@ const nextConfig = {
     unoptimized: false,
   },
   serverExternalPackages: ['nodemailer'],
-  experimental: {
-    // Middleware draaien in Node.js runtime i.p.v. Edge Runtime
-    // Fix voor: ReferenceError: __dirname is not defined
-    nodeMiddleware: true,
-  },
 }
 
 export default nextConfig
