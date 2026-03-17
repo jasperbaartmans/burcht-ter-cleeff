@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import '@fontsource/dm-sans/400.css'
 import '@fontsource/dm-sans/500.css'
 import './globals.css'
-import { ClerkProvider } from '@clerk/nextjs'
-import { nlNL } from '@clerk/localizations'
+import { UserProvider } from '@/components/providers/UserProvider'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
@@ -21,11 +20,11 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`font-dm-sans antialiased bg-ivory text-black`}>
-        <ClerkProvider localization={nlNL}>
+        <UserProvider>
           <Navbar />
           <main className="relative">{children}</main>
           <Footer />
-        </ClerkProvider>
+        </UserProvider>
       </body>
     </html>
   )

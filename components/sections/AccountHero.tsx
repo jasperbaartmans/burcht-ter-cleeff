@@ -1,10 +1,12 @@
 'use client'
 
-import { useUser } from '@clerk/nextjs'
+import { useUser } from '@/components/providers/UserProvider'
 
 export default function AccountHero() {
   const { user } = useUser()
-  const naam = user ? [user.firstName, user.lastName].filter(Boolean).join(' ') : 'Mijn account'
+  const naam = user
+    ? [user.user_metadata?.firstName, user.user_metadata?.lastName].filter(Boolean).join(' ') || user.email
+    : 'Mijn account'
 
   return (
     <section className="bg-forest w-full pt-[69px]">

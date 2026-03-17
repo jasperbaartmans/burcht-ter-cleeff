@@ -1,5 +1,5 @@
-import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
 import AccountHero from '@/components/sections/AccountHero'
 import AccountProfile from '@/components/sections/AccountProfile'
 import AccountVerhuur from '@/components/sections/AccountVerhuur'
@@ -12,8 +12,9 @@ export const metadata = {
 }
 
 export default async function MijnOmgevingPage() {
-  const { userId } = await auth()
-  if (!userId) redirect('/inloggen')
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) redirect('/inloggen')
 
   return (
     <>

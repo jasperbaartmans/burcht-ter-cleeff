@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useUser } from '@clerk/nextjs'
+import { useUser } from '@/components/providers/UserProvider'
+import { createClient } from '@/lib/supabase/client'
 import Toggle from '@/components/ui/Toggle'
 
 const inputClass =
@@ -17,17 +18,18 @@ export default function AccountProfile() {
 
   useEffect(() => {
     if (user) {
-      setFirstName(user.firstName ?? '')
-      setLastName(user.lastName ?? '')
+      setFirstName(user.user_metadata?.firstName ?? '')
+      setLastName(user.user_metadata?.lastName ?? '')
     }
   }, [user])
 
   async function handleSave() {
     if (!user) return
-    await user.update({ firstName, lastName })
+    const supabase = createClient()
+    await supabase.auth.updateUser({ data: { firstName, lastName } })
   }
 
-  const email = user?.primaryEmailAddress?.emailAddress ?? ''
+  const email = user?.email ?? ''
 
   return (
     <SectionRow label="Profiel">
@@ -58,7 +60,7 @@ export default function AccountProfile() {
           />
         </div>
 
-        {/* E-mail — read-only (beheerd door Clerk) */}
+        {/* E-mail — read-only */}
         <div>
           <label htmlFor="email" className={labelClass}>E-mail</label>
           <input
