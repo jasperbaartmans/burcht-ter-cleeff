@@ -26,19 +26,8 @@ export default function ContactContent() {
     <section className="bg-white py-14 md:py-20 px-6 md:px-10">
       <div className="max-w-[1360px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-stretch">
 
-        {/* Left: image */}
-        <div className="relative rounded-2xl overflow-hidden min-h-[320px] md:min-h-0">
-          <Image
-            src="/images/schommel.jpg"
-            alt="Kinderen spelen bij Speeltuin Burcht ter Cleeff"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
-
-        {/* Right: form card */}
-        <div className="bg-ivory rounded-2xl p-7 md:p-10 flex flex-col gap-6">
+        {/* Form card — first on mobile */}
+        <div className="bg-ivory rounded-2xl p-7 md:p-10 flex flex-col gap-6 order-1 md:order-2">
           <p className="text-body2 font-walsheim text-black/70">
             Vul het formulier in of neem direct contact op via de mail.
           </p>
@@ -55,7 +44,7 @@ export default function ContactContent() {
           ) : (
             <form action={action} className="flex flex-col gap-5">
               {/* Naam */}
-              <div className="grid grid-cols-[90px_1fr] items-center gap-3">
+              <div className="flex flex-col gap-1">
                 <label htmlFor="naam" className="text-body2 font-walsheim text-forest">
                   Naam
                 </label>
@@ -70,7 +59,7 @@ export default function ContactContent() {
               </div>
 
               {/* E-mail */}
-              <div className="grid grid-cols-[90px_1fr] items-center gap-3">
+              <div className="flex flex-col gap-1">
                 <label htmlFor="email" className="text-body2 font-walsheim text-forest">
                   E-mail
                 </label>
@@ -85,7 +74,7 @@ export default function ContactContent() {
               </div>
 
               {/* Telefoon */}
-              <div className="grid grid-cols-[90px_1fr] items-center gap-3">
+              <div className="flex flex-col gap-1">
                 <label htmlFor="telefoon" className="text-body2 font-walsheim text-forest">
                   Telefoon
                 </label>
@@ -99,8 +88,8 @@ export default function ContactContent() {
               </div>
 
               {/* Bericht */}
-              <div className="grid grid-cols-[90px_1fr] items-start gap-3">
-                <label htmlFor="bericht" className="text-body2 font-walsheim text-forest pt-3">
+              <div className="flex flex-col gap-1">
+                <label htmlFor="bericht" className="text-body2 font-walsheim text-forest">
                   Bericht
                 </label>
                 <textarea
@@ -122,6 +111,17 @@ export default function ContactContent() {
               </div>
             </form>
           )}
+        </div>
+
+        {/* Image — second on mobile, first on desktop */}
+        <div className="relative rounded-2xl overflow-hidden min-h-[320px] md:min-h-0 order-2 md:order-1">
+          <Image
+            src="/images/schommel.jpg"
+            alt="Kinderen spelen bij Speeltuin Burcht ter Cleeff"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
 
       </div>

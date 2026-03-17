@@ -27,6 +27,11 @@ export default function Footer() {
         {/* Right: info */}
         <div className="flex flex-col gap-8 md:w-1/2 py-4">
 
+          {/* Newsletter — mobile only (desktop is in bottom bar) */}
+          <div className="md:hidden">
+            <FooterNewsletter />
+          </div>
+
           {/* Logo */}
           <div className="flex items-center gap-2.5">
             <LogoIcon className="text-white" />
@@ -71,7 +76,9 @@ export default function Footer() {
         <div className="max-w-[1360px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
           <StatusBadgeLive />
           <div className="flex-1" />
-          <FooterNewsletter />
+          <div className="hidden md:block">
+            <FooterNewsletter />
+          </div>
         </div>
       </div>
 
