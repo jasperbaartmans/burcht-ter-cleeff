@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { DM_Sans } from 'next/font/google'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { nlNL } from '@clerk/localizations'
@@ -23,6 +24,13 @@ const gtWalsheim = localFont({
   display: 'swap',
 })
 
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'Burcht ter Cleeff — Speeltuin',
   description:
@@ -36,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl">
-      <body className={`${gtWalsheim.variable} font-walsheim antialiased bg-ivory text-black`}>
+      <body className={`${gtWalsheim.variable} ${dmSans.variable} font-walsheim antialiased bg-ivory text-black`}>
         <ClerkProvider localization={nlNL}>
           <Navbar />
           <main className="relative">{children}</main>

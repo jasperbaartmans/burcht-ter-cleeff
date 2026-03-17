@@ -21,6 +21,7 @@ const config: Config = {
       fontFamily: {
         walsheim: ['var(--font-walsheim)', 'Helvetica Neue', 'Arial', 'sans-serif'],
         helvetica: ['Helvetica Neue', 'Arial', 'sans-serif'],
+        'dm-sans': ['var(--font-dm-sans)', 'sans-serif'],
       },
       fontSize: {
         'h1':    ['72px', { lineHeight: '70px', letterSpacing: '-0.03em', fontWeight: '400' }],
