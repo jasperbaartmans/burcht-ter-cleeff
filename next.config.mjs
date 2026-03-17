@@ -5,7 +5,9 @@ const nextConfig = {
     // Zet unoptimized op false zodra je echte foto's hebt toegevoegd
     unoptimized: false,
   },
-  serverExternalPackages: ['nodemailer'],
+  experimental: {
+    serverComponentsExternalPackages: ['nodemailer'],
+  },
 }
 
 export default nextConfig
