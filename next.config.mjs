@@ -6,6 +6,13 @@ const nextConfig = {
     unoptimized: false,
   },
   serverExternalPackages: ['nodemailer'],
+  webpack(config, { webpack }) {
+    // @next/env gebruikt __dirname via ncc, wat niet bestaat in Edge Runtime (middleware)
+    config.plugins.push(
+      new webpack.DefinePlugin({ __dirname: JSON.stringify('/') })
+    )
+    return config
+  },
 }
 
 export default nextConfig
