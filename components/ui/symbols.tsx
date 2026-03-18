@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * Symbols — filled/solid pictogrammen in de huisstijl van Burcht ter Cleeff.
  * Gebaseerd op Phosphor Icons (fill weight).
