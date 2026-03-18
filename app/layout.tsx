@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import '@fontsource/dm-sans/400.css'
 import '@fontsource/dm-sans/500.css'
 import './globals.css'
@@ -62,6 +63,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
+      <Script src="https://www.noupe.com/embed/019ac101845e76ac8a84a62109e04efe2e09.js" strategy="lazyOnload" />
       <body className={`font-dm-sans antialiased bg-ivory text-black`}>
         <UserProvider>
           <Navbar />

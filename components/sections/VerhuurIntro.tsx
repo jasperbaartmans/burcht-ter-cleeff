@@ -48,7 +48,17 @@ function IconTable() {
   )
 }
 
-export default function VerhuurIntro() {
+interface Props {
+  data?: {
+    body1?: string
+    body2?: string
+  }
+}
+
+export default function VerhuurIntro({ data }: Props) {
+  const body1 = data?.body1 ?? 'Stel je een zonovergoten ochtend voor waarin je kinderen zich uitleven in een prachtige speeltuin, omringd door het geluid van lachende vrienden en vrolijke vlaggetjes. Zo ziet jullie feestje er misschien binnenkort wel uit.'
+  const body2 = data?.body2 ?? 'Onze speeltuin biedt de perfecte locatie voor een onvergetelijk kinderfeestje, waar kinderen zich kunnen verliezen in eindeloze avonturen. Als je jaarlid bent kun je de speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.'
+
   return (
     <section className="bg-ivory py-16 md:py-24 px-6 md:px-12 border-t border-grey">
       <div className="max-w-[1360px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
@@ -65,14 +75,10 @@ export default function VerhuurIntro() {
         {/* Rechts: body tekst */}
         <div className="flex flex-col gap-5 md:pt-2">
           <p className="text-body1 font-dm-sans text-black/80">
-            Stel je een zonovergoten ochtend voor waarin je kinderen zich uitleven in een prachtige
-            speeltuin, omringd door het geluid van lachende vrienden en vrolijke vlaggetjes. Zo ziet
-            jullie feestje er misschien binnenkort wel uit.
+            {body1}
           </p>
           <p className="text-body2 font-dm-sans text-black/60">
-            Onze speeltuin biedt de perfecte locatie voor een onvergetelijk kinderfeestje, waar
-            kinderen zich kunnen verliezen in eindeloze avonturen. Als je jaarlid bent kun je de
-            speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.{' '}
+            {body2}{' '}
             <a href="/speelregels" className="underline hover:text-black/80 transition-colors">
               Kijk hier voor het complete huurreglement.
             </a>

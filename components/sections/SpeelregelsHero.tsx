@@ -1,6 +1,10 @@
 import Image from 'next/image'
 
-export default function SpeelregelsHero() {
+interface Props {
+  data?: { h1?: string }
+}
+
+export default function SpeelregelsHero({ data }: Props) {
   return (
     <section className="relative w-full h-[55vh] min-h-[380px] max-h-[600px] overflow-hidden">
       <Image
@@ -19,7 +23,7 @@ export default function SpeelregelsHero() {
             className="text-[42px] leading-[46px] tracking-[-0.03em] md:text-h1 font-dm-sans text-white"
             style={{ textShadow: '0 1px 4px rgba(0,0,0,0.45)' }}
           >
-            Speelregels
+            {data?.h1 ?? 'Speelregels'}
           </h1>
         </div>
       </div>

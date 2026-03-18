@@ -40,6 +40,52 @@ export interface HomePageData {
   }
 }
 
+export interface SpeelregelsPageData {
+  hero?: {
+    h1?: string
+  }
+  grid?: {
+    h2?: string
+    regels?: Array<{
+      titel?: string
+      tekst?: string
+      variant?: 'light' | 'dark'
+      icon?: string
+    }>
+  }
+  feedbackCTA?: {
+    tekst?: string
+    email?: string
+  }
+}
+
+export interface VerhuurPageData {
+  hero?: {
+    h1?: string
+  }
+  intro?: {
+    body1?: string
+    body2?: string
+  }
+  stappen?: {
+    h2?: string
+    subtitle?: string
+    items?: Array<{
+      titel?: string
+      omschrijving?: string
+    }>
+  }
+}
+
+export interface ContactPageData {
+  hero?: {
+    h1?: string
+  }
+  intro?: {
+    tekst?: string
+  }
+}
+
 // ── Queries ──────────────────────────────────────────────────────────────────
 
 export const homePageQuery = groq`
@@ -63,5 +109,35 @@ export const homePageQuery = groq`
       bullets,
       image,
     }
+  }
+`
+
+export const speelregelsPageQuery = groq`
+  *[_type == "speelregelsPage"][0] {
+    hero,
+    grid {
+      h2,
+      regels[] { titel, tekst, variant, icon }
+    },
+    feedbackCTA,
+  }
+`
+
+export const verhuurPageQuery = groq`
+  *[_type == "verhuurPage"][0] {
+    hero,
+    intro,
+    stappen {
+      h2,
+      subtitle,
+      items[] { titel, omschrijving }
+    },
+  }
+`
+
+export const contactPageQuery = groq`
+  *[_type == "contactPage"][0] {
+    hero,
+    intro,
   }
 `

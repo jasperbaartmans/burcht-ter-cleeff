@@ -1,30 +1,32 @@
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
 
-const stappen = [
-  {
-    nr: 1,
-    titel: 'Beschikbaarheid',
-    omschrijving: 'Controleer de agenda voor beschikbare data.',
-  },
-  {
-    nr: 2,
-    titel: 'Reserveren',
-    omschrijving: 'Kies een ochtend en login om deze vast te leggen.',
-  },
-  {
-    nr: 3,
-    titel: 'Betaling',
-    omschrijving: 'Betaal direct gemakkelijk online.',
-  },
-  {
-    nr: 4,
-    titel: 'Bevestiging',
-    omschrijving: 'Ontvang een mail met een bevestiging en details.',
-  },
+const fallbackStappen = [
+  { titel: 'Beschikbaarheid', omschrijving: 'Controleer de agenda voor beschikbare data.' },
+  { titel: 'Reserveren', omschrijving: 'Kies een ochtend en login om deze vast te leggen.' },
+  { titel: 'Betaling', omschrijving: 'Betaal direct gemakkelijk online.' },
+  { titel: 'Bevestiging', omschrijving: 'Ontvang een mail met een bevestiging en details.' },
 ]
 
-export default function VerhuurStappen() {
+interface Props {
+  data?: {
+    h2?: string
+    subtitle?: string
+    items?: Array<{
+      titel?: string
+      omschrijving?: string
+    }>
+  }
+}
+
+export default function VerhuurStappen({ data }: Props) {
+  const h2 = data?.h2 ?? 'Boek direct een datum in'
+  const subtitle = data?.subtitle ?? '4 simpele stappen'
+  const stappen = (data?.items && data.items.length > 0 ? data.items : fallbackStappen).map((s) => ({
+    titel: s.titel ?? '',
+    omschrijving: s.omschrijving ?? '',
+  }))
+
   return (
     <section className="bg-white py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-[1360px] mx-auto">
@@ -32,10 +34,10 @@ export default function VerhuurStappen() {
         {/* Koptekst */}
         <div className="mb-10 md:mb-14">
           <h2 className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-dm-sans text-black">
-            Boek direct een datum in
+            {h2}
           </h2>
           <p className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-dm-sans text-forest">
-            4 simpele stappen
+            {subtitle}
           </p>
         </div>
 
@@ -55,10 +57,10 @@ export default function VerhuurStappen() {
           {/* Rechts: genummerde stappen + knop */}
           <div className="flex flex-col justify-center gap-0">
             <ol className="space-y-6">
-              {stappen.map((stap) => (
-                <li key={stap.nr} className="flex items-start gap-4">
+              {stappen.map((stap, i) => (
+                <li key={i} className="flex items-start gap-4">
                   <span className="w-7 h-7 rounded-full bg-forest text-white text-body3 font-dm-sans flex items-center justify-center shrink-0 mt-0.5">
-                    {stap.nr}
+                    {i + 1}
                   </span>
                   <div>
                     <p className="text-sub2 font-dm-sans text-black">{stap.titel}</p>
