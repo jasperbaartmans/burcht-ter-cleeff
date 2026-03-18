@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
 
           {/* Logo */}
-          <div className="flex items-center gap-2.5">
+          <div className="hidden md:flex items-center gap-2.5">
             <LogoIcon className="text-white" />
             <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
               Burcht ter Cleeff
