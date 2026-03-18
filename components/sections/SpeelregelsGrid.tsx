@@ -43,16 +43,16 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
 // ── Fallback data ───────────────────────────────────────────────────────────
 
 const fallbackRegels = [
-  { titel: 'Spelen op eigen risico', tekst: 'Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin.', variant: 'light' as Variant, icon: 'risk' },
-  { titel: 'Honden zijn niet toegestaan', tekst: 'Honden mogen niet mee de speeltuin in, met uitzondering van geleidehonden die altijd welkom zijn.', variant: 'dark' as Variant, icon: 'noDog' },
-  { titel: 'Fietsen parkeren', tekst: 'Fietsen dienen buiten de speeltuin geparkeerd te worden. Fietsen zijn niet toegestaan binnen de speeltuin.', variant: 'light' as Variant, icon: 'bike' },
-  { titel: 'Verboden te roken en drinken', tekst: 'Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers.', variant: 'dark' as Variant, icon: 'noSmoke' },
-  { titel: 'Afval opruimen', tekst: 'Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon.', variant: 'dark' as Variant, icon: 'trash' },
-  { titel: 'Speelgoed terugzetten', tekst: 'Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje.', variant: 'light' as Variant, icon: 'toy' },
-  { titel: 'Algemene reglementen', tekst: 'Bij het betreden van de speeltuin aanvaard je automatisch het algemeen reglement, dat beschikbaar is bij de beheerder.', variant: 'dark' as Variant, icon: 'doc' },
-  { titel: 'Toegang voor leden', tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.', variant: 'dark' as Variant, icon: 'person' },
-  { titel: 'Toegangsprijs voor niet-leden', tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.', variant: 'light' as Variant, icon: 'person' },
-  { titel: 'Kleding in de speeltuin', tekst: 'Kinderen dienen altijd, ook wanneer de fontein aanstaat, minimaal een onderbroekje of (zwem)luier te dragen.', variant: 'light' as Variant, icon: 'shirt' },
+  { titel: 'Toegang voor leden',          tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.',                         variant: 'light' as Variant, icon: 'person'  },
+  { titel: 'Toegangsprijs voor niet-leden',tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.',                     variant: 'dark'  as Variant, icon: 'person'  },
+  { titel: 'Spelen op eigen risico',       tekst: 'Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin.',             variant: 'light' as Variant, icon: 'risk'    },
+  { titel: 'Afval opruimen',               tekst: 'Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon.',            variant: 'dark'  as Variant, icon: 'trash'   },
+  { titel: 'Speelgoed terugzetten',        tekst: 'Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje.',      variant: 'dark'  as Variant, icon: 'toy'     },
+  { titel: 'Algemene reglementen',         tekst: 'Bij het betreden van de speeltuin aanvaard je automatisch het algemeen reglement, dat beschikbaar is bij de beheerder.',                variant: 'dark'  as Variant, icon: 'doc'     },
+  { titel: 'Honden zijn niet toegestaan',  tekst: 'Honden mogen niet mee de speeltuin in, met uitzondering van geleidehonden die altijd welkom zijn.',                                    variant: 'dark'  as Variant, icon: 'noDog'   },
+  { titel: 'Fietsen parkeren',             tekst: 'Fietsen dienen buiten de speeltuin geparkeerd te worden. Fietsen zijn niet toegestaan binnen de speeltuin.',                            variant: 'light' as Variant, icon: 'bike'    },
+  { titel: 'Verboden te roken en drinken', tekst: 'Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers.',                    variant: 'dark'  as Variant, icon: 'noSmoke' },
+  { titel: 'Kleding in de speeltuin',      tekst: 'Kinderen dienen altijd, ook wanneer de fontein aanstaat, minimaal een onderbroekje of (zwem)luier te dragen.',                         variant: 'light' as Variant, icon: 'shirt'   },
 ]
 
 // ── Main component ─────────────────────────────────────────────────────────
