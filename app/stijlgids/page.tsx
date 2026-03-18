@@ -9,7 +9,7 @@ import {
   X, Plus, Minus, Menu, Search, Info, Check, Download, RotateCcw,
   Clock, User,
 } from 'lucide-react'
-import { Symbol, SymbolBadge, type SymbolName } from '@/components/ui/symbols'
+import SymbolsSectionLoader from './SymbolsSectionLoader'
 
 export const metadata: Metadata = {
   title: 'Stijlgids — Burcht ter Cleeff',
@@ -410,69 +410,8 @@ export default function StijlgidsPage() {
         </div>
       </Section>
 
-      {/* Symbols */}
-      <Section title="Symbols">
-        <div className="space-y-8">
-
-          {/* Plat — forest kleur */}
-          <div className="p-8 bg-white rounded-2xl">
-            <p className="text-body3 font-dm-sans text-black/40 mb-6 uppercase tracking-widest">Plat — forest kleur (speelregels e.d.)</p>
-            <div className="flex flex-wrap gap-6">
-              {([
-                { name: 'warning',     label: 'Waarschuwing' },
-                { name: 'trash',       label: 'Afval' },
-                { name: 'noDog',       label: 'Geen honden' },
-                { name: 'bike',        label: 'Fietsen' },
-                { name: 'noSmoke',     label: 'Niet roken' },
-                { name: 'toy',         label: 'Knutselen' },
-                { name: 'doc',         label: 'Lijst' },
-                { name: 'person',      label: 'Persoon' },
-                { name: 'shirt',       label: 'Kleding' },
-                { name: 'castle',      label: 'Gebouw' },
-                { name: 'lamp',        label: 'Lamp' },
-                { name: 'picnicTable', label: 'Picknicktafel' },
-                { name: 'slide',       label: 'Glijbaan' },
-                { name: 'walking',     label: 'Wandelen' },
-                { name: 'water',       label: 'Water' },
-                { name: 'location',    label: 'Locatie' },
-                { name: 'camping',     label: 'Kamperen' },
-                { name: 'fitness',     label: 'Fitness' },
-                { name: 'house',       label: 'Huis' },
-                { name: 'shovel',      label: 'Schep' },
-                { name: 'star',        label: 'Ster' },
-                { name: 'leaf',        label: 'Blad' },
-              ] as { name: SymbolName; label: string }[]).map(({ name, label }) => (
-                <div key={name} className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 flex items-center justify-center text-forest">
-                    <Symbol name={name} size={28} />
-                  </div>
-                  <span className="text-body3 font-dm-sans text-black/40 text-center max-w-[72px]">{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* In groene cirkel */}
-          <div className="p-8 bg-white rounded-2xl">
-            <p className="text-body3 font-dm-sans text-black/40 mb-6 uppercase tracking-widest">In groene cirkel (Quote / VerhuurIntro)</p>
-            <div className="flex flex-wrap gap-6">
-              {([
-                { name: 'star',        label: 'Ster' },
-                { name: 'leaf',        label: 'Blad' },
-                { name: 'castle',      label: 'Gebouw' },
-                { name: 'lamp',        label: 'Lamp' },
-                { name: 'picnicTable', label: 'Picknicktafel' },
-              ] as { name: SymbolName; label: string }[]).map(({ name, label }) => (
-                <div key={name} className="flex flex-col items-center gap-2">
-                  <SymbolBadge name={name} size={28} />
-                  <span className="text-body3 font-dm-sans text-black/40 text-center max-w-[72px]">{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </Section>
+      {/* Symbols — client-only via dynamic import (Phosphor is ESM-only) */}
+      <SymbolsSectionLoader />
 
       {/* Hover states beschrijving */}
       <Section title="Hover states — regels">

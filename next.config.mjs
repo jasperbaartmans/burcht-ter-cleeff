@@ -9,6 +9,6 @@ const nextConfig = {
     ],
   },
   serverExternalPackages: ['nodemailer'],
-  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/vision'],
+  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/vision', '@phosphor-icons/react'],
 }
 export default nextConfig
