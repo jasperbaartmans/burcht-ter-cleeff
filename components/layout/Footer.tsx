@@ -5,17 +5,18 @@ import FooterNewsletter from './FooterNewsletter'
 
 export default function Footer() {
   return (
-    <footer className="bg-sienna text-white">
-      {/* Kantelen top border */}
+    <footer className="text-white">
+      {/* Kantelen top border — tanden zijn sienna, gaten transparant zodat achtergrond erboven doorloopt */}
       <div className="flex overflow-hidden">
         {Array.from({ length: 54 }).map((_, i) => (
           <div
             key={i}
-            className={`flex-1 h-5 ${i % 2 === 0 ? 'bg-white' : 'bg-transparent'}`}
+            className={`flex-1 h-5 ${i % 2 === 0 ? 'bg-sienna' : 'bg-transparent'}`}
           />
         ))}
       </div>
 
+      <div className="bg-sienna">
       {/* Main content */}
       <div className="relative max-w-[1360px] mx-auto px-6 py-12 flex flex-col md:flex-row gap-0">
 
@@ -91,6 +92,7 @@ export default function Footer() {
       <div className="max-w-[1360px] mx-auto px-6 pb-4">
         <FlagIcon className="w-12 h-auto opacity-60" color="white" />
       </div>
+      </div>{/* end bg-sienna */}
     </footer>
   )
 }
