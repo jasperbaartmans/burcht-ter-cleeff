@@ -23,7 +23,7 @@ function getStatus(): { status: 'open' | 'gesloten'; label: string } {
   return { status: 'gesloten', label: 'Gesloten · open morgen 09:00u' }
 }
 
-export default function StatusBadgeLive() {
+export default function StatusBadgeLive({ className }: { className?: string }) {
   const [badge, setBadge] = useState<{ status: 'open' | 'gesloten'; label: string } | null>(null)
 
   useEffect(() => {
@@ -36,5 +36,5 @@ export default function StatusBadgeLive() {
 
   if (!badge) return null
 
-  return <StatusBadge status={badge.status} label={badge.label} variant="outline" />
+  return <StatusBadge status={badge.status} label={badge.label} variant="outline" className={className} />
 }
