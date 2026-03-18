@@ -1,6 +1,12 @@
 import Image from 'next/image'
+import { urlFor } from '@/lib/sanity/image'
+import type { HomePageData } from '@/lib/sanity/queries'
 
-const cards = [
+interface Props {
+  data?: HomePageData['featureCards']
+}
+
+const fallbackCards = [
   {
     image: '/images/feature-family.jpg',
     label: 'Familievriendelijk',
@@ -21,32 +27,41 @@ const cards = [
   },
 ]
 
-export default function FeatureCards() {
+export default function FeatureCards({ data }: Props) {
+  const h2 = data?.h2 ?? 'Avontuur en ontspanning in Speeltuin Burcht ter Cleeff'
+  const cards = data?.cards?.length ? data.cards : fallbackCards
+
   return (
     <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-h2 font-dm-sans text-black mb-10 md:mb-14 max-w-2xl">
-          Avontuur en ontspanning in Speeltuin Burcht ter Cleeff
+          {h2}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {cards.map((card) => (
-            <article key={card.label} className="flex flex-col gap-4">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-grey">
-                <Image
-                  src={card.image}
-                  alt={card.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-sub1 font-dm-sans font-medium text-black">{card.label}</p>
-                <p className="text-body2 font-dm-sans text-black/70">{card.body}</p>
-              </div>
-            </article>
-          ))}
+          {cards.map((card, i) => {
+            const imgSrc =
+              card.image && typeof card.image === 'object' && '_type' in card.image
+                ? urlFor(card.image).width(800).height(600).url()
+                : (card as typeof fallbackCards[number]).image as string
+            return (
+              <article key={card.label ?? i} className="flex flex-col gap-4">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-grey">
+                  <Image
+                    src={imgSrc}
+                    alt={card.alt ?? ''}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="text-sub1 font-dm-sans font-medium text-black">{card.label}</p>
+                  <p className="text-body2 font-dm-sans text-black/70">{card.body}</p>
+                </div>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>

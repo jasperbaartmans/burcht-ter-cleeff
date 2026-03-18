@@ -1,5 +1,11 @@
 import type { Metadata } from 'next'
+import { client } from '@/lib/sanity/client'
+import { homePageQuery, type HomePageData } from '@/lib/sanity/queries'
 import Hero from '@/components/sections/Hero'
+import FeatureCards from '@/components/sections/FeatureCards'
+import Quote from '@/components/sections/Quote'
+import FullPhoto from '@/components/sections/FullPhoto'
+import VerhuurCTA from '@/components/sections/VerhuurCTA'
 
 export const metadata: Metadata = {
   title: 'Speeltuin Burcht ter Cleeff — Haarlem',
@@ -14,20 +20,20 @@ export const metadata: Metadata = {
   },
 }
 
+export default async function HomePage() {
+  const data: HomePageData | null = await client.fetch(
+    homePageQuery,
+    {},
+    { next: { revalidate: 60 } },
+  )
 
-import FeatureCards from '@/components/sections/FeatureCards'
-import Quote from '@/components/sections/Quote'
-import FullPhoto from '@/components/sections/FullPhoto'
-import VerhuurCTA from '@/components/sections/VerhuurCTA'
-
-export default function HomePage() {
   return (
     <>
-      <Hero />
-      <FeatureCards />
-      <Quote />
-      <FullPhoto />
-      <VerhuurCTA />
+      <Hero data={data?.hero} />
+      <FeatureCards data={data?.featureCards} />
+      <Quote data={data?.quote} />
+      <FullPhoto data={data?.fullPhoto} />
+      <VerhuurCTA data={data?.verhuurCTA} />
     </>
   )
 }
