@@ -8,17 +8,17 @@ interface StatusBadgeProps {
 const statusConfig = {
   open: {
     filled: 'bg-forest text-white',
-    outline: 'bg-linen border border-forest text-forest',
+    outline: 'bg-ivory border border-forest text-forest',
     defaultLabel: 'Open',
   },
   gesloten: {
     filled: 'bg-sienna text-white',
-    outline: 'bg-linen border border-sienna text-sienna',
+    outline: 'bg-ivory border border-sienna text-sienna',
     defaultLabel: 'Gesloten',
   },
   verhuurd: {
     filled: 'bg-caramel text-white',
-    outline: 'bg-linen border border-caramel text-caramel',
+    outline: 'bg-ivory border border-caramel text-caramel',
     defaultLabel: 'Verhuurd',
   },
 }

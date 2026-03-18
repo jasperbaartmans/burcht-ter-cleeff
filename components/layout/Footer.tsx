@@ -17,7 +17,7 @@ export default function Footer() {
 
       <div className="bg-sienna">
       {/* Main content */}
-      <div className="relative max-w-[1360px] mx-auto px-6 pt-10 pb-4 flex flex-col md:flex-row gap-0">
+      <div className="relative max-w-[1360px] mx-auto px-6 pt-8 pb-0 flex flex-col md:flex-row gap-0">
 
         {/* Vlag decoratie — mobile only, absoluut gepositioneerd */}
         <div className="md:hidden absolute bottom-0 right-[-60px] w-56 opacity-80 pointer-events-none">
@@ -30,7 +30,7 @@ export default function Footer() {
         </div>
 
         {/* Right: info */}
-        <div className="flex flex-col gap-8 md:w-1/2 py-4">
+        <div className="flex flex-col gap-4 md:w-1/2 py-2">
 
           {/* Newsletter — mobile only (desktop is in bottom bar) */}
           <div className="md:hidden">
@@ -77,7 +77,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="max-w-[1360px] mx-auto px-6 pb-6 flex flex-col md:flex-row items-center gap-4">
+      <div className="max-w-[1360px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
         <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
         <div className="flex-1" />
         <div className="hidden md:block">
@@ -91,7 +91,7 @@ export default function Footer() {
 
 function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="flex gap-8 py-4">
+    <div className="flex gap-8 py-2.5">
       <span className="text-body3 font-dm-sans text-white/50 w-28 shrink-0">{label}</span>
       <span className="text-body2 font-dm-sans leading-snug">{value}</span>
     </div>
