@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Dagkaartje kopen — Burcht ter Cleeff',
   description:
     'Koop een dagkaartje voor Burcht ter Cleeff. Selecteer het aantal bezoekers en betaal eenvoudig online.',
+  robots: { index: false, follow: false },
 }
 
 export default function DagticketPage() {

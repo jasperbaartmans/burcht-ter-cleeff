@@ -3,6 +3,7 @@ import StatusBadge from '@/components/ui/StatusBadge'
 
 export const metadata = {
   title: 'Component Test — Burcht ter Cleeff',
+  robots: { index: false, follow: false },
 }
 
 export default function TestPage() {
