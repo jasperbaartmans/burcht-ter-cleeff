@@ -9,5 +9,6 @@ const nextConfig = {
     ],
   },
   serverExternalPackages: ['nodemailer'],
+  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/vision'],
 }
 export default nextConfig

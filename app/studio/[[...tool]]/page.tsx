@@ -1,12 +1,18 @@
-import { NextStudio } from 'next-sanity/studio'
-import config from '@/sanity.config'
+import type { Viewport } from 'next'
+import StudioClientWrapper from './StudioClientWrapper'
 
-export { viewport } from 'next-sanity/studio'
+export const dynamic = 'force-dynamic'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+}
 
 export const metadata = {
   title: 'Sanity Studio — Burcht ter Cleeff',
 }
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return <StudioClientWrapper />
 }

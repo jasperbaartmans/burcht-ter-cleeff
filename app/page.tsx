@@ -21,11 +21,12 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  const data: HomePageData | null = await client.fetch(
-    homePageQuery,
-    {},
-    { next: { revalidate: 60 } },
-  )
+  let data: HomePageData | null = null
+  try {
+    data = await client.fetch(homePageQuery, {}, { next: { revalidate: 60 } })
+  } catch {
+    // Sanity nog niet geconfigureerd — statische fallback teksten worden gebruikt
+  }
 
   return (
     <>
