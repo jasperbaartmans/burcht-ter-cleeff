@@ -68,13 +68,13 @@ export default function Quote() {
         {/* Links: grote H2-tekst met groene iconen inline */}
         <div>
           <h2 className="text-h2 font-dm-sans text-black leading-tight">
-            Kinderen spelen{' '}
+            Kinderen spelen en leren{' '}
             <IconStar />
-            {' '}beter buiten, vrijer{' '}
+            {' '}in een historische omgeving met diverse speeltoestellen,{' '}
             <IconLeaf />
-            {' '}in de natuur, avontuurlijker{' '}
+            {' '}terwijl ouders ontspannen{' '}
             <IconCastle />
-            {' '}op het kasteel.
+            {' '}in het groen.
           </h2>
         </div>
 
