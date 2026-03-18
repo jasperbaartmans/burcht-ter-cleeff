@@ -1,7 +1,29 @@
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
+import { urlFor } from '@/lib/sanity/image'
+import type { HomePageData } from '@/lib/sanity/queries'
 
-export default function VerhuurCTA() {
+interface Props {
+  data?: HomePageData['verhuurCTA']
+}
+
+const fallbackBullets = [
+  'Exclusieve huur van het terrein',
+  'Capaciteit tot 500 personen',
+  'Catering & decoratie mogelijk',
+]
+
+export default function VerhuurCTA({ data }: Props) {
+  const label = data?.label ?? 'Voor groepen & bedrijven'
+  const h3 = data?.h3 ?? 'Verhuurmogelijkheden'
+  const body = data?.body ?? 'Organiseer uw bedrijfsuitje, verjaardag of schoolreisje op het unieke terrein van Burcht ter Cleeff. Wij zorgen voor een onvergetelijke dag.'
+  const bullets = data?.bullets?.length ? data.bullets : fallbackBullets
+
+  const imgSrc =
+    data?.image && typeof data.image === 'object' && '_type' in data.image
+      ? urlFor(data.image).width(800).height(600).url()
+      : '/images/verhuur.jpg'
+
   return (
     <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
@@ -9,7 +31,7 @@ export default function VerhuurCTA() {
           {/* Foto links */}
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-grey">
             <Image
-              src="/images/verhuur.jpg"
+              src={imgSrc}
               alt="Verhuur van het terrein van Speeltuin Burcht ter Cleeff voor evenementen"
               fill
               className="object-cover"
@@ -21,29 +43,22 @@ export default function VerhuurCTA() {
           <div className="flex flex-col gap-5">
             <div>
               <p className="text-body3 font-dm-sans text-black/50 uppercase tracking-wider mb-3">
-                Voor groepen &amp; bedrijven
+                {label}
               </p>
               <h3 className="text-h3 font-dm-sans font-medium text-black mb-4">
-                Verhuurmogelijkheden
+                {h3}
               </h3>
               <p className="text-body1 font-dm-sans text-black/70">
-                Organiseer uw bedrijfsuitje, verjaardag of schoolreisje op het unieke terrein
-                van Burcht ter Cleeff. Wij zorgen voor een onvergetelijke dag.
+                {body}
               </p>
             </div>
             <ul className="space-y-2 text-body2 font-dm-sans text-black/60">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0" />
-                Exclusieve huur van het terrein
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0" />
-                Capaciteit tot 500 personen
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0" />
-                Catering &amp; decoratie mogelijk
-              </li>
+              {bullets.map((bullet) => (
+                <li key={bullet} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0" />
+                  {bullet}
+                </li>
+              ))}
             </ul>
             <div className="pt-2">
               <Button as="link" href="/verhuur" variant="primary" size="md">

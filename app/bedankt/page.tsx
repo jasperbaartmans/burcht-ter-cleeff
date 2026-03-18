@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button'
 export const metadata: Metadata = {
   title: 'Betaling ontvangen — Burcht ter Cleeff',
   description: 'Bedankt voor je betaling. Tot ziens bij Burcht ter Cleeff!',
+  robots: { index: false, follow: false },
 }
 
 export default function BedanktPage() {

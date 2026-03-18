@@ -71,8 +71,11 @@ export default function VerhuurIntro() {
           </p>
           <p className="text-body2 font-dm-sans text-black/60">
             Onze speeltuin biedt de perfecte locatie voor een onvergetelijk kinderfeestje, waar
-            kinderen zich kunnen verliezen in eindeloze avonturen. Je kunt de speeltuin huren voor
-            een besloten evenement, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.
+            kinderen zich kunnen verliezen in eindeloze avonturen. Als je jaarlid bent kun je de
+            speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.{' '}
+            <a href="/speelregels" className="underline hover:text-black/80 transition-colors">
+              Kijk hier voor het complete huurreglement.
+            </a>
           </p>
         </div>
 

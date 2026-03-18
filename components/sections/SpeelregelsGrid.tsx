@@ -169,7 +169,7 @@ export default function SpeelregelsGrid() {
             <RuleCard
               variant="dark"
               titel="Verboden te roken en drinken"
-              tekst="Roken en het gebruik van alcohol zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers."
+              tekst="Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers."
               icon={<IconNoSmoke />}
             />
           </div>
@@ -207,7 +207,7 @@ export default function SpeelregelsGrid() {
             <RuleCard
               variant="light"
               titel="Toegangsprijs voor niet-leden"
-              tekst="Niet-leden betalen een toegangsprijs van €0,50 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder."
+              tekst="Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder."
               icon={<IconPerson light />}
             />
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-grey">

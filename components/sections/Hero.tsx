@@ -1,8 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import StatusBadge from '@/components/ui/StatusBadge'
+import type { HomePageData } from '@/lib/sanity/queries'
 
-export default function Hero() {
+interface Props {
+  data?: HomePageData['hero']
+}
+
+export default function Hero({ data }: Props) {
+  const h1 = data?.h1 ?? 'De speeltuin voor ouderwets plezier en avontuur.'
+  const statusLabel = data?.statusLabel ?? 'Open tot 18:00u'
+
   return (
     <section className="relative w-full h-svh min-h-[500px] overflow-hidden">
       {/* Achtergrond foto */}
@@ -28,9 +36,9 @@ export default function Hero() {
               className="text-[36px] leading-[40px] tracking-[-0.03em] md:text-h1 font-dm-sans text-white"
               style={{ textShadow: '0 1px 3px rgba(0,0,0,0.50)' }}
             >
-              De speeltuin voor ouderwets plezier en avontuur.
+              {h1}
             </h1>
-            <StatusBadge status="open" label="Open tot 18:00u" />
+            <StatusBadge status="open" label={statusLabel} />
           </div>
 
           {/* Koop een kaartje — onderaan op mobiel, links op desktop */}

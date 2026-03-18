@@ -9,6 +9,7 @@ import AccountNotificaties from '@/components/sections/AccountNotificaties'
 export const metadata = {
   title: 'Mijn account — Burcht ter Cleeff',
   description: 'Beheer je profiel, reserveringen, kaartjes en notificaties.',
+  robots: { index: false, follow: false },
 }
 
 export default async function MijnOmgevingPage() {
