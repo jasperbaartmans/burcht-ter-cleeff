@@ -1,3 +1,11 @@
+function ClockIcon({ size, className }: { size: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+    </svg>
+  )
+}
+
 interface StatusBadgeProps {
   status: 'open' | 'gesloten' | 'verhuurd'
   label?: string
@@ -41,19 +49,7 @@ export default function StatusBadge({
         className,
       ].join(' ')}
     >
-      {/* Klok icoon */}
-      <svg
-        width="12"
-        height="12"
-        viewBox="0 0 12 12"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M6 3.5V6L7.5 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
+      <ClockIcon size={12} className="shrink-0" />
       {displayLabel}
     </span>
   )

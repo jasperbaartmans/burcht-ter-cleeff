@@ -111,8 +111,150 @@ async function seed() {
   }
 
   await client.createOrReplace(doc)
-  console.log('✓ homePage document aangemaakt en gepubliceerd!\n')
-  console.log('Klaar. Ga naar http://localhost:3000/studio om de content te bekijken.')
+  console.log('✓ homePage\n')
+
+  // ── speelregelsPage ──────────────────────────────────────────────────────
+  console.log('Creating speelregelsPage document...')
+  await client.createOrReplace({
+    _id: 'speelregelsPage',
+    _type: 'speelregelsPage',
+    hero: {
+      h1: 'Speelregels',
+    },
+    grid: {
+      h2: 'Dit zijn onze speelregels',
+      regels: [
+        {
+          _key: 'regel-toegang-leden',
+          titel: 'Toegang voor leden',
+          tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.',
+          variant: 'light',
+          icon: 'ticket',
+        },
+        {
+          _key: 'regel-toegangsprijs',
+          titel: 'Toegangsprijs voor niet-leden',
+          tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.',
+          variant: 'dark',
+          icon: 'userCheck',
+        },
+        {
+          _key: 'regel-eigen-risico',
+          titel: 'Spelen op eigen risico',
+          tekst: 'Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin.',
+          variant: 'light',
+          icon: 'risk',
+        },
+        {
+          _key: 'regel-afval',
+          titel: 'Afval opruimen',
+          tekst: 'Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon.',
+          variant: 'dark',
+          icon: 'trash',
+        },
+        {
+          _key: 'regel-speelgoed',
+          titel: 'Speelgoed terugzetten',
+          tekst: 'Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje.',
+          variant: 'dark',
+          icon: 'toy',
+        },
+        {
+          _key: 'regel-reglementen',
+          titel: 'Algemene reglementen',
+          tekst: 'Bij het betreden van de speeltuin aanvaard je automatisch het algemeen reglement, dat beschikbaar is bij de beheerder.',
+          variant: 'dark',
+          icon: 'doc',
+        },
+        {
+          _key: 'regel-honden',
+          titel: 'Honden zijn niet toegestaan',
+          tekst: 'Honden mogen niet mee de speeltuin in, met uitzondering van geleidehonden die altijd welkom zijn.',
+          variant: 'dark',
+          icon: 'noDog',
+        },
+        {
+          _key: 'regel-fietsen',
+          titel: 'Fietsen parkeren',
+          tekst: 'Fietsen dienen buiten de speeltuin geparkeerd te worden. Fietsen zijn niet toegestaan binnen de speeltuin.',
+          variant: 'light',
+          icon: 'bike',
+        },
+        {
+          _key: 'regel-roken',
+          titel: 'Verboden te roken en drinken',
+          tekst: 'Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers.',
+          variant: 'dark',
+          icon: 'noSmoke',
+        },
+        {
+          _key: 'regel-kleding',
+          titel: 'Kleding in de speeltuin',
+          tekst: 'Kinderen dienen altijd, ook wanneer de fontein aanstaat, minimaal een onderbroekje of (zwem)luier te dragen.',
+          variant: 'light',
+          icon: 'shirt',
+        },
+      ],
+    },
+    feedbackCTA: {
+      tekst: 'Ideeën, tips en suggesties zijn altijd welkom.\nJe kunt ze doorgeven bij het bestuur van de speeltuinvereniging.',
+      email: 'info@burchttercleeff.nl',
+    },
+  })
+  console.log('✓ speelregelsPage\n')
+
+  // ── verhuurPage ──────────────────────────────────────────────────────────
+  console.log('Creating verhuurPage document...')
+  await client.createOrReplace({
+    _id: 'verhuurPage',
+    _type: 'verhuurPage',
+    hero: {
+      h1: 'Huur de speeltuin',
+    },
+    intro: {
+      body1: 'Burcht ter Cleeff is te huur voor groepen, scholen, verenigingen en particulieren. De speeltuin biedt een unieke omgeving voor kinderfeestjes, schoolreisjes en andere activiteiten.',
+      body2: 'Met ruimte voor groepen tot 150 personen en een prachtige ligging in de Schoterveense polder is dit de perfecte locatie voor jouw evenement. Neem contact op voor beschikbaarheid en tarieven.',
+    },
+    stappen: {
+      h2: 'Zo werkt het',
+      subtitle: 'In drie stappen een onvergetelijke dag geregeld',
+      items: [
+        {
+          _key: 'stap1',
+          titel: 'Neem contact op',
+          omschrijving: 'Stuur ons een e-mail of bel ons op voor de beschikbaarheid van jouw gewenste datum.',
+        },
+        {
+          _key: 'stap2',
+          titel: 'Ontvang een offerte',
+          omschrijving: 'We sturen je een vrijblijvende offerte op maat, afgestemd op jouw groep en wensen.',
+        },
+        {
+          _key: 'stap3',
+          titel: 'Geniet van de dag',
+          omschrijving: 'Op de dag zelf staat alles klaar. Jij geniet, wij zorgen voor de rest.',
+        },
+      ],
+    },
+  })
+  console.log('✓ verhuurPage\n')
+
+  // ── contactPage ──────────────────────────────────────────────────────────
+  console.log('Creating contactPage document...')
+  await client.createOrReplace({
+    _id: 'contactPage',
+    _type: 'contactPage',
+    hero: {
+      h1: 'Contact',
+    },
+    intro: {
+      tekst: 'Heb je een vraag, opmerking of wil je de speeltuin huren? Stuur ons een bericht en we reageren zo snel mogelijk.',
+    },
+  })
+  console.log('✓ contactPage\n')
+
+  console.log('Klaar! Alle pagina\'s zijn gevuld.')
+  console.log('Ga naar http://localhost:3000/studio om de content te bekijken en aan te passen.')
 }
 
 seed().catch((err) => {

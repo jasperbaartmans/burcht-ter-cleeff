@@ -3,6 +3,37 @@ import Button from '@/components/ui/Button'
 import StatusBadge from '@/components/ui/StatusBadge'
 import LogoIcon from '@/components/ui/LogoIcon'
 import Footer from '@/components/layout/Footer'
+function Ico({ path, size = 24, strokeWidth = 1.5, color = '#262628', label }: { path: string; size?: number; strokeWidth?: number; color?: string; label?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-label={label}>
+      <path d={path} />
+    </svg>
+  )
+}
+
+const ICONS = [
+  { name: 'arrow-left',      path: 'M19 12H5M5 12L11 6M5 12L11 18' },
+  { name: 'arrow-right',     path: 'M5 12H19M19 12L13 6M19 12L13 18' },
+  { name: 'corner-up-left',  path: 'M9 14H4V9M20 20v-7a4 4 0 0 0-4-4H4' },
+  { name: 'corner-up-right', path: 'M15 14h5V9M4 20v-7a4 4 0 0 1 4-4h12' },
+  { name: 'arrow-up',        path: 'M12 19V5M5 12l7-7 7 7' },
+  { name: 'arrow-down',      path: 'M12 5v14M19 12l-7 7-7-7' },
+  { name: 'chevron-left',    path: 'M15 18L9 12L15 6' },
+  { name: 'chevron-right',   path: 'M9 18L15 12L9 6' },
+  { name: 'chevron-down',    path: 'M6 9l6 6 6-6' },
+  { name: 'x',               path: 'M18 6L6 18M6 6l12 12' },
+  { name: 'plus',            path: 'M12 5v14M5 12h14' },
+  { name: 'minus',           path: 'M5 12h14' },
+  { name: 'menu',            path: 'M3 12h18M3 6h18M3 18h18' },
+  { name: 'search',          path: 'M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0' },
+  { name: 'info',            path: 'M12 16v-4M12 8h.01M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z' },
+  { name: 'check',           path: 'M20 6L9 17L4 12' },
+  { name: 'download',        path: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3' },
+  { name: 'rotate-ccw',      path: 'M1 4v6h6M3.51 15a9 9 0 1 0 .49-4.9L1 10' },
+  { name: 'clock',           path: 'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v6l4 2' },
+  { name: 'user',            path: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z' },
+] as const
+import SymbolsSection from './SymbolsSection'
 
 export const metadata: Metadata = {
   title: 'Stijlgids — Burcht ter Cleeff',
@@ -370,31 +401,10 @@ export default function StijlgidsPage() {
       <Section title="Icons">
         <div className="p-8 bg-white rounded-2xl">
           <div className="flex flex-wrap gap-6">
-            {[
-              { name: 'arrow-left',      d: 'M19 12H5M5 12L11 18M5 12L11 6' },
-              { name: 'arrow-right',     d: 'M5 12H19M19 12L13 6M19 12L13 18' },
-              { name: 'corner-up-left',  d: 'M9 14L4 9L9 4M20 20V13A4 4 0 0 0 16 9H4' },
-              { name: 'corner-up-right', d: 'M15 14L20 9L15 4M4 20V13A4 4 0 0 0 8 9H20' },
-              { name: 'arrow-up',        d: 'M12 19V5M5 12L12 5L19 12' },
-              { name: 'arrow-down',      d: 'M12 5V19M19 12L12 19L5 12' },
-              { name: 'chevron-left',    d: 'M15 18L9 12L15 6' },
-              { name: 'chevron-right',   d: 'M9 18L15 12L9 6' },
-              { name: 'chevron-down',    d: 'M6 9L12 15L18 9' },
-              { name: 'x',              d: 'M18 6L6 18M6 6L18 18' },
-              { name: 'plus',           d: 'M12 5V19M5 12H19' },
-              { name: 'minus',          d: 'M5 12H19' },
-              { name: 'menu',           d: 'M4 6H20M4 12H20M4 18H20' },
-              { name: 'search',         d: 'M21 21L16.65 16.65M19 11A8 8 0 1 1 3 11A8 8 0 0 1 19 11' },
-              { name: 'info',           d: 'M12 16V12M12 8H12.01M22 12A10 10 0 1 1 2 12A10 10 0 0 1 22 12Z' },
-              { name: 'check',          d: 'M20 6L9 17L4 12' },
-              { name: 'arrow-down-tray',d: 'M21 15V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V15M7 10L12 15L17 10M12 15V3' },
-              { name: 'rotate-ccw',     d: 'M3 12A9 9 0 1 0 6.22 6M3 3V6H6' },
-            ].map(({ name, d }) => (
+            {ICONS.map(({ name, path }) => (
               <div key={name} className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label={name}>
-                    <path d={d} stroke="#262628" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <Ico path={path} size={24} label={name} />
                 </div>
                 <span className="text-body3 font-dm-sans text-black/40 text-center">{name}</span>
               </div>
@@ -403,28 +413,7 @@ export default function StijlgidsPage() {
         </div>
       </Section>
 
-      {/* Symbols */}
-      <Section title="Symbols">
-        <div className="p-8 bg-white rounded-2xl">
-          <p className="text-body3 font-dm-sans text-black/40 mb-6 uppercase tracking-widest">Faciliteit- en activiteitssymbolen — forest kleur</p>
-          <div className="flex flex-wrap gap-6">
-            {[
-              'Knutselen', 'Wandelen', 'Glijbaan', 'Water', 'Locatie',
-              'Picknicktafel', 'Afval', 'Kamperen', 'Fitness', 'Fietsen',
-              'Verboden', 'Persoon', 'Kleding', 'Huisdieren verboden',
-              'Lijst', 'Gebouw',
-            ].map((label) => (
-              <div key={label} className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded bg-forest/10 flex items-center justify-center">
-                  <span className="text-body3 font-dm-sans text-forest/50">SVG</span>
-                </div>
-                <span className="text-body3 font-dm-sans text-black/40 text-center max-w-[60px]">{label}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-body3 font-dm-sans text-black/30 mt-6">SVG-bestanden toevoegen in <code className="bg-grey px-1 rounded">/public/icons/symbols/</code></p>
-        </div>
-      </Section>
+      <SymbolsSection />
 
       {/* Hover states beschrijving */}
       <Section title="Hover states — regels">
