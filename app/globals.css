@@ -2,9 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  src: url('/fonts/GTWalsheimPro-Regular.woff2') format('woff2'),
+       url('/fonts/GTWalsheimPro-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  src: url('/fonts/GTWalsheimPro-Medium.woff2') format('woff2'),
+       url('/fonts/GTWalsheimPro-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #F3EEE2;
   --foreground: #262628;
+  --font-walsheim: 'GT Walsheim Pro';
 }
 
 body {

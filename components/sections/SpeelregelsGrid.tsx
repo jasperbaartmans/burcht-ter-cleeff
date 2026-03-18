@@ -33,11 +33,11 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
 
   return (
     <div className={`${bg} rounded-3xl p-10 flex flex-col gap-2`}>
-      <div className="flex items-start justify-between gap-2">
-        <p className={`text-sub2 font-dm-sans ${titleColor}`} style={{ lineHeight: '22px' }}>{titel}</p>
-        <span className="shrink-0 mt-0.5">{icon}</span>
+      <div className="flex items-start justify-between gap-4">
+        <p className={`font-walsheim font-medium ${titleColor}`} style={{ fontSize: '18px', lineHeight: '24px' }}>{titel}</p>
+        <span className="shrink-0">{icon}</span>
       </div>
-      <p className={`text-body2 font-dm-sans ${textColor}`}>{tekst}</p>
+      <p className={`font-walsheim font-normal ${textColor}`} style={{ fontSize: '20px', lineHeight: '28px' }}>{tekst}</p>
     </div>
   )
 }
@@ -85,7 +85,7 @@ interface Props {
 function renderCard(r: { titel: string; tekst: string; variant: Variant; icon: string }) {
   const symbolName = sanityToSymbol[r.icon] as SymbolName | undefined
   const icon = symbolName
-    ? <Symbol name={symbolName} size={24} className={r.variant === 'light' ? 'text-forest' : 'text-white'} />
+    ? <Symbol name={symbolName} size={40} className={r.variant === 'light' ? 'text-forest' : 'text-white'} />
     : null
   return (
     <RuleCard
