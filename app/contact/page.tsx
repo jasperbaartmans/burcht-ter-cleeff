@@ -1,3 +1,5 @@
+import { client } from '@/lib/sanity/client'
+import { contactPageQuery, type ContactPageData } from '@/lib/sanity/queries'
 import ContactHero from '@/components/sections/ContactHero'
 import ContactIntro from '@/components/sections/ContactIntro'
 import ContactContent from '@/components/sections/ContactContent'
@@ -8,11 +10,18 @@ export const metadata = {
     'Neem contact op met Speeltuin Burcht ter Cleeff. Wij beantwoorden vragen over verhuur, openingstijden en voorzieningen.',
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  let data: ContactPageData | null = null
+  try {
+    data = await client.fetch(contactPageQuery, {}, { next: { revalidate: 60 } })
+  } catch {
+    // Sanity niet beschikbaar — statische fallback wordt gebruikt
+  }
+
   return (
     <>
-      <ContactHero />
-      <ContactIntro />
+      <ContactHero data={data?.hero} />
+      <ContactIntro data={data?.intro} />
       <ContactContent />
     </>
   )

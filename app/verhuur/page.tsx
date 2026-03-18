@@ -1,3 +1,5 @@
+import { client } from '@/lib/sanity/client'
+import { verhuurPageQuery, type VerhuurPageData } from '@/lib/sanity/queries'
 import VerhuurHero from '@/components/sections/VerhuurHero'
 import VerhuurIntro from '@/components/sections/VerhuurIntro'
 import VerhuurFullPhoto from '@/components/sections/VerhuurFullPhoto'
@@ -10,13 +12,20 @@ export const metadata = {
     'Huur de speeltuin voor een exclusief kinderfeestje of besloten evenement. Ontdek de mogelijkheden en boek direct een datum.',
 }
 
-export default function VerhuurPage() {
+export default async function VerhuurPage() {
+  let data: VerhuurPageData | null = null
+  try {
+    data = await client.fetch(verhuurPageQuery, {}, { next: { revalidate: 60 } })
+  } catch {
+    // Sanity niet beschikbaar — statische fallback wordt gebruikt
+  }
+
   return (
     <>
-      <VerhuurHero />
-      <VerhuurIntro />
+      <VerhuurHero data={data?.hero} />
+      <VerhuurIntro data={data?.intro} />
       <VerhuurFullPhoto />
-      <VerhuurStappen />
+      <VerhuurStappen data={data?.stappen} />
       <SpeelregelsCTA />
     </>
   )

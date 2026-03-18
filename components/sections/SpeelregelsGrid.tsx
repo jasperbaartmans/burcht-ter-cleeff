@@ -103,6 +103,18 @@ function IconShirt({ light }: { light?: boolean }) {
   )
 }
 
+const iconMap: Record<string, React.ComponentType<{ light?: boolean }>> = {
+  risk: IconRisk,
+  trash: IconTrash,
+  noDog: IconNoDog,
+  bike: IconBike,
+  noSmoke: IconNoSmoke,
+  toy: IconToy,
+  doc: IconDoc,
+  person: IconPerson,
+  shirt: IconShirt,
+}
+
 // ── Card component ─────────────────────────────────────────────────────────
 
 type Variant = 'light' | 'dark'
@@ -130,86 +142,88 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   )
 }
 
+// ── Fallback data ───────────────────────────────────────────────────────────
+
+const fallbackRegels = [
+  { titel: 'Spelen op eigen risico', tekst: 'Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin.', variant: 'light' as Variant, icon: 'risk' },
+  { titel: 'Honden zijn niet toegestaan', tekst: 'Honden mogen niet mee de speeltuin in, met uitzondering van geleidehonden die altijd welkom zijn.', variant: 'dark' as Variant, icon: 'noDog' },
+  { titel: 'Fietsen parkeren', tekst: 'Fietsen dienen buiten de speeltuin geparkeerd te worden. Fietsen zijn niet toegestaan binnen de speeltuin.', variant: 'light' as Variant, icon: 'bike' },
+  { titel: 'Verboden te roken en drinken', tekst: 'Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers.', variant: 'dark' as Variant, icon: 'noSmoke' },
+  { titel: 'Afval opruimen', tekst: 'Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon.', variant: 'dark' as Variant, icon: 'trash' },
+  { titel: 'Speelgoed terugzetten', tekst: 'Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje.', variant: 'light' as Variant, icon: 'toy' },
+  { titel: 'Algemene reglementen', tekst: 'Bij het betreden van de speeltuin aanvaard je automatisch het algemeen reglement, dat beschikbaar is bij de beheerder.', variant: 'dark' as Variant, icon: 'doc' },
+  { titel: 'Toegang voor leden', tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.', variant: 'dark' as Variant, icon: 'person' },
+  { titel: 'Toegangsprijs voor niet-leden', tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.', variant: 'light' as Variant, icon: 'person' },
+  { titel: 'Kleding in de speeltuin', tekst: 'Kinderen dienen altijd, ook wanneer de fontein aanstaat, minimaal een onderbroekje of (zwem)luier te dragen.', variant: 'light' as Variant, icon: 'shirt' },
+]
+
 // ── Main component ─────────────────────────────────────────────────────────
 
-export default function SpeelregelsGrid() {
+interface Props {
+  data?: {
+    h2?: string
+    regels?: Array<{
+      titel?: string
+      tekst?: string
+      variant?: 'light' | 'dark'
+      icon?: string
+    }>
+  }
+}
+
+export default function SpeelregelsGrid({ data }: Props) {
+  const h2 = data?.h2 ?? 'Dit zijn onze speelregels'
+  const regels = (data?.regels && data.regels.length > 0 ? data.regels : fallbackRegels).map((r) => ({
+    titel: r.titel ?? '',
+    tekst: r.tekst ?? '',
+    variant: (r.variant ?? 'light') as Variant,
+    icon: r.icon ?? '',
+  }))
+
+  const third = Math.ceil(regels.length / 3)
+  const col1 = regels.slice(0, third)
+  const col2 = regels.slice(third, third * 2)
+  const col3 = regels.slice(third * 2)
+
+  function renderCard(r: typeof regels[0]) {
+    const IconComponent = iconMap[r.icon]
+    const icon = IconComponent ? <IconComponent light={r.variant === 'light'} /> : null
+    return (
+      <RuleCard
+        key={r.titel}
+        variant={r.variant}
+        titel={r.titel}
+        tekst={r.tekst}
+        icon={icon}
+      />
+    )
+  }
+
   return (
     <section className="bg-white py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-[1360px] mx-auto">
 
-        {/* Sectie-titel */}
         <h2 className="text-h3 font-dm-sans text-black text-center mb-12">
-          Dit zijn onze{' '}
-          <span className="text-forest">speelregels</span>
+          {h2.split('speelregels').length > 1 ? (
+            <>
+              {h2.split('speelregels')[0]}
+              <span className="text-forest">speelregels</span>
+              {h2.split('speelregels')[1]}
+            </>
+          ) : h2}
         </h2>
 
-        {/* 3-koloms grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
-
-          {/* Kolom 1 */}
           <div className="flex flex-col gap-4">
-            <RuleCard
-              variant="light"
-              titel="Spelen op eigen risico"
-              tekst="Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin."
-              icon={<IconRisk light />}
-            />
-            <RuleCard
-              variant="dark"
-              titel="Honden zijn niet toegestaan"
-              tekst="Honden mogen niet mee de speeltuin in, met uitzondering van geleidehonden die altijd welkom zijn."
-              icon={<IconNoDog />}
-            />
-            <RuleCard
-              variant="light"
-              titel="Fietsen parkeren"
-              tekst="Fietsen dienen buiten de speeltuin geparkeerd te worden. Fietsen zijn niet toegestaan binnen de speeltuin."
-              icon={<IconBike light />}
-            />
-            <RuleCard
-              variant="dark"
-              titel="Verboden te roken en drinken"
-              tekst="Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers."
-              icon={<IconNoSmoke />}
-            />
+            {col1.map(renderCard)}
           </div>
 
-          {/* Kolom 2 */}
           <div className="flex flex-col gap-4">
-            <RuleCard
-              variant="dark"
-              titel="Afval opruimen"
-              tekst="Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon."
-              icon={<IconTrash />}
-            />
-            <RuleCard
-              variant="light"
-              titel="Speelgoed terugzetten"
-              tekst="Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje."
-              icon={<IconToy light />}
-            />
-            <RuleCard
-              variant="dark"
-              titel="Algemene reglementen"
-              tekst="Bij het betreden van de speeltuin aanvaard je automatisch het algemeen reglement, dat beschikbaar is bij de beheerder."
-              icon={<IconDoc />}
-            />
+            {col2.map(renderCard)}
           </div>
 
-          {/* Kolom 3 */}
           <div className="flex flex-col gap-4">
-            <RuleCard
-              variant="dark"
-              titel="Toegang voor leden"
-              tekst="Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin."
-              icon={<IconPerson />}
-            />
-            <RuleCard
-              variant="light"
-              titel="Toegangsprijs voor niet-leden"
-              tekst="Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder."
-              icon={<IconPerson light />}
-            />
+            {col3.slice(0, 2).map(renderCard)}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-grey">
               <Image
                 src="/images/feature-facilities.jpg"
@@ -219,14 +233,8 @@ export default function SpeelregelsGrid() {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
-            <RuleCard
-              variant="light"
-              titel="Kleding in de speeltuin"
-              tekst="Kinderen dienen altijd, ook wanneer de fontein aanstaat, minimaal een onderbroekje of (zwem)luier te dragen."
-              icon={<IconShirt light />}
-            />
+            {col3.slice(2).map(renderCard)}
           </div>
-
         </div>
       </div>
     </section>
