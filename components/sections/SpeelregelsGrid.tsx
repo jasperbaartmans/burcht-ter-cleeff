@@ -32,9 +32,9 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   const textColor  = variant === 'dark' ? 'text-white/80' : 'text-black/70'
 
   return (
-    <div className={`${bg} rounded-3xl p-10 flex flex-col gap-2`}>
+    <div className={`${bg} rounded-3xl p-10 flex flex-col gap-20`}>
       <div className="flex items-start justify-between gap-4">
-        <p className={`text-sub2 font-dm-sans font-medium ${titleColor}`} style={{ lineHeight: '24px' }}>{titel}</p>
+        <p className={`font-dm-sans ${titleColor}`} style={{ fontSize: '26px', lineHeight: '30px', letterSpacing: '-0.26px', fontWeight: '400' }}>{titel}</p>
         <span className="shrink-0">{icon}</span>
       </div>
       <p className={`font-dm-sans font-normal ${textColor}`} style={{ fontSize: '20px', lineHeight: '28px' }}>{tekst}</p>
