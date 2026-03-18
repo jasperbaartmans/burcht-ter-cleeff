@@ -2,15 +2,17 @@ import Image from 'next/image'
 import { Symbol, type SymbolName } from '@/components/ui/symbols'
 
 const sanityToSymbol: Record<string, SymbolName> = {
-  risk:    'warning',
-  trash:   'trash',
-  noDog:   'noDog',
-  bike:    'bike',
-  noSmoke: 'noSmoke',
-  toy:     'toy',
-  doc:     'doc',
-  person:  'person',
-  shirt:   'shirt',
+  risk:      'warning',
+  trash:     'trash',
+  noDog:     'noDog',
+  bike:      'bike',
+  noSmoke:   'noSmoke',
+  toy:       'toy',
+  doc:       'doc',
+  person:    'person',
+  shirt:     'shirt',
+  ticket:    'ticket',
+  userCheck: 'userCheck',
 }
 
 // ── Card component ─────────────────────────────────────────────────────────
@@ -43,8 +45,8 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
 // ── Fallback data ───────────────────────────────────────────────────────────
 
 const fallbackRegels = [
-  { titel: 'Toegang voor leden',          tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.',                         variant: 'light' as Variant, icon: 'person'  },
-  { titel: 'Toegangsprijs voor niet-leden',tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.',                     variant: 'dark'  as Variant, icon: 'person'  },
+  { titel: 'Toegang voor leden',          tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.',                         variant: 'light' as Variant, icon: 'ticket'    },
+  { titel: 'Toegangsprijs voor niet-leden',tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.',                     variant: 'dark'  as Variant, icon: 'userCheck' },
   { titel: 'Spelen op eigen risico',       tekst: 'Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin.',             variant: 'light' as Variant, icon: 'risk'    },
   { titel: 'Afval opruimen',               tekst: 'Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon.',            variant: 'dark'  as Variant, icon: 'trash'   },
   { titel: 'Speelgoed terugzetten',        tekst: 'Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje.',      variant: 'dark'  as Variant, icon: 'toy'     },

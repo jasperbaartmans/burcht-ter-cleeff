@@ -37,14 +37,14 @@ await client.createOrReplace({
         titel: 'Toegang voor leden',
         tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.',
         variant: 'light',
-        icon: 'person',
+        icon: 'ticket',
       },
       {
         _key: 'regel-toegangsprijs',
         titel: 'Toegangsprijs voor niet-leden',
         tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.',
         variant: 'dark',
-        icon: 'person',
+        icon: 'userCheck',
       },
       {
         _key: 'regel-eigen-risico',

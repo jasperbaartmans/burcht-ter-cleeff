@@ -58,6 +58,8 @@ export const speelregelsPage = defineType({
                       { title: 'Document', value: 'doc' },
                       { title: 'Persoon', value: 'person' },
                       { title: 'Shirt/kleding', value: 'shirt' },
+                      { title: 'Ticket (toegang)', value: 'ticket' },
+                      { title: 'Gebruiker met vinkje', value: 'userCheck' },
                     ],
                   },
                 }),
