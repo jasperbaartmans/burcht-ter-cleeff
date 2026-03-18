@@ -9,7 +9,7 @@ import {
   X, Plus, Minus, Menu, Search, Info, Check, Download, RotateCcw,
   Clock, User,
 } from 'lucide-react'
-import SymbolsSectionLoader from './SymbolsSectionLoader'
+import SymbolsSection from './SymbolsSection'
 
 export const metadata: Metadata = {
   title: 'Stijlgids — Burcht ter Cleeff',
@@ -410,8 +410,7 @@ export default function StijlgidsPage() {
         </div>
       </Section>
 
-      {/* Symbols — client-only via dynamic import (Phosphor is ESM-only) */}
-      <SymbolsSectionLoader />
+      <SymbolsSection />
 
       {/* Hover states beschrijving */}
       <Section title="Hover states — regels">

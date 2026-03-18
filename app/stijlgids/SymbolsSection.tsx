@@ -1,5 +1,3 @@
-'use client'
-
 import { Symbol, SymbolBadge, type SymbolName } from '@/components/ui/symbols'
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -33,7 +31,6 @@ export default function SymbolsSection() {
               { name: 'castle',      label: 'Gebouw' },
               { name: 'lamp',        label: 'Lamp' },
               { name: 'picnicTable', label: 'Picknicktafel' },
-              { name: 'slide',       label: 'Glijbaan' },
               { name: 'walking',     label: 'Wandelen' },
               { name: 'water',       label: 'Water' },
               { name: 'location',    label: 'Locatie' },
