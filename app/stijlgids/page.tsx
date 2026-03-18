@@ -3,6 +3,13 @@ import Button from '@/components/ui/Button'
 import StatusBadge from '@/components/ui/StatusBadge'
 import LogoIcon from '@/components/ui/LogoIcon'
 import Footer from '@/components/layout/Footer'
+import {
+  ArrowLeft, ArrowRight, CornerUpLeft, CornerUpRight,
+  ArrowUp, ArrowDown, ChevronLeft, ChevronRight, ChevronDown,
+  X, Plus, Minus, Menu, Search, Info, Check, Download, RotateCcw,
+  Clock, User,
+} from 'lucide-react'
+import { Symbol, SymbolBadge, type SymbolName } from '@/components/ui/symbols'
 
 export const metadata: Metadata = {
   title: 'Stijlgids — Burcht ter Cleeff',
@@ -370,31 +377,31 @@ export default function StijlgidsPage() {
       <Section title="Icons">
         <div className="p-8 bg-white rounded-2xl">
           <div className="flex flex-wrap gap-6">
-            {[
-              { name: 'arrow-left',      d: 'M19 12H5M5 12L11 18M5 12L11 6' },
-              { name: 'arrow-right',     d: 'M5 12H19M19 12L13 6M19 12L13 18' },
-              { name: 'corner-up-left',  d: 'M9 14L4 9L9 4M20 20V13A4 4 0 0 0 16 9H4' },
-              { name: 'corner-up-right', d: 'M15 14L20 9L15 4M4 20V13A4 4 0 0 0 8 9H20' },
-              { name: 'arrow-up',        d: 'M12 19V5M5 12L12 5L19 12' },
-              { name: 'arrow-down',      d: 'M12 5V19M19 12L12 19L5 12' },
-              { name: 'chevron-left',    d: 'M15 18L9 12L15 6' },
-              { name: 'chevron-right',   d: 'M9 18L15 12L9 6' },
-              { name: 'chevron-down',    d: 'M6 9L12 15L18 9' },
-              { name: 'x',              d: 'M18 6L6 18M6 6L18 18' },
-              { name: 'plus',           d: 'M12 5V19M5 12H19' },
-              { name: 'minus',          d: 'M5 12H19' },
-              { name: 'menu',           d: 'M4 6H20M4 12H20M4 18H20' },
-              { name: 'search',         d: 'M21 21L16.65 16.65M19 11A8 8 0 1 1 3 11A8 8 0 0 1 19 11' },
-              { name: 'info',           d: 'M12 16V12M12 8H12.01M22 12A10 10 0 1 1 2 12A10 10 0 0 1 22 12Z' },
-              { name: 'check',          d: 'M20 6L9 17L4 12' },
-              { name: 'arrow-down-tray',d: 'M21 15V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V15M7 10L12 15L17 10M12 15V3' },
-              { name: 'rotate-ccw',     d: 'M3 12A9 9 0 1 0 6.22 6M3 3V6H6' },
-            ].map(({ name, d }) => (
+            {([
+              { name: 'arrow-left',      Icon: ArrowLeft },
+              { name: 'arrow-right',     Icon: ArrowRight },
+              { name: 'corner-up-left',  Icon: CornerUpLeft },
+              { name: 'corner-up-right', Icon: CornerUpRight },
+              { name: 'arrow-up',        Icon: ArrowUp },
+              { name: 'arrow-down',      Icon: ArrowDown },
+              { name: 'chevron-left',    Icon: ChevronLeft },
+              { name: 'chevron-right',   Icon: ChevronRight },
+              { name: 'chevron-down',    Icon: ChevronDown },
+              { name: 'x',              Icon: X },
+              { name: 'plus',           Icon: Plus },
+              { name: 'minus',          Icon: Minus },
+              { name: 'menu',           Icon: Menu },
+              { name: 'search',         Icon: Search },
+              { name: 'info',           Icon: Info },
+              { name: 'check',          Icon: Check },
+              { name: 'download',       Icon: Download },
+              { name: 'rotate-ccw',     Icon: RotateCcw },
+              { name: 'clock',          Icon: Clock },
+              { name: 'user',           Icon: User },
+            ] as const).map(({ name, Icon }) => (
               <div key={name} className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label={name}>
-                    <path d={d} stroke="#262628" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <Icon size={24} strokeWidth={1.5} color="#262628" aria-label={name} />
                 </div>
                 <span className="text-body3 font-dm-sans text-black/40 text-center">{name}</span>
               </div>
@@ -405,24 +412,65 @@ export default function StijlgidsPage() {
 
       {/* Symbols */}
       <Section title="Symbols">
-        <div className="p-8 bg-white rounded-2xl">
-          <p className="text-body3 font-dm-sans text-black/40 mb-6 uppercase tracking-widest">Faciliteit- en activiteitssymbolen — forest kleur</p>
-          <div className="flex flex-wrap gap-6">
-            {[
-              'Knutselen', 'Wandelen', 'Glijbaan', 'Water', 'Locatie',
-              'Picknicktafel', 'Afval', 'Kamperen', 'Fitness', 'Fietsen',
-              'Verboden', 'Persoon', 'Kleding', 'Huisdieren verboden',
-              'Lijst', 'Gebouw',
-            ].map((label) => (
-              <div key={label} className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded bg-forest/10 flex items-center justify-center">
-                  <span className="text-body3 font-dm-sans text-forest/50">SVG</span>
+        <div className="space-y-8">
+
+          {/* Plat — forest kleur */}
+          <div className="p-8 bg-white rounded-2xl">
+            <p className="text-body3 font-dm-sans text-black/40 mb-6 uppercase tracking-widest">Plat — forest kleur (speelregels e.d.)</p>
+            <div className="flex flex-wrap gap-6">
+              {([
+                { name: 'warning',     label: 'Waarschuwing' },
+                { name: 'trash',       label: 'Afval' },
+                { name: 'noDog',       label: 'Geen honden' },
+                { name: 'bike',        label: 'Fietsen' },
+                { name: 'noSmoke',     label: 'Niet roken' },
+                { name: 'toy',         label: 'Knutselen' },
+                { name: 'doc',         label: 'Lijst' },
+                { name: 'person',      label: 'Persoon' },
+                { name: 'shirt',       label: 'Kleding' },
+                { name: 'castle',      label: 'Gebouw' },
+                { name: 'lamp',        label: 'Lamp' },
+                { name: 'picnicTable', label: 'Picknicktafel' },
+                { name: 'slide',       label: 'Glijbaan' },
+                { name: 'walking',     label: 'Wandelen' },
+                { name: 'water',       label: 'Water' },
+                { name: 'location',    label: 'Locatie' },
+                { name: 'camping',     label: 'Kamperen' },
+                { name: 'fitness',     label: 'Fitness' },
+                { name: 'house',       label: 'Huis' },
+                { name: 'shovel',      label: 'Schep' },
+                { name: 'star',        label: 'Ster' },
+                { name: 'leaf',        label: 'Blad' },
+              ] as { name: SymbolName; label: string }[]).map(({ name, label }) => (
+                <div key={name} className="flex flex-col items-center gap-2">
+                  <div className="w-10 h-10 flex items-center justify-center text-forest">
+                    <Symbol name={name} size={28} />
+                  </div>
+                  <span className="text-body3 font-dm-sans text-black/40 text-center max-w-[72px]">{label}</span>
                 </div>
-                <span className="text-body3 font-dm-sans text-black/40 text-center max-w-[60px]">{label}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          <p className="text-body3 font-dm-sans text-black/30 mt-6">SVG-bestanden toevoegen in <code className="bg-grey px-1 rounded">/public/icons/symbols/</code></p>
+
+          {/* In groene cirkel */}
+          <div className="p-8 bg-white rounded-2xl">
+            <p className="text-body3 font-dm-sans text-black/40 mb-6 uppercase tracking-widest">In groene cirkel (Quote / VerhuurIntro)</p>
+            <div className="flex flex-wrap gap-6">
+              {([
+                { name: 'star',        label: 'Ster' },
+                { name: 'leaf',        label: 'Blad' },
+                { name: 'castle',      label: 'Gebouw' },
+                { name: 'lamp',        label: 'Lamp' },
+                { name: 'picnicTable', label: 'Picknicktafel' },
+              ] as { name: SymbolName; label: string }[]).map(({ name, label }) => (
+                <div key={name} className="flex flex-col items-center gap-2">
+                  <SymbolBadge name={name} size={28} />
+                  <span className="text-body3 font-dm-sans text-black/40 text-center max-w-[72px]">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </Section>
 

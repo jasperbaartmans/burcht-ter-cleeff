@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useUser } from '@/components/providers/UserProvider'
 import { createClient } from '@/lib/supabase/client'
 import LogoIcon from '@/components/ui/LogoIcon'
+import { ArrowRight, User, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Ontdek' },
@@ -13,19 +14,6 @@ const navLinks = [
   { href: '/speelregels', label: 'Speelregels' },
   { href: '/contact', label: 'Contact' },
 ]
-
-const userIcon = (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-)
-
-const arrowIcon = (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-)
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -85,7 +73,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
               >
                 <span className="w-8 h-8 rounded-full bg-forest border border-forest flex items-center justify-center shrink-0 text-white">
-                  {userIcon}
+                  <User size={16} strokeWidth={1.5} aria-hidden="true" />
                 </span>
                 <span className="text-body2 font-dm-sans text-white">{displayName}</span>
               </Link>
@@ -102,7 +90,7 @@ export default function Navbar() {
               className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
             >
               <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
-                {arrowIcon}
+                <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
               </span>
               <span className="text-body2 font-dm-sans">Inloggen</span>
             </Link>
@@ -117,9 +105,7 @@ export default function Navbar() {
           aria-expanded={menuOpen}
         >
           {menuOpen ? (
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <path d="M8 8L24 24M24 8L8 24" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
+            <X size={24} strokeWidth={1.5} color="white" aria-hidden="true" />
           ) : (
             <>
               <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '-8px' }} />
@@ -149,9 +135,7 @@ export default function Navbar() {
               aria-label="Menu sluiten"
               className="flex items-center justify-center w-8 h-8"
             >
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                <path d="M8 8L24 24M24 8L8 24" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
+              <X size={24} strokeWidth={1.5} color="white" aria-hidden="true" />
             </button>
           </div>
 
@@ -178,11 +162,8 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center gap-3 text-white text-body2 font-dm-sans"
                 >
-                  <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="8" r="4" stroke="white" strokeWidth="1.5" />
-                      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                    </svg>
+                  <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0 text-white">
+                    <User size={18} strokeWidth={1.5} aria-hidden="true" />
                   </span>
                   {displayName}
                 </Link>
@@ -199,10 +180,8 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-3 text-white text-body2 font-dm-sans"
               >
-                <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0 text-white">
+                  <ArrowRight size={18} strokeWidth={1.5} aria-hidden="true" />
                 </span>
                 Inloggen
               </Link>

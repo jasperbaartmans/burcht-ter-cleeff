@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import StatusBadge from '@/components/ui/StatusBadge'
 import type { HomePageData } from '@/lib/sanity/queries'
+import { ArrowRight } from 'lucide-react'
 
 interface Props {
   data?: HomePageData['hero']
@@ -48,15 +49,7 @@ export default function Hero({ data }: Props) {
               className="flex items-center gap-3 text-white group"
             >
               <span className="w-12 h-12 rounded-full border border-white group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <ArrowRight size={18} strokeWidth={1.5} aria-hidden="true" />
               </span>
               <span className="text-body2 font-dm-sans">Koop een kaartje</span>
             </Link>

@@ -1,52 +1,4 @@
-// Inline iconen passend bij de Figma (kasteel, lamp, picknicktafel)
-function IconCastle() {
-  return (
-    <svg
-      width="28" height="28" viewBox="0 0 28 28" fill="none"
-      xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-      className="inline-block align-middle mx-1 shrink-0"
-    >
-      <circle cx="14" cy="14" r="14" fill="#78992B" />
-      <rect x="7" y="15" width="14" height="8" fill="white" />
-      <rect x="7" y="12" width="3" height="4" fill="white" />
-      <rect x="11" y="12" width="3" height="4" fill="white" />
-      <rect x="15" y="12" width="3" height="4" fill="white" />
-      <rect x="19" y="12" width="3" height="4" fill="white" />
-      <rect x="12" y="18" width="4" height="5" fill="#78992B" />
-    </svg>
-  )
-}
-
-function IconLamp() {
-  return (
-    <svg
-      width="28" height="28" viewBox="0 0 28 28" fill="none"
-      xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-      className="inline-block align-middle mx-1 shrink-0"
-    >
-      <circle cx="14" cy="14" r="14" fill="#78992B" />
-      <path d="M14 7a4 4 0 0 1 4 4c0 2-1.5 3.5-2.5 4.5H12.5C11.5 14.5 10 13 10 11a4 4 0 0 1 4-4z" fill="white" />
-      <rect x="12" y="16" width="4" height="1.5" rx="0.5" fill="white" />
-      <rect x="12.5" y="18" width="3" height="1.5" rx="0.5" fill="white" />
-    </svg>
-  )
-}
-
-function IconTable() {
-  return (
-    <svg
-      width="28" height="28" viewBox="0 0 28 28" fill="none"
-      xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-      className="inline-block align-middle mx-1 shrink-0"
-    >
-      <circle cx="14" cy="14" r="14" fill="#78992B" />
-      <rect x="7" y="13" width="14" height="2.5" rx="1" fill="white" />
-      <rect x="8.5" y="10" width="11" height="2" rx="1" fill="white" />
-      <rect x="9" y="15.5" width="2" height="4" rx="1" fill="white" />
-      <rect x="17" y="15.5" width="2" height="4" rx="1" fill="white" />
-    </svg>
-  )
-}
+import { SymbolBadge } from '@/components/ui/symbols'
 
 interface Props {
   data?: {
@@ -67,7 +19,7 @@ export default function VerhuurIntro({ data }: Props) {
         <div>
           <h2 className="text-[32px] leading-[38px] tracking-[-0.03em] md:text-h2 font-dm-sans text-black">
             Brengen jullie de vlaggetjes en het lekkers mee? Dan zorgen onze basisvoorzieningen
-            {' '}<IconCastle />{' '}<IconLamp />{' '}<IconTable />{' '}
+            {' '}<SymbolBadge name="castle" size={28} />{' '}<SymbolBadge name="lamp" size={28} />{' '}<SymbolBadge name="picnicTable" size={28} />{' '}
             ervoor dat het je aan niets ontbreekt.
           </h2>
         </div>

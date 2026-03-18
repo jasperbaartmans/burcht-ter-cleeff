@@ -1,40 +1,8 @@
 import type { HomePageData } from '@/lib/sanity/queries'
+import { SymbolBadge } from '@/components/ui/symbols'
 
 interface Props {
   data?: HomePageData['quote']
-}
-
-function IconStar() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="14" cy="14" r="14" fill="#789928" />
-      <path d="M14 7l1.8 5.5H22l-4.9 3.6 1.9 5.8L14 18.4l-5 3.5 1.9-5.8L6 12.5h6.2L14 7z" fill="white" />
-    </svg>
-  )
-}
-
-function IconLeaf() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="14" cy="14" r="14" fill="#789928" />
-      <path d="M9 20c1-4 4-9 11-11-2 4-4 7-6 8.5C12 19 10.5 19.5 9 20z" fill="white" />
-      <path d="M9 20c1-6 8-12 11-11" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-function IconCastle() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="14" cy="14" r="14" fill="#789928" />
-      <rect x="7" y="15" width="14" height="8" fill="white" />
-      <rect x="7" y="12" width="3" height="4" fill="white" />
-      <rect x="11" y="12" width="3" height="4" fill="white" />
-      <rect x="15" y="12" width="3" height="4" fill="white" />
-      <rect x="19" y="12" width="3" height="4" fill="white" />
-      <rect x="12" y="18" width="4" height="5" fill="#789928" />
-    </svg>
-  )
 }
 
 export default function Quote({ data }: Props) {
@@ -48,9 +16,9 @@ export default function Quote({ data }: Props) {
         {/* Links: decoratieve iconen + H2 */}
         <div>
           <div className="flex gap-2 mb-4" aria-hidden="true">
-            <IconStar />
-            <IconLeaf />
-            <IconCastle />
+            <SymbolBadge name="star" size={28} />
+            <SymbolBadge name="leaf" size={28} />
+            <SymbolBadge name="castle" size={28} />
           </div>
           <h2 className="text-h2 font-dm-sans text-black leading-tight">
             {h2}
