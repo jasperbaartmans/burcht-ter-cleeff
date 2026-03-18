@@ -5,100 +5,94 @@ import FooterNewsletter from './FooterNewsletter'
 export default function Footer() {
   return (
     <footer className="text-white">
-      {/* Kantelen top border — tanden zijn sienna, gaten transparant zodat achtergrond erboven doorloopt */}
+      {/* Kantelen — tanden sienna, gaten transparant */}
       <div className="flex overflow-hidden">
         {Array.from({ length: 54 }).map((_, i) => (
           <div
             key={i}
-            className={`flex-1 h-5 ${i % 2 === 0 ? 'bg-sienna' : 'bg-transparent'}`}
+            className={`flex-1 h-10 ${i % 2 === 0 ? 'bg-sienna' : 'bg-transparent'}`}
           />
         ))}
       </div>
 
-      <div className="bg-sienna">
-      {/* Main content */}
-      <div className="relative max-w-[1360px] mx-auto px-6 pt-8 pb-0 flex flex-col md:flex-row gap-0">
+      <div className="bg-sienna relative overflow-hidden">
+        <div className="max-w-[1440px] mx-auto relative">
 
-        {/* Vlag decoratie — mobile only, absoluut gepositioneerd */}
-        <div className="md:hidden absolute bottom-0 right-[-60px] w-56 opacity-80 pointer-events-none">
-          <FlagIllustration />
-        </div>
-
-        {/* Left: vlag illustratie — desktop only */}
-        <div className="hidden md:flex w-1/2 items-end justify-start">
-          <FlagIllustration />
-        </div>
-
-        {/* Right: info */}
-        <div className="flex flex-col gap-4 md:w-1/2 py-2">
-
-          {/* Newsletter — mobile only (desktop is in bottom bar) */}
-          <div className="md:hidden">
-            <FooterNewsletter />
+          {/* Vlag — absoluut als achtergrond, desktop */}
+          <div className="hidden md:block absolute left-[6.67%] right-[59.17%] top-[80px] bottom-0 pointer-events-none">
+            <FlagIllustration className="h-full w-auto" />
           </div>
 
-          {/* Logo */}
-          <div className="hidden md:flex items-center gap-2.5">
-            <LogoIcon className="text-white" />
-            <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
-              Burcht ter Cleeff
-            </span>
+          {/* Vlag — mobiel decoratie */}
+          <div className="md:hidden absolute right-[-40px] bottom-0 w-48 opacity-80 pointer-events-none">
+            <FlagIllustration />
           </div>
 
-          {/* Info tabel */}
-          <div className="flex flex-col divide-y divide-white/10">
-            <InfoRow
-              label="Openingstijden"
-              value="Iedere dag vanaf 09:00 tot 18:00 uur, tenzij anders vermeld op de website ivm verhuur"
-            />
-            <InfoRow label="Adres" value="Van Dortstraat 3, 2023 JN Haarlem" />
-            <InfoRow label="Postadres" value="Van Dortstraat 40, 2023 JN Haarlem" />
-            <InfoRow
-              label="Contact"
-              value={
-                <span className="flex flex-col gap-1">
-                  <a
-                    href="mailto:info@burchttercleeff.nl"
-                    className="hover:text-white/70 transition-colors"
-                  >
-                    info@burchttercleeff.nl
-                  </a>
-                  <a
-                    href="mailto:verhuur@burchttercleeff.nl"
-                    className="hover:text-white/70 transition-colors"
-                  >
-                    verhuur@burchttercleeff.nl
-                  </a>
-                </span>
-              }
-            />
+          {/* Content — rechter helft */}
+          <div className="md:ml-[51.11%] md:pr-[2.78%] px-6 md:px-0 pt-12 md:pt-[80px] relative z-10">
+
+            {/* Newsletter — mobiel bovenaan */}
+            <div className="md:hidden mb-8">
+              <FooterNewsletter />
+            </div>
+
+            {/* Logo — alleen desktop */}
+            <div className="hidden md:flex items-center gap-2.5 mb-8">
+              <LogoIcon className="text-white" />
+              <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
+                Burcht ter Cleeff
+              </span>
+            </div>
+
+            {/* Info tabel */}
+            <div className="flex flex-col divide-y divide-white/10">
+              <InfoRow
+                label="Openingstijden"
+                value="Iedere dag vanaf 09:00 tot 18:00 uur, tenzij anders vermeld op de website ivm verhuur"
+              />
+              <InfoRow label="Adres" value="Van Dortstraat 3, 2023 JN Haarlem" />
+              <InfoRow label="Postadres" value="Van Dortstraat 40, 2023 JN Haarlem" />
+              <InfoRow
+                label="Contact"
+                value={
+                  <span className="flex flex-col gap-1">
+                    <a href="mailto:info@burchttercleeff.nl" className="hover:text-white/70 transition-colors">
+                      info@burchttercleeff.nl
+                    </a>
+                    <a href="mailto:verhuur@burchttercleeff.nl" className="hover:text-white/70 transition-colors">
+                      verhuur@burchttercleeff.nl
+                    </a>
+                  </span>
+                }
+              />
+            </div>
           </div>
+
+          {/* Bottom bar — status + nieuwsbrief */}
+          <div className="px-6 md:pl-[2.78%] md:pr-[2.78%] py-6 flex flex-col md:flex-row items-center gap-4 relative z-10">
+            <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
+            <div className="flex-1" />
+            <div className="hidden md:block">
+              <FooterNewsletter />
+            </div>
+          </div>
+
         </div>
       </div>
-
-      {/* Bottom bar */}
-      <div className="max-w-[1360px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
-        <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
-        <div className="flex-1" />
-        <div className="hidden md:block">
-          <FooterNewsletter />
-        </div>
-      </div>
-      </div>{/* end bg-sienna */}
     </footer>
   )
 }
 
 function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="flex gap-8 py-2.5">
-      <span className="text-body3 font-dm-sans text-white/50 w-28 shrink-0">{label}</span>
-      <span className="text-body2 font-dm-sans leading-snug">{value}</span>
+    <div className="flex gap-8 py-3">
+      <span className="text-body3 font-dm-sans text-white/60 w-28 shrink-0">{label}</span>
+      <span className="text-body2 font-dm-sans leading-snug text-ivory">{value}</span>
     </div>
   )
 }
 
-function FlagIllustration() {
+function FlagIllustration({ className }: { className?: string }) {
   return (
     <svg
       width="492"
@@ -107,7 +101,8 @@ function FlagIllustration() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="Vlag Burcht ter Cleeff"
-      className="w-full h-auto max-h-full"
+      className={className ?? 'w-full h-auto max-h-full'}
+      preserveAspectRatio="xMinYMin meet"
     >
       <path d="M25 23H7V541H25V23Z" fill="#B07826"/>
       <path d="M260.662 115.747C173.741 139.687 167.386 137.027 149.448 64.3888C147.5 56.4088 138.993 51.9073 131.305 54.7719L57.7086 82.5995C49.201 85.771 38.9508 77.2795 40.8983 66.8442C44.2809 48.1219 47.0485 31.1389 55.2486 27.7628C94.7119 11.9051 138.275 -0.780963 179.993 0.0374953C192.191 0.24211 203.774 34.6174 216.177 60.6034C219.047 66.6396 225.914 69.6065 232.372 67.765C310.171 45.3596 314.168 48.1219 323.496 137.845C324.316 145.723 331.696 151.452 339.486 150.02C389.61 141.017 441.681 107.051 486.064 136.413C495.494 142.654 493.239 157.284 482.477 160.762C440.246 174.267 397.605 186.953 356.604 203.424C292.336 229.308 278.088 221.021 278.703 150.941C278.703 143.472 278.498 135.902 278.19 128.229C277.78 119.43 269.273 113.292 260.765 115.542L260.662 115.747Z" fill="#B07826"/>
