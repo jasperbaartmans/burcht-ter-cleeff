@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           {/* Content — rechter helft */}
-          <div className="md:ml-[51.11%] md:pr-[2.78%] px-6 md:px-0 pt-12 md:pt-[80px] relative z-10">
+          <div className="md:ml-[51.11%] md:pr-[2.78%] px-6 md:px-0 pt-12 md:pt-[80px] pb-6 md:pb-10 relative z-10">
 
             {/* Newsletter — mobiel bovenaan */}
             <div className="md:hidden mb-8">
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           {/* Bottom bar — status + nieuwsbrief */}
-          <div className="px-6 md:pl-[2.78%] md:pr-[2.78%] py-6 flex flex-col md:flex-row items-center gap-4 relative z-10">
+          <div className="px-6 md:pl-[2.78%] md:pr-[2.78%] py-8 flex flex-col md:flex-row items-center gap-4 relative z-10">
             <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
             <div className="flex-1" />
             <div className="hidden md:block">
