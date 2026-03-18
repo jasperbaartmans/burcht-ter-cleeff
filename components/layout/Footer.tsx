@@ -1,6 +1,5 @@
 import LogoIcon from '@/components/ui/LogoIcon'
 import StatusBadgeLive from '@/components/ui/StatusBadgeLive'
-import FlagIcon from '@/components/ui/FlagIcon'
 import FooterNewsletter from './FooterNewsletter'
 
 export default function Footer() {
@@ -18,7 +17,7 @@ export default function Footer() {
 
       <div className="bg-sienna">
       {/* Main content */}
-      <div className="relative max-w-[1360px] mx-auto px-6 py-12 flex flex-col md:flex-row gap-0">
+      <div className="relative max-w-[1360px] mx-auto px-6 pt-10 pb-4 flex flex-col md:flex-row gap-0">
 
         {/* Vlag decoratie — mobile only, absoluut gepositioneerd */}
         <div className="md:hidden absolute bottom-0 right-[-60px] w-56 opacity-80 pointer-events-none">
@@ -78,19 +77,12 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/20">
-        <div className="max-w-[1360px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
-          <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
-          <div className="flex-1" />
-          <div className="hidden md:block">
-            <FooterNewsletter />
-          </div>
+      <div className="max-w-[1360px] mx-auto px-6 pb-6 flex flex-col md:flex-row items-center gap-4">
+        <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
+        <div className="flex-1" />
+        <div className="hidden md:block">
+          <FooterNewsletter />
         </div>
-      </div>
-
-      {/* Vlag decoratie */}
-      <div className="max-w-[1360px] mx-auto px-6 pb-4">
-        <FlagIcon className="w-12 h-auto opacity-60" color="white" />
       </div>
       </div>{/* end bg-sienna */}
     </footer>
