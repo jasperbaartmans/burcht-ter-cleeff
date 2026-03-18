@@ -53,16 +53,16 @@ export default function Footer() {
               value={
                 <span className="flex flex-col gap-1">
                   <a
-                    href="mailto:info@burchtercleeff.nl"
+                    href="mailto:info@burchttercleeff.nl"
                     className="hover:text-white/70 transition-colors"
                   >
-                    info@burchtercleeff.nl
+                    info@burchttercleeff.nl
                   </a>
                   <a
-                    href="mailto:verhuur@burchtercleeff.nl"
+                    href="mailto:verhuur@burchttercleeff.nl"
                     className="hover:text-white/70 transition-colors"
                   >
-                    verhuur@burchtercleeff.nl
+                    verhuur@burchttercleeff.nl
                   </a>
                 </span>
               }

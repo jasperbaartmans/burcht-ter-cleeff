@@ -35,7 +35,7 @@ export async function sendContactEmail(
   try {
     await transporter.sendMail({
       from: `"Burcht ter Cleeff Website" <${process.env.SMTP_USER}>`,
-      to: 'info@burchtercleeff.nl',
+      to: 'info@burchttercleeff.nl',
       replyTo: email,
       subject: `Contactformulier: bericht van ${naam}`,
       text: `Naam: ${naam}\nE-mail: ${email}\nTelefoon: ${telefoon || '—'}\n\n${bericht}`,
