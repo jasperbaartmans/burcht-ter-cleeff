@@ -1,4 +1,10 @@
-import { Clock } from 'lucide-react'
+function ClockIcon({ size, className }: { size: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+    </svg>
+  )
+}
 
 interface StatusBadgeProps {
   status: 'open' | 'gesloten' | 'verhuurd'
@@ -43,7 +49,7 @@ export default function StatusBadge({
         className,
       ].join(' ')}
     >
-      <Clock size={12} strokeWidth={1.5} aria-hidden="true" className="shrink-0" />
+      <ClockIcon size={12} className="shrink-0" />
       {displayLabel}
     </span>
   )

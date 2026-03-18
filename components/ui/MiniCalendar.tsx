@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 type DayStatus = 'available' | 'booked' | 'none'
 
@@ -78,7 +77,7 @@ export default function MiniCalendar({
           className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-grey transition-colors"
           aria-label="Vorige maand"
         >
-          <ChevronLeft size={16} strokeWidth={1.5} color="#262628" aria-hidden="true" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#262628" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 18L9 12L15 6" /></svg>
         </button>
         <span className="text-body3 font-dm-sans font-medium text-black">
           {MONTHS_NL[month]} {year}
@@ -88,7 +87,7 @@ export default function MiniCalendar({
           className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-grey transition-colors"
           aria-label="Volgende maand"
         >
-          <ChevronRight size={16} strokeWidth={1.5} color="#262628" aria-hidden="true" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#262628" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 18L15 12L9 6" /></svg>
         </button>
       </div>
 

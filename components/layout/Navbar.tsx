@@ -6,7 +6,27 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useUser } from '@/components/providers/UserProvider'
 import { createClient } from '@/lib/supabase/client'
 import LogoIcon from '@/components/ui/LogoIcon'
-import { ArrowRight, User, X } from 'lucide-react'
+function ArrowRightIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12H19M19 12L13 6M19 12L13 18" />
+    </svg>
+  )
+}
+function UserIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+    </svg>
+  )
+}
+function XIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
+  )
+}
 
 const navLinks = [
   { href: '/', label: 'Ontdek' },
@@ -73,7 +93,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
               >
                 <span className="w-8 h-8 rounded-full bg-forest border border-forest flex items-center justify-center shrink-0 text-white">
-                  <User size={16} strokeWidth={1.5} aria-hidden="true" />
+                  <UserIcon size={16} />
                 </span>
                 <span className="text-body2 font-dm-sans text-white">{displayName}</span>
               </Link>
@@ -90,7 +110,7 @@ export default function Navbar() {
               className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
             >
               <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
-                <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
+                <ArrowRightIcon size={14} />
               </span>
               <span className="text-body2 font-dm-sans">Inloggen</span>
             </Link>
@@ -105,7 +125,7 @@ export default function Navbar() {
           aria-expanded={menuOpen}
         >
           {menuOpen ? (
-            <X size={24} strokeWidth={1.5} color="white" aria-hidden="true" />
+            <XIcon size={24} />
           ) : (
             <>
               <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '-8px' }} />
@@ -135,7 +155,7 @@ export default function Navbar() {
               aria-label="Menu sluiten"
               className="flex items-center justify-center w-8 h-8"
             >
-              <X size={24} strokeWidth={1.5} color="white" aria-hidden="true" />
+              <XIcon size={24} />
             </button>
           </div>
 
@@ -163,7 +183,7 @@ export default function Navbar() {
                   className="flex items-center gap-3 text-white text-body2 font-dm-sans"
                 >
                   <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0 text-white">
-                    <User size={18} strokeWidth={1.5} aria-hidden="true" />
+                    <UserIcon size={18} />
                   </span>
                   {displayName}
                 </Link>
@@ -181,7 +201,7 @@ export default function Navbar() {
                 className="flex items-center gap-3 text-white text-body2 font-dm-sans"
               >
                 <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0 text-white">
-                  <ArrowRight size={18} strokeWidth={1.5} aria-hidden="true" />
+                  <ArrowRightIcon size={18} />
                 </span>
                 Inloggen
               </Link>
