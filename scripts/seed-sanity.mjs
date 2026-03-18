@@ -111,8 +111,122 @@ async function seed() {
   }
 
   await client.createOrReplace(doc)
-  console.log('✓ homePage document aangemaakt en gepubliceerd!\n')
-  console.log('Klaar. Ga naar http://localhost:3000/studio om de content te bekijken.')
+  console.log('✓ homePage\n')
+
+  // ── speelregelsPage ──────────────────────────────────────────────────────
+  console.log('Creating speelregelsPage document...')
+  await client.createOrReplace({
+    _id: 'speelregelsPage',
+    _type: 'speelregelsPage',
+    hero: {
+      h1: 'Speelregels',
+    },
+    grid: {
+      h2: 'Zodat iedereen veilig kan spelen',
+      regels: [
+        {
+          _key: 'regel1',
+          titel: 'Speel op eigen risico',
+          tekst: 'Spelen is geweldig, maar soms val je. Ouders en verzorgers zijn verantwoordelijk voor hun kinderen.',
+          variant: 'dark',
+          icon: 'risk',
+        },
+        {
+          _key: 'regel2',
+          titel: 'Gooi niets op de grond',
+          tekst: 'Gebruik de prullenbakken en neem je afval mee naar huis. Samen houden we de speeltuin schoon.',
+          variant: 'light',
+          icon: 'trash',
+        },
+        {
+          _key: 'regel3',
+          titel: 'Geen honden toegestaan',
+          tekst: 'Om de veiligheid en hygiëne te waarborgen zijn honden niet welkom in de speeltuin.',
+          variant: 'light',
+          icon: 'noDog',
+        },
+        {
+          _key: 'regel4',
+          titel: 'Fietsen buiten de ingang',
+          tekst: 'Stall je fiets netjes buiten bij het fietsenrek. Fietsen zijn niet toegestaan op het speelterrein.',
+          variant: 'light',
+          icon: 'bike',
+        },
+        {
+          _key: 'regel5',
+          titel: 'Niet roken',
+          tekst: 'Roken is verboden op het gehele terrein. Dit geldt ook voor e-sigaretten.',
+          variant: 'dark',
+          icon: 'noSmoke',
+        },
+        {
+          _key: 'regel6',
+          titel: 'Eigen speelgoed welkom',
+          tekst: 'Je mag je eigen speelgoed meenemen. Deel het met anderen en neem alles weer mee naar huis.',
+          variant: 'light',
+          icon: 'toy',
+        },
+      ],
+    },
+    feedbackCTA: {
+      tekst: 'Heb je opmerkingen of suggesties over onze speelregels? We horen het graag van je!',
+      email: 'info@burchttercleeff.nl',
+    },
+  })
+  console.log('✓ speelregelsPage\n')
+
+  // ── verhuurPage ──────────────────────────────────────────────────────────
+  console.log('Creating verhuurPage document...')
+  await client.createOrReplace({
+    _id: 'verhuurPage',
+    _type: 'verhuurPage',
+    hero: {
+      h1: 'Huur de speeltuin',
+    },
+    intro: {
+      body1: 'Burcht ter Cleeff is te huur voor groepen, scholen, verenigingen en particulieren. De speeltuin biedt een unieke omgeving voor kinderfeestjes, schoolreisjes en andere activiteiten.',
+      body2: 'Met ruimte voor groepen tot 150 personen en een prachtige ligging in de Schoterveense polder is dit de perfecte locatie voor jouw evenement. Neem contact op voor beschikbaarheid en tarieven.',
+    },
+    stappen: {
+      h2: 'Zo werkt het',
+      subtitle: 'In drie stappen een onvergetelijke dag geregeld',
+      items: [
+        {
+          _key: 'stap1',
+          titel: 'Neem contact op',
+          omschrijving: 'Stuur ons een e-mail of bel ons op voor de beschikbaarheid van jouw gewenste datum.',
+        },
+        {
+          _key: 'stap2',
+          titel: 'Ontvang een offerte',
+          omschrijving: 'We sturen je een vrijblijvende offerte op maat, afgestemd op jouw groep en wensen.',
+        },
+        {
+          _key: 'stap3',
+          titel: 'Geniet van de dag',
+          omschrijving: 'Op de dag zelf staat alles klaar. Jij geniet, wij zorgen voor de rest.',
+        },
+      ],
+    },
+  })
+  console.log('✓ verhuurPage\n')
+
+  // ── contactPage ──────────────────────────────────────────────────────────
+  console.log('Creating contactPage document...')
+  await client.createOrReplace({
+    _id: 'contactPage',
+    _type: 'contactPage',
+    hero: {
+      h1: 'Contact',
+    },
+    intro: {
+      tekst: 'Heb je een vraag, opmerking of wil je de speeltuin huren? Stuur ons een bericht en we reageren zo snel mogelijk.',
+    },
+  })
+  console.log('✓ contactPage\n')
+
+  console.log('Klaar! Alle pagina\'s zijn gevuld.')
+  console.log('Ga naar http://localhost:3000/studio om de content te bekijken en aan te passen.')
 }
 
 seed().catch((err) => {
