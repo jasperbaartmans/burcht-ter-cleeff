@@ -42,28 +42,24 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   )
 }
 
-// ── Fallback data ───────────────────────────────────────────────────────────
-// Kolom 1 (links):  foto + Honden (dark) + Fietsen (light) + Verboden (dark)
-// Kolom 2 (midden): Spelen (light) + Afval (dark) + Speelgoed (light) + Algemene (dark)
-// Kolom 3 (rechts): Toegang (dark) + Toegangsprijs (light) + foto + Kleding (light)
+// ── Fallback data (geen variant — wordt globaal berekend) ───────────────────
+// Volgorde bepaalt de variant: index 0 = dark, 1 = light, 2 = dark, …
+// Kolom-indeling desktop:
+//   col1 (indices 0-2): Honden | Fietsen | Verboden
+//   col2 (indices 3-6): Spelen | Afval | Speelgoed | Algemene
+//   col3 (indices 7-9): Toegang | Toegangsprijs | Kleding
 
-const col1Regels = [
-  { titel: 'Honden zijn niet toegestaan',  tekst: 'Honden mogen niet mee de speeltuin in, met uitzondering van geleidehonden die altijd welkom zijn.',                                    variant: 'dark'  as Variant, icon: 'noDog'   },
-  { titel: 'Fietsen parkeren',             tekst: 'Fietsen dienen buiten de speeltuin geparkeerd te worden. Fietsen zijn niet toegestaan binnen de speeltuin.',                            variant: 'light' as Variant, icon: 'bike'    },
-  { titel: 'Verboden te roken en drinken', tekst: 'Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers.',                    variant: 'dark'  as Variant, icon: 'noSmoke' },
-]
-
-const col2Regels = [
-  { titel: 'Spelen op eigen risico',       tekst: 'Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin.',             variant: 'light' as Variant, icon: 'risk'    },
-  { titel: 'Afval opruimen',               tekst: 'Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon.',            variant: 'dark'  as Variant, icon: 'trash'   },
-  { titel: 'Speelgoed terugzetten',        tekst: 'Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje.',      variant: 'light' as Variant, icon: 'toy'     },
-  { titel: 'Algemene reglementen',         tekst: 'Bij het betreden van de speeltuin aanvaard je automatisch het algemeen reglement, dat beschikbaar is bij de beheerder.',                variant: 'dark'  as Variant, icon: 'doc'     },
-]
-
-const col3Regels = [
-  { titel: 'Toegang voor leden',           tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.',                         variant: 'dark'  as Variant, icon: 'ticket'    },
-  { titel: 'Toegangsprijs voor niet-leden',tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.',                     variant: 'light' as Variant, icon: 'userCheck' },
-  { titel: 'Kleding in de speeltuin',      tekst: 'Kinderen dienen altijd, ook wanneer de fontein aanstaat, minimaal een onderbroekje of (zwem)luier te dragen.',                         variant: 'light' as Variant, icon: 'shirt'   },
+const fallbackRegels = [
+  { titel: 'Honden zijn niet toegestaan',   tekst: 'Honden mogen niet mee de speeltuin in, met uitzondering van geleidehonden die altijd welkom zijn.',                                    icon: 'noDog'    },
+  { titel: 'Fietsen parkeren',              tekst: 'Fietsen dienen buiten de speeltuin geparkeerd te worden. Fietsen zijn niet toegestaan binnen de speeltuin.',                            icon: 'bike'     },
+  { titel: 'Verboden te roken en drinken',  tekst: 'Roken en het gebruik van alcohol en 0.0% zijn strikt verboden binnen de speeltuin. Dit geldt voor alle bezoekers.',                    icon: 'noSmoke'  },
+  { titel: 'Spelen op eigen risico',        tekst: 'Spelen voor zowel jong als oud gebeurt volledig op eigen risico. Houd hier rekening mee bij het betreden van de speeltuin.',            icon: 'risk'     },
+  { titel: 'Afval opruimen',               tekst: 'Alle bezoekers dienen hun afval direct in de daarvoor bestemde afvalbakken te deponeren. Zo houden we de speeltuin schoon.',            icon: 'trash'    },
+  { titel: 'Speelgoed terugzetten',        tekst: 'Speelgoed dat van de speeltuin gebruikt wordt, dient na gebruik netjes teruggezet te worden in het daarvoor bestemde schuurtje.',      icon: 'toy'      },
+  { titel: 'Algemene reglementen',         tekst: 'Bij het betreden van de speeltuin aanvaard je automatisch het algemeen reglement, dat beschikbaar is bij de beheerder.',                icon: 'doc'      },
+  { titel: 'Toegang voor leden',           tekst: 'Leden van de speeltuinvereniging hebben onbeperkt toegang tijdens de reguliere openingstijden van de speeltuin.',                        icon: 'ticket'   },
+  { titel: 'Toegangsprijs voor niet-leden',tekst: 'Niet-leden betalen een toegangsprijs van €0,60 per persoon per bezoek. Dit bedrag wordt betaald bij de beheerder.',                     icon: 'userCheck'},
+  { titel: 'Kleding in de speeltuin',      tekst: 'Kinderen dienen altijd, ook wanneer de fontein aanstaat, minimaal een onderbroekje of (zwem)luier te dragen.',                          icon: 'shirt'    },
 ]
 
 // ── Main component ─────────────────────────────────────────────────────────
@@ -71,7 +67,6 @@ const col3Regels = [
 interface SanityRegel {
   titel?: string
   tekst?: string
-  variant?: 'light' | 'dark'
   icon?: string
 }
 
@@ -82,7 +77,7 @@ interface Props {
   }
 }
 
-function renderCard(r: { titel: string; tekst: string; variant: Variant; icon: string }) {
+function makeCard(r: { titel: string; tekst: string; variant: Variant; icon: string }) {
   const symbolName = sanityToSymbol[r.icon] as SymbolName | undefined
   const icon = symbolName
     ? <Symbol name={symbolName} size={40} className={r.variant === 'light' ? 'text-forest' : 'text-white'} />
@@ -101,30 +96,22 @@ function renderCard(r: { titel: string; tekst: string; variant: Variant; icon: s
 export default function SpeelregelsGrid({ data }: Props) {
   const h2 = data?.h2 ?? 'Dit zijn onze speelregels'
 
-  // When Sanity provides regels, use the existing 3-column split logic.
-  // Otherwise use the hand-tuned per-column fallback data.
-  const hasSanityData = data?.regels && data.regels.length > 0
+  // Bouw een platte lijst en ken variant toe op basis van globale index.
+  // Zo wisselt de kleur altijd correct af, ook op mobiel (één kolom).
+  const base = (data?.regels && data.regels.length > 0)
+    ? data.regels.map((r) => ({ titel: r.titel ?? '', tekst: r.tekst ?? '', icon: r.icon ?? '' }))
+    : fallbackRegels
 
-  let col1: typeof col1Regels
-  let col2: typeof col2Regels
-  let col3: typeof col3Regels
+  const all = base.map((r, i) => ({
+    ...r,
+    variant: (i % 2 === 0 ? 'dark' : 'light') as Variant,
+  }))
 
-  if (hasSanityData) {
-    const all = (data!.regels!).map((r) => ({
-      titel:   r.titel   ?? '',
-      tekst:   r.tekst   ?? '',
-      variant: (r.variant ?? 'light') as Variant,
-      icon:    r.icon    ?? '',
-    }))
-    const third = Math.ceil(all.length / 3)
-    col1 = all.slice(0, third)
-    col2 = all.slice(third, third * 2)
-    col3 = all.slice(third * 2)
-  } else {
-    col1 = col1Regels
-    col2 = col2Regels
-    col3 = col3Regels
-  }
+  // Desktop 3-koloms indeling
+  const third = Math.ceil(all.length / 3)
+  const col1 = all.slice(0, third)
+  const col2 = all.slice(third, third * 2)
+  const col3 = all.slice(third * 2)
 
   return (
     <section className="bg-white py-16 md:py-24 px-6 md:px-12">
@@ -142,7 +129,7 @@ export default function SpeelregelsGrid({ data }: Props) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
-          {/* Kolom 1: foto bovenaan + 3 kaarten */}
+          {/* Kolom 1: foto bovenaan + kaarten */}
           <div className="flex flex-col gap-8">
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-grey">
               <Image
@@ -153,17 +140,17 @@ export default function SpeelregelsGrid({ data }: Props) {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
-            {col1.map(renderCard)}
+            {col1.map(makeCard)}
           </div>
 
-          {/* Kolom 2: 4 kaarten, afwisselend licht/donker */}
+          {/* Kolom 2: kaarten */}
           <div className="flex flex-col gap-8">
-            {col2.map(renderCard)}
+            {col2.map(makeCard)}
           </div>
 
-          {/* Kolom 3: 2 kaarten + foto + 1 kaart */}
+          {/* Kolom 3: kaarten + foto + rest */}
           <div className="flex flex-col gap-8">
-            {col3.slice(0, 2).map(renderCard)}
+            {col3.slice(0, 2).map(makeCard)}
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-grey">
               <Image
                 src="/images/feature-facilities.jpg"
@@ -173,7 +160,7 @@ export default function SpeelregelsGrid({ data }: Props) {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
-            {col3.slice(2).map(renderCard)}
+            {col3.slice(2).map(makeCard)}
           </div>
 
         </div>
