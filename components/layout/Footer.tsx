@@ -80,7 +80,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/20">
         <div className="max-w-[1360px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center gap-4">
-          <StatusBadgeLive className="w-full justify-center bg-linen border-linen text-forest md:w-auto md:justify-start md:bg-transparent md:border-forest" />
+          <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
           <div className="flex-1" />
           <div className="hidden md:block">
             <FooterNewsletter />
