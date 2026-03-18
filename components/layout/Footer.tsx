@@ -17,9 +17,14 @@ export default function Footer() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-[1360px] mx-auto px-6 py-12 flex flex-col md:flex-row gap-0">
+      <div className="relative max-w-[1360px] mx-auto px-6 py-12 flex flex-col md:flex-row gap-0">
 
-        {/* Left: illustratie placeholder */}
+        {/* Vlag decoratie — mobile only, absoluut gepositioneerd */}
+        <div className="md:hidden absolute bottom-0 right-[-60px] w-56 opacity-80 pointer-events-none">
+          <FlagIllustration />
+        </div>
+
+        {/* Left: vlag illustratie — desktop only */}
         <div className="hidden md:flex w-1/2 items-end justify-start">
           <FlagIllustration />
         </div>
