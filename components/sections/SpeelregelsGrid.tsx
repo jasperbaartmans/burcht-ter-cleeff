@@ -34,10 +34,10 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   return (
     <div className={`${bg} rounded-3xl p-10 flex flex-col gap-2`}>
       <div className="flex items-start justify-between gap-4">
-        <p className={`font-walsheim font-medium ${titleColor}`} style={{ fontSize: '18px', lineHeight: '24px' }}>{titel}</p>
+        <p className={`text-sub2 font-dm-sans font-medium ${titleColor}`} style={{ lineHeight: '24px' }}>{titel}</p>
         <span className="shrink-0">{icon}</span>
       </div>
-      <p className={`font-walsheim font-normal ${textColor}`} style={{ fontSize: '20px', lineHeight: '28px' }}>{tekst}</p>
+      <p className={`font-dm-sans font-normal ${textColor}`} style={{ fontSize: '20px', lineHeight: '28px' }}>{tekst}</p>
     </div>
   )
 }
