@@ -14,10 +14,11 @@ export default function FullPhoto({ data }: Props) {
   const alt = data?.alt ?? 'Kind op de schommel in Speeltuin Burcht ter Cleeff'
 
   return (
-    <section className="relative px-6 md:px-12 pt-8 md:pt-12 pb-0">
-      {/* Ivory achtergrond stopt 200px voor de onderkant van de foto */}
-      <div className="absolute inset-x-0 top-0 bottom-[200px] bg-ivory" />
-      <div className="relative max-w-7xl mx-auto">
+    <section
+      className="px-6 md:px-12 pt-8 md:pt-12 pb-0"
+      style={{ background: 'linear-gradient(to bottom, #F3EEE2 calc(100% - 200px), white calc(100% - 200px))' }}
+    >
+      <div className="max-w-7xl mx-auto">
         <div className="relative w-full aspect-[16/7] rounded-3xl overflow-hidden bg-grey">
           <Image
             src={imgSrc}
