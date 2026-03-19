@@ -86,7 +86,7 @@ export default function Footer() {
 function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex gap-8 py-3">
-      <span className="text-body3 font-dm-sans text-white/60 w-28 shrink-0">{label}</span>
+      <span className="text-body3 font-dm-sans text-white w-28 shrink-0">{label}</span>
       <span className="text-body2 font-dm-sans leading-snug text-ivory">{value}</span>
     </div>
   )

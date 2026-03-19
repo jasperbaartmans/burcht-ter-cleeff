@@ -47,7 +47,7 @@ export default function FooterNewsletter() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="bg-white/10 border border-white/30 rounded-full px-5 py-3 text-body3 font-dm-sans text-white placeholder:text-white/50 focus:outline-none focus:border-white/60 w-full transition-colors"
+          className="bg-transparent border border-caramel rounded-full px-5 py-3 text-body3 font-dm-sans text-white placeholder:text-white/50 focus:outline-none focus:border-white/60 w-full transition-colors"
         />
         <button
           type="submit"
@@ -63,7 +63,7 @@ export default function FooterNewsletter() {
 
       {/* Desktop: button inside pill */}
       <div className="hidden md:flex flex-col gap-2">
-        <div className="flex items-center bg-white/10 border border-white/30 rounded-full pl-5 pr-1.5 py-1.5 gap-3 w-[480px]">
+        <div className="flex items-center bg-transparent border border-caramel rounded-full pl-5 pr-1.5 py-1.5 gap-3 w-[480px]">
           <input
             type="email"
             placeholder="Je e-mailadres"
