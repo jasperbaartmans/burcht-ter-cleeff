@@ -34,7 +34,7 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   return (
     <div className={`${bg} rounded-3xl p-10 flex flex-col gap-20`}>
       <div className="flex items-start justify-between gap-4">
-        <p className={`text-h4 font-dm-sans font-normal ${titleColor}`}>{titel}</p>
+        <h3 className={`text-h4 font-dm-sans font-normal ${titleColor}`}>{titel}</h3>
         <span className="shrink-0">{icon}</span>
       </div>
       <p className={`text-body1 font-dm-sans font-normal ${textColor}`}>{tekst}</p>

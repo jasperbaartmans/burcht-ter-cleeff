@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Button from '@/components/ui/Button'
 
 export const metadata: Metadata = {
@@ -21,13 +20,11 @@ export default function BedanktPage() {
       </section>
       <div className="bg-white min-h-screen flex items-start">
         <div className="max-w-[560px] mx-auto px-6 py-16 md:py-24 text-center">
-          <p className="text-h3 font-dm-sans text-forest mb-4">Je dagkaartjes zijn betaald.</p>
+          <h2 className="text-h3 font-dm-sans text-forest mb-4">Je dagkaartjes zijn betaald.</h2>
           <p className="text-body2 font-dm-sans text-black mb-10">
             We hebben je betaling ontvangen. Laat dit scherm zien bij de ingang van Burcht ter Cleeff. Tot ziens!
           </p>
-          <Link href="/">
-            <Button variant="primary" size="lg">Terug naar home</Button>
-          </Link>
+          <Button as="link" href="/" variant="primary" size="lg">Terug naar home</Button>
         </div>
       </div>
     </>

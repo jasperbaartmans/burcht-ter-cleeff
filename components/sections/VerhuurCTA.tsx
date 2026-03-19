@@ -35,7 +35,7 @@ export default function VerhuurCTA({ data }: Props) {
 
           {/* Tekst rechts — 48px lager dan afbeelding-top conform Figma */}
           <div className="flex flex-col gap-5 md:pt-12">
-            <h3 className="text-h3 font-dm-sans font-medium text-black">
+            <h3 className="text-h3 font-dm-sans text-black">
               {h3}
             </h3>
             <div className="flex flex-col gap-3">

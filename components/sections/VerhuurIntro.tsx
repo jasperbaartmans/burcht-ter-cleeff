@@ -29,7 +29,7 @@ export default function VerhuurIntro({ data }: Props) {
           <p className="text-body1 font-dm-sans text-black">
             {body1}
           </p>
-          <p className="text-body2 font-dm-sans text-black">
+          <p className="text-body1 font-dm-sans text-black">
             {body2}{' '}
             <a href="/speelregels" className="underline hover:text-black/80 transition-colors">
               Kijk hier voor het complete huurreglement.

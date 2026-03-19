@@ -18,7 +18,7 @@ export default function Quote({ data }: Props) {
         </h2>
 
         {/* Rij 2: body tekst in rechterkolom (cols 7–12) */}
-        <div className="col-span-12 md:col-start-7 md:col-span-6 flex flex-col gap-3 mt-8 md:mt-0">
+        <div className="col-span-12 md:col-start-7 md:col-span-6 flex flex-col gap-3 mt-8 md:mt-12">
           <p className="text-body1 font-dm-sans text-black">{body1}</p>
           <p className="text-body1 font-dm-sans text-black">{body2}</p>
         </div>
