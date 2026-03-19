@@ -141,83 +141,92 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 bg-sienna z-40 flex flex-col">
-          {/* Top bar */}
-          <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
-              <LogoIcon className="text-white" />
-              <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
-                Burcht ter Cleeff
-              </span>
-            </Link>
-            <button
-              onClick={() => setMenuOpen(false)}
-              aria-label="Menu sluiten"
-              className="flex items-center justify-center w-8 h-8"
-            >
-              <XIcon size={24} />
-            </button>
-          </div>
+        <div className="md:hidden fixed inset-0 z-40">
+          {/* Donkere overlay — klik om te sluiten */}
+          <div className="absolute inset-0 bg-black/70" onClick={() => setMenuOpen(false)} />
 
-          {/* Nav links */}
-          <div className="flex flex-col px-6 pt-8 gap-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-h3 font-dm-sans text-white/60 hover:text-white transition-colors py-1"
-              >
-                {link.label}
+          {/* Sienna kaart — start net onder de navbar, lichte inspringing rechts */}
+          <div className="absolute top-[69px] left-0 right-2 bg-sienna rounded-2xl flex flex-col">
+            {/* Top bar */}
+            <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
+              <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
+                <LogoIcon className="text-white" />
+                <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
+                  Burcht ter Cleeff
+                </span>
               </Link>
-            ))}
-          </div>
+              <button
+                onClick={() => setMenuOpen(false)}
+                aria-label="Menu sluiten"
+                className="flex items-center justify-center w-8 h-8"
+              >
+                <XIcon size={24} />
+              </button>
+            </div>
 
-          {/* Acties */}
-          <div className="flex flex-col px-6 pt-10 gap-4">
-            {user ? (
-              <>
+            {/* Nav links */}
+            <div className="flex flex-col px-9 pt-6 pb-2 gap-8">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`text-h3 font-dm-sans text-white transition-opacity ${isActive ? 'opacity-100' : 'opacity-50'}`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
+            </div>
+
+            {/* Acties */}
+            <div className="flex flex-col px-9 pt-8 pb-10 gap-4">
+              {user ? (
+                <>
+                  <Link
+                    href="/mijn-omgeving"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 text-white text-body2 font-dm-sans"
+                  >
+                    <span className="w-8 h-8 rounded-2xl bg-forest flex items-center justify-center shrink-0 text-white">
+                      <UserIcon size={16} />
+                    </span>
+                    {displayName}
+                  </Link>
+                  <button
+                    onClick={() => { setMenuOpen(false); handleSignOut() }}
+                    className="flex items-center gap-3 text-white/60 text-body2 font-dm-sans"
+                  >
+                    Uitloggen
+                  </button>
+                </>
+              ) : (
                 <Link
-                  href="/mijn-omgeving"
+                  href="/inloggen"
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center gap-3 text-white text-body2 font-dm-sans"
                 >
-                  <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0 text-white">
-                    <UserIcon size={18} />
+                  <span className="w-8 h-8 rounded-2xl bg-caramel flex items-center justify-center shrink-0 text-white">
+                    <ArrowRightIcon size={16} />
                   </span>
-                  {displayName}
+                  Inloggen
                 </Link>
-                <button
-                  onClick={() => { setMenuOpen(false); handleSignOut() }}
-                  className="flex items-center gap-3 text-white/60 text-body2 font-dm-sans"
-                >
-                  Uitloggen
-                </button>
-              </>
-            ) : (
+              )}
               <Link
-                href="/inloggen"
+                href="/dagticket"
                 onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-3 text-white text-body2 font-dm-sans"
               >
-                <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0 text-white">
-                  <ArrowRightIcon size={18} />
+                <span className="w-8 h-8 rounded-2xl bg-caramel flex items-center justify-center shrink-0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </span>
-                Inloggen
+                Koop een kaartje
               </Link>
-            )}
-            <Link
-              href="/dagticket"
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 text-white text-body2 font-dm-sans"
-            >
-              <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              Koop een kaartje
-            </Link>
+            </div>
           </div>
         </div>
       )}
