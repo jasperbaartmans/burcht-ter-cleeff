@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import LogoIcon from '@/components/ui/LogoIcon'
 import StatusBadgeLive from '@/components/ui/StatusBadgeLive'
 import FooterNewsletter from './FooterNewsletter'
@@ -62,7 +63,15 @@ export default function Footer() {
 
           {/* Bottom bar — status + nieuwsbrief */}
           <div className="px-6 md:pl-[2.78%] md:pr-[2.78%] py-8 flex flex-col md:flex-row items-center gap-4 relative z-10">
-            <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
+            <div className="w-full md:w-auto flex flex-col md:flex-row items-center md:items-center gap-3">
+              <StatusBadgeLive className="w-full justify-center md:w-auto md:justify-start" />
+              <Link
+                href="/privacy"
+                className="text-body3 font-dm-sans text-white/50 hover:text-white/80 transition-colors"
+              >
+                Privacyverklaring
+              </Link>
+            </div>
             <div className="flex-1" />
             <div className="hidden md:block">
               <FooterNewsletter />

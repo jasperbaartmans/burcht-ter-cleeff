@@ -108,36 +108,6 @@ export default function PrivacyContent() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 py-10 md:py-14">
             <div className="col-span-12 md:col-span-3 mb-6 md:mb-0">
               <span className="text-body3 font-dm-sans text-forest">03</span>
-              <h2 className="text-sub1 font-dm-sans text-black mt-1">Derde partijen</h2>
-            </div>
-            <div className="col-span-12 md:col-start-4 md:col-span-7 flex flex-col gap-4">
-              <p className="text-body2 font-dm-sans text-black">
-                Burcht ter Cleeff maakt gebruik van de volgende externe partijen voor
-                de verwerking van jouw gegevens:
-              </p>
-              <ul className="flex flex-col gap-3">
-                {[
-                  { name: 'Laposta', desc: 'Verzending van nieuwsbrieven.' },
-                  { name: 'E-Boekhouden', desc: 'Opslag van ledengegevens en financiële administratie.' },
-                ].map(({ name, desc }) => (
-                  <li key={name} className="flex gap-3">
-                    <span className="text-body3 font-dm-sans text-forest mt-0.5 shrink-0">{name}</span>
-                    <p className="text-body2 font-dm-sans text-black">{desc}</p>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-body2 font-dm-sans text-black">
-                Jouw gegevens worden nooit verkocht aan derden. Mocht het nodig zijn
-                om gegevens met andere partijen te delen, dan wordt daar eerst jouw
-                toestemming voor gevraagd.
-              </p>
-            </div>
-          </div>
-
-          {/* 4 */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 py-10 md:py-14">
-            <div className="col-span-12 md:col-span-3 mb-6 md:mb-0">
-              <span className="text-body3 font-dm-sans text-forest">04</span>
               <h2 className="text-sub1 font-dm-sans text-black mt-1">Jouw rechten</h2>
             </div>
             <div className="col-span-12 md:col-start-4 md:col-span-7 flex flex-col gap-6">
@@ -175,7 +145,7 @@ export default function PrivacyContent() {
           {/* 5 */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 py-10 md:py-14">
             <div className="col-span-12 md:col-span-3 mb-6 md:mb-0">
-              <span className="text-body3 font-dm-sans text-forest">05</span>
+              <span className="text-body3 font-dm-sans text-forest">04</span>
               <h2 className="text-sub1 font-dm-sans text-black mt-1">Beveiliging</h2>
             </div>
             <div className="col-span-12 md:col-start-4 md:col-span-7 flex flex-col gap-4">
