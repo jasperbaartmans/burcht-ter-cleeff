@@ -48,7 +48,7 @@ export default function DagticketForm() {
         <span className="md:hidden">Dagkaartjes</span>
         <span className="hidden md:inline">Koop nu je dagkaartjes.</span>
       </h1>
-      <p className="text-body2 font-dm-sans text-black/60 text-center mb-10 md:mb-12">
+      <p className="text-body2 font-dm-sans text-black text-center mb-10 md:mb-12">
         Selecteer het aantal bezoekers en klik op &lsquo;betalen&rsquo;.
       </p>
 
@@ -73,7 +73,7 @@ export default function DagticketForm() {
 
       {/* Totaal */}
       <div className="bg-ivory border border-grey rounded-lg px-6 py-4 flex items-center justify-between mb-8">
-        <span className="text-body2 font-dm-sans text-black/60">Totaal</span>
+        <span className="text-body2 font-dm-sans text-black">Totaal</span>
         <span className="text-sub1 font-dm-sans text-forest font-medium">{total}€</span>
       </div>
 

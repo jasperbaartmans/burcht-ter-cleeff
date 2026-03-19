@@ -70,7 +70,7 @@ export default function InloggenPage() {
             {loading ? 'Bezig...' : 'Inloggen'}
           </button>
         </form>
-        <p className="mt-6 text-body3 font-dm-sans text-black/60">
+        <p className="mt-6 text-body3 font-dm-sans text-black">
           Nog geen account?{' '}
           <Link href="/registreren" className="text-forest hover:underline">
             Registreren

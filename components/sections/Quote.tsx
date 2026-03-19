@@ -27,8 +27,8 @@ export default function Quote({ data }: Props) {
 
         {/* Rechts: body tekst */}
         <div className="flex flex-col gap-4 md:pt-2">
-          <p className="text-body1 font-dm-sans text-black/80">{body1}</p>
-          <p className="text-body2 font-dm-sans text-black/60">{body2}</p>
+          <p className="text-body1 font-dm-sans text-black">{body1}</p>
+          <p className="text-body2 font-dm-sans text-black">{body2}</p>
         </div>
       </div>
     </section>

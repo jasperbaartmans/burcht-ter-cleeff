@@ -29,7 +29,7 @@ interface RuleCardProps {
 function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   const bg         = variant === 'dark' ? 'bg-forest' : 'bg-ivory'
   const titleColor = variant === 'dark' ? 'text-white' : 'text-forest'
-  const textColor  = variant === 'dark' ? 'text-white/80' : 'text-black/70'
+  const textColor  = variant === 'dark' ? 'text-white/80' : 'text-black'
 
   return (
     <div className={`${bg} rounded-3xl p-10 flex flex-col gap-20`}>

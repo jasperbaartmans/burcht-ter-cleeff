@@ -26,10 +26,10 @@ export default function VerhuurIntro({ data }: Props) {
 
         {/* Rechts: body tekst */}
         <div className="flex flex-col gap-5 md:pt-2">
-          <p className="text-body1 font-dm-sans text-black/80">
+          <p className="text-body1 font-dm-sans text-black">
             {body1}
           </p>
-          <p className="text-body2 font-dm-sans text-black/60">
+          <p className="text-body2 font-dm-sans text-black">
             {body2}{' '}
             <a href="/speelregels" className="underline hover:text-black/80 transition-colors">
               Kijk hier voor het complete huurreglement.

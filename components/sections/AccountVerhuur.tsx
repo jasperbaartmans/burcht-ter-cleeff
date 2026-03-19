@@ -19,7 +19,7 @@ export default function AccountVerhuur() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="text-body3 font-dm-sans text-forest mb-1">Reserveren</p>
-            <p className="text-body2 font-dm-sans text-black/60">
+            <p className="text-body2 font-dm-sans text-black">
               Kies een dag in de kalender om de speeltuin te reserveren.
               Dagen met een groene stip zijn nog beschikbaar.
             </p>
@@ -39,7 +39,7 @@ export default function AccountVerhuur() {
             {verhuurHistorie.map((item) => (
               <div key={item.date} className="flex justify-between items-center py-3">
                 <span className="text-body2 font-dm-sans text-black">{item.date}</span>
-                <span className="text-body2 font-dm-sans text-black/40">{item.event}</span>
+                <span className="text-body2 font-dm-sans text-black">{item.event}</span>
               </div>
             ))}
           </div>

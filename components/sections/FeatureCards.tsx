@@ -57,7 +57,7 @@ export default function FeatureCards({ data }: Props) {
                 </div>
                 <div className="flex flex-col gap-2">
                   <p className="text-sub1 font-dm-sans font-medium text-black">{card.label}</p>
-                  <p className="text-body2 font-dm-sans text-black/70">{card.body}</p>
+                  <p className="text-body2 font-dm-sans text-black">{card.body}</p>
                 </div>
               </article>
             )

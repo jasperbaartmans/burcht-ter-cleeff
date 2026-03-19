@@ -22,7 +22,7 @@ export default function BedanktPage() {
       <div className="bg-white min-h-screen flex items-start">
         <div className="max-w-[560px] mx-auto px-6 py-16 md:py-24 text-center">
           <p className="text-h3 font-dm-sans text-forest mb-4">Je dagkaartjes zijn betaald.</p>
-          <p className="text-body2 font-dm-sans text-black/60 mb-10">
+          <p className="text-body2 font-dm-sans text-black mb-10">
             We hebben je betaling ontvangen. Laat dit scherm zien bij de ingang van Burcht ter Cleeff. Tot ziens!
           </p>
           <Link href="/">

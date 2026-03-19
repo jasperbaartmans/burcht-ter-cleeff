@@ -48,11 +48,11 @@ export default function VerhuurCTA({ data }: Props) {
               <h3 className="text-h3 font-dm-sans font-medium text-black mb-4">
                 {h3}
               </h3>
-              <p className="text-body1 font-dm-sans text-black/70">
+              <p className="text-body1 font-dm-sans text-black">
                 {body}
               </p>
             </div>
-            <ul className="space-y-2 text-body2 font-dm-sans text-black/60">
+            <ul className="space-y-2 text-body2 font-dm-sans text-black">
               {bullets.map((bullet) => (
                 <li key={bullet} className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0" />
