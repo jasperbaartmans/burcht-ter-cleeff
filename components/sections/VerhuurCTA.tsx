@@ -10,7 +10,7 @@ interface Props {
 export default function VerhuurCTA({ data }: Props) {
   const h3 = data?.h3 ?? 'Verhuurmogelijkheden'
   const body1 = data?.body ?? 'Stel je een zonovergoten ochtend voor waarin je kinderen zich uitleven in een prachtige speeltuin, omringd door het geluid van lachende vrienden en vrolijke vlaggetjes. Zo ziet jullie feestje er misschien binnenkort wel uit. Onze speeltuin biedt de perfecte locatie voor een gezellig kinderfeestje, waar kinderen zich kunnen verliezen in eindeloze avonturen.'
-  const body2 = 'Je kunt de speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.'
+  const body2 = data?.body2 ?? 'Je kunt de speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.'
 
   const imgSrc =
     data?.image && typeof data.image === 'object' && '_type' in data.image

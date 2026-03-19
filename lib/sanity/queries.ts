@@ -32,10 +32,9 @@ export interface HomePageData {
     alt?: string
   }
   verhuurCTA?: {
-    label?: string
     h3?: string
     body?: string
-    bullets?: string[]
+    body2?: string
     image?: SanityImage
   }
 }
@@ -103,10 +102,9 @@ export const homePageQuery = groq`
     quote,
     fullPhoto,
     verhuurCTA {
-      label,
       h3,
       body,
-      bullets,
+      body2,
       image,
     }
   }
