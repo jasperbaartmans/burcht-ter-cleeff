@@ -12,21 +12,21 @@ export default function Quote({ data }: Props) {
 
   return (
     <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
-        {/* Links: decoratieve iconen + H2 */}
-        <div>
-          <div className="flex gap-2 mb-4" aria-hidden="true">
-            <SymbolBadge name="star" size={28} />
-            <SymbolBadge name="leaf" size={28} />
-            <SymbolBadge name="castle" size={28} />
-          </div>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 items-start">
+        {/* Links: H2 met decoratieve iconen erna */}
+        <div className="md:col-span-3">
           <h2 className="text-h2 font-dm-sans text-black leading-tight">
             {h2}
+            <span className="inline-flex gap-2 ml-3 align-middle" aria-hidden="true">
+              <SymbolBadge name="star" size={28} />
+              <SymbolBadge name="leaf" size={28} />
+              <SymbolBadge name="castle" size={28} />
+            </span>
           </h2>
         </div>
 
-        {/* Rechts: body tekst */}
-        <div className="flex flex-col gap-4 md:pt-2">
+        {/* Rechts: body tekst, verlaagd met ~112px */}
+        <div className="md:col-span-2 flex flex-col gap-4 md:pt-28">
           <p className="text-body1 font-dm-sans text-black">{body1}</p>
           <p className="text-body2 font-dm-sans text-black">{body2}</p>
         </div>
