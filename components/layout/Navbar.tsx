@@ -54,8 +54,37 @@ export default function Navbar() {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50">
-      {/* Desktop */}
-      <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-stretch relative">
+      {/* Mobiele balk — zwart afgerond pill */}
+      <div className="md:hidden px-1 pt-1">
+        <div className="bg-black rounded-2xl h-16 flex items-center justify-between px-4">
+          <Link href="/" className="flex items-center gap-2.5">
+            <LogoIcon className="text-white" />
+            <span className="text-base font-dm-sans font-medium tracking-[-0.48px] text-white uppercase leading-none">
+              Burcht ter Cleeff
+            </span>
+          </Link>
+          <button
+            className="flex items-center justify-center w-8 h-8"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? 'Menu sluiten' : 'Menu openen'}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? (
+              <XIcon size={24} />
+            ) : (
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
+                <rect width="20" height="2" rx="1" fill="#78992B"/>
+                <rect y="6" width="20" height="2" rx="1" fill="#78992B"/>
+                <rect y="12" width="20" height="2" rx="1" fill="#78992B"/>
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop balk — transparant over hero */}
+      <div className="hidden md:block">
+        <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-stretch relative">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 self-center">
           <LogoIcon className="text-white" />
@@ -65,17 +94,17 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links — absoluut gecentreerd */}
-        <div className="hidden md:flex items-stretch gap-9 absolute left-1/2 -translate-x-1/2 h-full">
+        <div className="hidden md:flex items-stretch gap-8 absolute left-1/2 -translate-x-1/2 h-full">
           {navLinks.map((link) => {
             const isActive = pathname === link.href
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center text-body2 font-dm-sans transition-colors hover:text-white border-b-4 ${
+                className={`flex items-center text-body2 font-dm-sans transition-colors hover:text-white border-b-4 [text-shadow:0px_1px_3px_rgba(0,0,0,0.5)] ${
                   isActive
                     ? 'text-white border-white'
-                    : 'text-white/70 border-transparent'
+                    : 'text-white border-transparent'
                 }`}
               >
                 {link.label}
@@ -107,9 +136,9 @@ export default function Navbar() {
           ) : (
             <Link
               href="/inloggen"
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+              className="flex items-center gap-2 text-white hover:text-white/80 transition-colors group [text-shadow:0px_1px_3px_rgba(0,0,0,0.5)]"
             >
-              <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
+              <span className="w-8 h-8 rounded-2xl bg-white flex items-center justify-center shrink-0 text-forest group-hover:bg-white/90 transition-colors">
                 <ArrowRightIcon size={14} />
               </span>
               <span className="text-body2 font-dm-sans">Inloggen</span>
@@ -117,107 +146,100 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex items-center justify-center w-8 h-8 ml-auto self-center"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? 'Menu sluiten' : 'Menu openen'}
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? (
-            <XIcon size={24} />
-          ) : (
-            <>
-              <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '-8px' }} />
-              <span className="block w-6 h-0.5 bg-white absolute" />
-              <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '8px' }} />
-            </>
-          )}
-        </button>
       </div>
 
-      {/* Scheidingslijn */}
-      <div className="hidden md:block h-px bg-white opacity-50 max-w-[1360px] mx-auto w-full" />
+        {/* Scheidingslijn */}
+        <div className="h-px bg-white opacity-50 max-w-[1360px] mx-auto w-full" />
+      </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 bg-sienna z-40 flex flex-col">
-          {/* Top bar */}
-          <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
-              <LogoIcon className="text-white" />
-              <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
-                Burcht ter Cleeff
-              </span>
-            </Link>
-            <button
-              onClick={() => setMenuOpen(false)}
-              aria-label="Menu sluiten"
-              className="flex items-center justify-center w-8 h-8"
-            >
-              <XIcon size={24} />
-            </button>
-          </div>
+        <div className="md:hidden fixed inset-0 z-40">
+          {/* Donkere overlay — klik om te sluiten */}
+          <div className="absolute inset-0 bg-black/70" onClick={() => setMenuOpen(false)} />
 
-          {/* Nav links */}
-          <div className="flex flex-col px-6 pt-8 gap-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-h3 font-dm-sans text-white/60 hover:text-white transition-colors py-1"
-              >
-                {link.label}
+          {/* Sienna kaart — start net onder de mobiele navbar (64px + 4px padding-top) */}
+          <div className="absolute top-[68px] left-0 right-2 bg-sienna rounded-2xl flex flex-col">
+            {/* Top bar */}
+            <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
+              <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
+                <LogoIcon className="text-white" />
+                <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
+                  Burcht ter Cleeff
+                </span>
               </Link>
-            ))}
-          </div>
+              <button
+                onClick={() => setMenuOpen(false)}
+                aria-label="Menu sluiten"
+                className="flex items-center justify-center w-8 h-8"
+              >
+                <XIcon size={24} />
+              </button>
+            </div>
 
-          {/* Acties */}
-          <div className="flex flex-col px-6 pt-10 gap-4">
-            {user ? (
-              <>
+            {/* Nav links */}
+            <div className="flex flex-col px-9 pt-6 pb-2 gap-8">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`text-h3 font-dm-sans text-white transition-opacity ${isActive ? 'opacity-100' : 'opacity-50'}`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
+            </div>
+
+            {/* Acties */}
+            <div className="flex flex-col px-9 pt-8 pb-10 gap-4">
+              {user ? (
+                <>
+                  <Link
+                    href="/mijn-omgeving"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 text-white text-body2 font-dm-sans"
+                  >
+                    <span className="w-8 h-8 rounded-2xl bg-forest flex items-center justify-center shrink-0 text-white">
+                      <UserIcon size={16} />
+                    </span>
+                    {displayName}
+                  </Link>
+                  <button
+                    onClick={() => { setMenuOpen(false); handleSignOut() }}
+                    className="flex items-center gap-3 text-white/60 text-body2 font-dm-sans"
+                  >
+                    Uitloggen
+                  </button>
+                </>
+              ) : (
                 <Link
-                  href="/mijn-omgeving"
+                  href="/inloggen"
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center gap-3 text-white text-body2 font-dm-sans"
                 >
-                  <span className="w-10 h-10 rounded-full bg-forest flex items-center justify-center shrink-0 text-white">
-                    <UserIcon size={18} />
+                  <span className="w-8 h-8 rounded-2xl bg-caramel flex items-center justify-center shrink-0 text-white">
+                    <ArrowRightIcon size={16} />
                   </span>
-                  {displayName}
+                  Inloggen
                 </Link>
-                <button
-                  onClick={() => { setMenuOpen(false); handleSignOut() }}
-                  className="flex items-center gap-3 text-white/60 text-body2 font-dm-sans"
-                >
-                  Uitloggen
-                </button>
-              </>
-            ) : (
+              )}
               <Link
-                href="/inloggen"
+                href="/dagticket"
                 onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-3 text-white text-body2 font-dm-sans"
               >
-                <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0 text-white">
-                  <ArrowRightIcon size={18} />
+                <span className="w-8 h-8 rounded-2xl bg-caramel flex items-center justify-center shrink-0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </span>
-                Inloggen
+                Koop een kaartje
               </Link>
-            )}
-            <Link
-              href="/dagticket"
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 text-white text-body2 font-dm-sans"
-            >
-              <span className="w-10 h-10 rounded-full bg-caramel flex items-center justify-center shrink-0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              Koop een kaartje
-            </Link>
+            </div>
           </div>
         </div>
       )}

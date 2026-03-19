@@ -28,7 +28,7 @@ export default function ContactContent() {
 
         {/* Form card — first on mobile */}
         <div className="bg-ivory rounded-2xl p-7 md:p-10 flex flex-col gap-6 order-1 md:order-2">
-          <p className="text-body2 font-dm-sans text-black/70">
+          <p className="text-body2 font-dm-sans text-black">
             Vul het formulier in of neem direct contact op via de mail.
           </p>
 
@@ -37,7 +37,7 @@ export default function ContactContent() {
               <p className="text-[22px] leading-[28px] tracking-[-0.02em] font-dm-sans text-black">
                 <span className="text-forest">Bedankt voor je bericht!</span>
               </p>
-              <p className="text-body2 font-dm-sans text-black/70">
+              <p className="text-body2 font-dm-sans text-black">
                 We hebben je bericht ontvangen en komen binnen enkele dagen bij je terug.
               </p>
             </div>

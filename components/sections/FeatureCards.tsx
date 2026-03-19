@@ -32,7 +32,7 @@ export default function FeatureCards({ data }: Props) {
   const cards = data?.cards?.length ? data.cards : fallbackCards
 
   return (
-    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-h2 font-dm-sans text-black mb-10 md:mb-14 max-w-2xl">
           {h2}
@@ -42,11 +42,11 @@ export default function FeatureCards({ data }: Props) {
           {cards.map((card, i) => {
             const imgSrc =
               card.image && typeof card.image === 'object' && '_type' in card.image
-                ? urlFor(card.image).width(800).height(600).url()
+                ? urlFor(card.image).width(600).height(800).url()
                 : (card as typeof fallbackCards[number]).image as string
             return (
               <article key={card.label ?? i} className="flex flex-col gap-4">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-grey">
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-grey">
                   <Image
                     src={imgSrc}
                     alt={card.alt ?? ''}
@@ -56,8 +56,8 @@ export default function FeatureCards({ data }: Props) {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <p className="text-sub1 font-dm-sans font-medium text-black">{card.label}</p>
-                  <p className="text-body2 font-dm-sans text-black/70">{card.body}</p>
+                  <p className="text-sub1 font-dm-sans font-medium text-forest">{card.label}</p>
+                  <p className="text-body2 font-dm-sans text-black">{card.body}</p>
                 </div>
               </article>
             )

@@ -64,7 +64,7 @@ export default function VerhuurStappen({ data }: Props) {
                   </span>
                   <div>
                     <p className="text-sub2 font-dm-sans text-black">{stap.titel}</p>
-                    <p className="text-body2 font-dm-sans text-black/60 mt-0.5">{stap.omschrijving}</p>
+                    <p className="text-body2 font-dm-sans text-black mt-0.5">{stap.omschrijving}</p>
                   </div>
                 </li>
               ))}

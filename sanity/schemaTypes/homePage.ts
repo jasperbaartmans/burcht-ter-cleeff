@@ -80,15 +80,9 @@ export const homePage = defineType({
       title: 'Verhuur CTA',
       type: 'object',
       fields: [
-        defineField({ name: 'label', title: 'Klein label', type: 'string' }),
         defineField({ name: 'h3', title: 'Koptekst (H3)', type: 'string' }),
-        defineField({ name: 'body', title: 'Tekst', type: 'text', rows: 3 }),
-        defineField({
-          name: 'bullets',
-          title: 'Bullet punten',
-          type: 'array',
-          of: [{ type: 'string' }],
-        }),
+        defineField({ name: 'body', title: 'Alinea 1', type: 'text', rows: 4 }),
+        defineField({ name: 'body2', title: 'Alinea 2', type: 'text', rows: 3 }),
         defineField({
           name: 'image',
           title: 'Afbeelding',

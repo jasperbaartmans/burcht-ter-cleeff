@@ -7,29 +7,23 @@ interface Props {
   data?: HomePageData['verhuurCTA']
 }
 
-const fallbackBullets = [
-  'Exclusieve huur van het terrein',
-  'Capaciteit tot 500 personen',
-  'Catering & decoratie mogelijk',
-]
-
 export default function VerhuurCTA({ data }: Props) {
-  const label = data?.label ?? 'Voor groepen & bedrijven'
   const h3 = data?.h3 ?? 'Verhuurmogelijkheden'
-  const body = data?.body ?? 'Organiseer uw bedrijfsuitje, verjaardag of schoolreisje op het unieke terrein van Burcht ter Cleeff. Wij zorgen voor een onvergetelijke dag.'
-  const bullets = data?.bullets?.length ? data.bullets : fallbackBullets
+  const body1 = data?.body ?? 'Stel je een zonovergoten ochtend voor waarin je kinderen zich uitleven in een prachtige speeltuin, omringd door het geluid van lachende vrienden en vrolijke vlaggetjes. Zo ziet jullie feestje er misschien binnenkort wel uit. Onze speeltuin biedt de perfecte locatie voor een gezellig kinderfeestje, waar kinderen zich kunnen verliezen in eindeloze avonturen.'
+  const body2 = data?.body2 ?? 'Je kunt de speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.'
 
   const imgSrc =
     data?.image && typeof data.image === 'object' && '_type' in data.image
-      ? urlFor(data.image).width(800).height(600).url()
+      ? urlFor(data.image).width(685).height(800).url()
       : '/images/verhuur.jpg'
 
   return (
-    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-          {/* Foto links */}
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-grey">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
+
+          {/* Foto links — staand formaat, zelfde afronding als overige foto's */}
+          <div className="relative aspect-[6/7] rounded-3xl overflow-hidden bg-grey">
             <Image
               src={imgSrc}
               alt="Verhuur van het terrein van Speeltuin Burcht ter Cleeff voor evenementen"
@@ -39,33 +33,22 @@ export default function VerhuurCTA({ data }: Props) {
             />
           </div>
 
-          {/* Tekst rechts */}
-          <div className="flex flex-col gap-5">
-            <div>
-              <p className="text-body3 font-dm-sans text-black/50 uppercase tracking-wider mb-3">
-                {label}
-              </p>
-              <h3 className="text-h3 font-dm-sans font-medium text-black mb-4">
-                {h3}
-              </h3>
-              <p className="text-body1 font-dm-sans text-black/70">
-                {body}
-              </p>
+          {/* Tekst rechts — 48px lager dan afbeelding-top conform Figma */}
+          <div className="flex flex-col gap-5 md:pt-12">
+            <h3 className="text-h3 font-dm-sans font-medium text-black">
+              {h3}
+            </h3>
+            <div className="flex flex-col gap-3">
+              <p className="text-body1 font-dm-sans text-black">{body1}</p>
+              <p className="text-body1 font-dm-sans text-black">{body2}</p>
             </div>
-            <ul className="space-y-2 text-body2 font-dm-sans text-black/60">
-              {bullets.map((bullet) => (
-                <li key={bullet} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-forest shrink-0" />
-                  {bullet}
-                </li>
-              ))}
-            </ul>
             <div className="pt-2">
               <Button as="link" href="/verhuur" variant="primary" size="md">
                 Bekijk de mogelijkheden
               </Button>
             </div>
           </div>
+
         </div>
       </div>
     </section>

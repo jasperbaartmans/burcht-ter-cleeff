@@ -27,7 +27,7 @@ export default function AccountKaartjes() {
         >
           <div>
             <p className="text-body3 font-dm-sans text-forest mb-1">Bestellen</p>
-            <p className="text-body2 font-dm-sans text-black/60">
+            <p className="text-body2 font-dm-sans text-black">
               Bestel gemakkelijk online je kaartjes
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function AccountKaartjes() {
               <div key={item.date} className="flex items-center justify-between py-3">
                 <span className="text-body2 font-dm-sans text-black">{item.date}</span>
                 <div className="flex items-center gap-4">
-                  <span className="text-body2 font-dm-sans text-black/40">
+                  <span className="text-body2 font-dm-sans text-black">
                     {item.aantal} {item.aantal === 1 ? 'ticket' : 'tickets'}
                   </span>
                   <button

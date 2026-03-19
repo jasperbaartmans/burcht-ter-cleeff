@@ -46,7 +46,7 @@ export default function RegistrerenPage() {
       <div className="min-h-screen bg-ivory flex items-center justify-center pt-[69px]">
         <div className="w-full max-w-sm px-6 py-10 text-center">
           <h1 className="text-h2 font-dm-sans text-black mb-4">Controleer je e-mail</h1>
-          <p className="text-body2 font-dm-sans text-black/60">
+          <p className="text-body2 font-dm-sans text-black">
             We hebben een bevestigingslink gestuurd naar <strong>{email}</strong>. Klik op de link om je account te activeren.
           </p>
         </div>
@@ -112,7 +112,7 @@ export default function RegistrerenPage() {
             {loading ? 'Bezig...' : 'Account aanmaken'}
           </button>
         </form>
-        <p className="mt-6 text-body3 font-dm-sans text-black/60">
+        <p className="mt-6 text-body3 font-dm-sans text-black">
           Al een account?{' '}
           <Link href="/inloggen" className="text-forest hover:underline">
             Inloggen

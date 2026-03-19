@@ -14,9 +14,12 @@ export default function FullPhoto({ data }: Props) {
   const alt = data?.alt ?? 'Kind op de schommel in Speeltuin Burcht ter Cleeff'
 
   return (
-    <section className="px-6 md:px-12 py-8 md:py-12 bg-ivory">
+    <section
+      className="px-6 md:px-12 pt-8 md:pt-12 pb-0"
+      style={{ background: 'linear-gradient(to bottom, #F3EEE2 calc(100% - 112px), white calc(100% - 112px))' }}
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="relative w-full aspect-[16/7] rounded-3xl overflow-hidden bg-grey">
+        <div className="relative w-full aspect-[17/8] rounded-3xl overflow-hidden bg-grey">
           <Image
             src={imgSrc}
             alt={alt}
