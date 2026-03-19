@@ -5,15 +5,7 @@ import FooterNewsletter from './FooterNewsletter'
 export default function Footer() {
   return (
     <footer className="text-white">
-      {/* Kantelen — tanden sienna, gaten transparant */}
-      <div className="flex overflow-hidden">
-        {Array.from({ length: 54 }).map((_, i) => (
-          <div
-            key={i}
-            className={`flex-1 h-10 ${i % 2 === 0 ? 'bg-sienna' : 'bg-transparent'}`}
-          />
-        ))}
-      </div>
+      <div className="h-10 bg-sienna" />
 
       <div className="bg-sienna relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto relative">
