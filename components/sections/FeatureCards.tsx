@@ -32,7 +32,7 @@ export default function FeatureCards({ data }: Props) {
   const cards = data?.cards?.length ? data.cards : fallbackCards
 
   return (
-    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-h2 font-dm-sans text-black mb-10 md:mb-14 max-w-2xl">
           {h2}

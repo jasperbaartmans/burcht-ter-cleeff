@@ -11,7 +11,7 @@ export default function Quote({ data }: Props) {
   const body2 = data?.body2 ?? 'Onze speeltuin biedt een unieke combinatie van historische omgeving en creatieve speelruimte. Laat uw kind rennen, klimmen, dromen — terwijl u geniet van de rust van ons prachtige kasteelterrein.'
 
   return (
-    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12 border-t border-grey">
+    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Links: decoratieve iconen + H2 */}
         <div>

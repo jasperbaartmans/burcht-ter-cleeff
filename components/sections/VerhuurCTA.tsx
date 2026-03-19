@@ -25,7 +25,7 @@ export default function VerhuurCTA({ data }: Props) {
       : '/images/verhuur.jpg'
 
   return (
-    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Foto links */}
