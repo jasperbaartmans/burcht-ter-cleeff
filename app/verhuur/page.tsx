@@ -1,6 +1,6 @@
 import { client } from '@/lib/sanity/client'
 import { verhuurPageQuery, type VerhuurPageData } from '@/lib/sanity/queries'
-import VerhuurHero from '@/components/sections/VerhuurHero'
+import PageHero from '@/components/sections/PageHero'
 import VerhuurIntro from '@/components/sections/VerhuurIntro'
 import VerhuurFullPhoto from '@/components/sections/VerhuurFullPhoto'
 import VerhuurStappen from '@/components/sections/VerhuurStappen'
@@ -22,7 +22,7 @@ export default async function VerhuurPage() {
 
   return (
     <>
-      <VerhuurHero data={data?.hero} />
+      <PageHero image="/images/verhuur.jpg" alt="Verhuur van Speeltuin Burcht ter Cleeff voor verjaardagen en evenementen" defaultH1="Verhuur" data={data?.hero} />
       <VerhuurIntro data={data?.intro} />
       <VerhuurFullPhoto />
       <VerhuurStappen data={data?.stappen} />

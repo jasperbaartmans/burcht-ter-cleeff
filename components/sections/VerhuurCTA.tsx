@@ -18,8 +18,8 @@ export default function VerhuurCTA({ data }: Props) {
       : '/images/verhuur.jpg'
 
   return (
-    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-10">
+      <div className="max-w-[1360px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
 
           {/* Foto links — staand formaat, zelfde afronding als overige foto's */}

@@ -28,15 +28,15 @@ export default function VerhuurStappen({ data }: Props) {
   }))
 
   return (
-    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-[1360px] mx-auto">
 
         {/* Koptekst */}
         <div className="mb-10 md:mb-14">
-          <h2 className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-dm-sans text-black">
+          <h2 className="text-[32px] leading-[38px] tracking-[-0.03em] md:text-h2 font-dm-sans text-black">
             {h2}
           </h2>
-          <p className="text-[28px] leading-[34px] tracking-[-0.02em] md:text-h2 font-dm-sans text-forest">
+          <p className="text-[32px] leading-[38px] tracking-[-0.03em] md:text-h2 font-dm-sans text-forest">
             {subtitle}
           </p>
         </div>

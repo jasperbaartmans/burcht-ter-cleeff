@@ -12,7 +12,7 @@ export default function VerhuurIntro({ data }: Props) {
   const body2 = data?.body2 ?? 'Onze speeltuin biedt de perfecte locatie voor een onvergetelijk kinderfeestje, waar kinderen zich kunnen verliezen in eindeloze avonturen. Als je jaarlid bent kun je de speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.'
 
   return (
-    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12 border-t border-grey">
+    <section className="bg-ivory py-16 md:py-24 px-6 md:px-10 border-t border-grey">
       <div className="max-w-[1360px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
 
         {/* Links: grote H2 met inline iconen */}

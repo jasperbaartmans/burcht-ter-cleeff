@@ -14,7 +14,7 @@ export default function SpeelregelsFeedbackCTA({ data }: Props) {
   return (
     <section className="bg-ivory border-t border-grey py-20 md:py-28 px-6 text-center">
       <div className="max-w-[600px] mx-auto flex flex-col items-center gap-8">
-        <p className="text-[26px] leading-[34px] tracking-[-0.02em] md:text-h3 font-dm-sans text-black">
+        <p className="text-[26px] leading-[32px] tracking-[-0.02em] md:text-h3 font-dm-sans text-black">
           {tekst}
         </p>
         <Button as="link" href={`mailto:${email}`} variant="caramel" size="md">

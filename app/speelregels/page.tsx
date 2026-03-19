@@ -1,6 +1,6 @@
 import { client } from '@/lib/sanity/client'
 import { speelregelsPageQuery, type SpeelregelsPageData } from '@/lib/sanity/queries'
-import SpeelregelsHero from '@/components/sections/SpeelregelsHero'
+import PageHero from '@/components/sections/PageHero'
 import SpeelregelsGrid from '@/components/sections/SpeelregelsGrid'
 import SpeelregelsFeedbackCTA from '@/components/sections/SpeelregelsFeedbackCTA'
 
@@ -20,7 +20,7 @@ export default async function SpeelregelsPage() {
 
   return (
     <>
-      <SpeelregelsHero data={data?.hero} />
+      <PageHero image="/images/feature-family.jpg" alt="Kinderen spelen bij Speeltuin Burcht ter Cleeff" defaultH1="Speelregels" data={data?.hero} />
       <SpeelregelsGrid data={data?.grid} />
       <SpeelregelsFeedbackCTA data={data?.feedbackCTA} />
     </>
