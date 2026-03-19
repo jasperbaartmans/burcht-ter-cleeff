@@ -1,5 +1,4 @@
 import type { HomePageData } from '@/lib/sanity/queries'
-import { SymbolBadge } from '@/components/ui/symbols'
 
 interface Props {
   data?: HomePageData['quote']
@@ -18,18 +17,8 @@ export default function Quote({ data }: Props) {
           {h2}
         </h2>
 
-        {/* Rij 2: iconen in rechterkolom (cols 7–12) */}
-        <div
-          className="col-span-12 md:col-start-7 md:col-span-6 flex gap-3 mt-8 md:mt-0"
-          aria-hidden="true"
-        >
-          <SymbolBadge name="star" size={48} />
-          <SymbolBadge name="leaf" size={48} />
-          <SymbolBadge name="castle" size={48} />
-        </div>
-
-        {/* Rij 3: body tekst in rechterkolom (cols 7–12), 103px onder iconen */}
-        <div className="col-span-12 md:col-start-7 md:col-span-6 flex flex-col gap-3 mt-4 md:mt-[103px]">
+        {/* Rij 2: body tekst in rechterkolom (cols 7–12) */}
+        <div className="col-span-12 md:col-start-7 md:col-span-6 flex flex-col gap-3 mt-8 md:mt-0">
           <p className="text-body1 font-dm-sans text-black">{body1}</p>
           <p className="text-body1 font-dm-sans text-black">{body2}</p>
         </div>
