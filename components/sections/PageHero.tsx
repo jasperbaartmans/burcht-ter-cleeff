@@ -9,7 +9,7 @@ interface Props {
 
 export default function PageHero({ image, alt, defaultH1, data }: Props) {
   return (
-    <section className="relative w-full h-[55vh] min-h-[380px] max-h-[600px] overflow-hidden">
+    <section className="relative w-full h-[55vh] min-h-[380px] md:h-[640px] overflow-hidden">
       <Image
         src={image}
         alt={alt}
