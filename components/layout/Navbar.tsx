@@ -65,17 +65,17 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links — absoluut gecentreerd */}
-        <div className="hidden md:flex items-stretch gap-9 absolute left-1/2 -translate-x-1/2 h-full">
+        <div className="hidden md:flex items-stretch gap-8 absolute left-1/2 -translate-x-1/2 h-full">
           {navLinks.map((link) => {
             const isActive = pathname === link.href
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center text-body2 font-dm-sans transition-colors hover:text-white border-b-4 ${
+                className={`flex items-center text-body2 font-dm-sans transition-colors hover:text-white border-b-4 [text-shadow:0px_1px_3px_rgba(0,0,0,0.5)] ${
                   isActive
                     ? 'text-white border-white'
-                    : 'text-white/70 border-transparent'
+                    : 'text-white border-transparent'
                 }`}
               >
                 {link.label}
@@ -107,9 +107,9 @@ export default function Navbar() {
           ) : (
             <Link
               href="/inloggen"
-              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+              className="flex items-center gap-2 text-white hover:text-white/80 transition-colors group [text-shadow:0px_1px_3px_rgba(0,0,0,0.5)]"
             >
-              <span className="w-8 h-8 rounded-full border border-white/40 group-hover:bg-forest group-hover:border-forest flex items-center justify-center shrink-0 transition-colors">
+              <span className="w-8 h-8 rounded-2xl bg-white flex items-center justify-center shrink-0 text-forest group-hover:bg-white/90 transition-colors">
                 <ArrowRightIcon size={14} />
               </span>
               <span className="text-body2 font-dm-sans">Inloggen</span>
