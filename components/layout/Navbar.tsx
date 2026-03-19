@@ -54,8 +54,37 @@ export default function Navbar() {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50">
-      {/* Desktop */}
-      <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-stretch relative">
+      {/* Mobiele balk — zwart afgerond pill */}
+      <div className="md:hidden px-1 pt-1">
+        <div className="bg-black rounded-2xl h-16 flex items-center justify-between px-4">
+          <Link href="/" className="flex items-center gap-2.5">
+            <LogoIcon className="text-white" />
+            <span className="text-base font-dm-sans font-medium tracking-[-0.48px] text-white uppercase leading-none">
+              Burcht ter Cleeff
+            </span>
+          </Link>
+          <button
+            className="flex items-center justify-center w-8 h-8"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? 'Menu sluiten' : 'Menu openen'}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? (
+              <XIcon size={24} />
+            ) : (
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
+                <rect width="20" height="2" rx="1" fill="#78992B"/>
+                <rect y="6" width="20" height="2" rx="1" fill="#78992B"/>
+                <rect y="12" width="20" height="2" rx="1" fill="#78992B"/>
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop balk — transparant over hero */}
+      <div className="hidden md:block">
+        <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-stretch relative">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 self-center">
           <LogoIcon className="text-white" />
@@ -117,27 +146,11 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex items-center justify-center w-8 h-8 ml-auto self-center"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? 'Menu sluiten' : 'Menu openen'}
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? (
-            <XIcon size={24} />
-          ) : (
-            <>
-              <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '-8px' }} />
-              <span className="block w-6 h-0.5 bg-white absolute" />
-              <span className="block w-6 h-0.5 bg-white absolute" style={{ marginTop: '8px' }} />
-            </>
-          )}
-        </button>
       </div>
 
-      {/* Scheidingslijn */}
-      <div className="hidden md:block h-px bg-white opacity-50 max-w-[1360px] mx-auto w-full" />
+        {/* Scheidingslijn */}
+        <div className="h-px bg-white opacity-50 max-w-[1360px] mx-auto w-full" />
+      </div>
 
       {/* Mobile menu */}
       {menuOpen && (
@@ -145,8 +158,8 @@ export default function Navbar() {
           {/* Donkere overlay — klik om te sluiten */}
           <div className="absolute inset-0 bg-black/70" onClick={() => setMenuOpen(false)} />
 
-          {/* Sienna kaart — start net onder de navbar, lichte inspringing rechts */}
-          <div className="absolute top-[69px] left-0 right-2 bg-sienna rounded-2xl flex flex-col">
+          {/* Sienna kaart — start net onder de mobiele navbar (64px + 4px padding-top) */}
+          <div className="absolute top-[68px] left-0 right-2 bg-sienna rounded-2xl flex flex-col">
             {/* Top bar */}
             <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
               <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
