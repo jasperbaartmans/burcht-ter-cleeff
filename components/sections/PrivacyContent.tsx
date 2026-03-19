@@ -119,7 +119,6 @@ export default function PrivacyContent() {
                 {[
                   { name: 'Laposta', desc: 'Verzending van nieuwsbrieven.' },
                   { name: 'E-Boekhouden', desc: 'Opslag van ledengegevens en financiële administratie.' },
-                  { name: 'Lionhead', desc: 'Hosting van de website, e-mail en back-ups. Gegevens die je achterlaat op de website worden opgeslagen op de servers van Lionhead.' },
                 ].map(({ name, desc }) => (
                   <li key={name} className="flex gap-3">
                     <span className="text-body3 font-dm-sans text-forest mt-0.5 shrink-0">{name}</span>
