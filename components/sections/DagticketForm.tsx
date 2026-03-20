@@ -1,6 +1,11 @@
-// Vul hieronder de Tikkie-links in die je aanmaakt via de ABN AMRO Tikkie Persoonlijk app.
-// Ga in de app naar "Tikkie aanmaken" → kies een vaste naam + bedrag → sla de link op.
-const TIKKIE_LINKS: Record<number, string> = {
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
+// Statische Tikkie-links als fallback (als de API geen Tikkie-link terugstuurt)
+// Vul hieronder de juiste links in vanuit de ABN AMRO Tikkie Persoonlijk app.
+const TIKKIE_FALLBACK_LINKS: Record<number, string> = {
   2:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
   3:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
   4:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
@@ -20,6 +25,47 @@ function formatPrice(n: number) {
 }
 
 export default function DagticketForm() {
+  const router = useRouter()
+  const [loading, setLoading] = useState<number | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  async function handleSelect(persons: number) {
+    if (loading !== null) return
+    setLoading(persons)
+    setError(null)
+
+    try {
+      const res = await fetch('/api/dagticket', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ persons }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error ?? 'Er ging iets mis. Probeer het opnieuw.')
+        setLoading(null)
+        return
+      }
+
+      const { ticketId, tikkieUrl } = data
+
+      if (tikkieUrl) {
+        // Tikkie Business API: stuur door naar Tikkie (komt terug op /bedankt?ticket=...)
+        window.location.href = tikkieUrl
+      } else {
+        // Fallback: open statische Tikkie-link in nieuw tabblad, navigeer zelf naar bedankt
+        const fallback = TIKKIE_FALLBACK_LINKS[persons]
+        if (fallback) window.open(fallback, '_blank', 'noopener,noreferrer')
+        router.push(`/bedankt?ticket=${ticketId}`)
+      }
+    } catch {
+      setError('Er ging iets mis. Probeer het opnieuw.')
+      setLoading(null)
+    }
+  }
+
   return (
     <div className="max-w-[560px] mx-auto px-6 py-12 md:py-24">
 
@@ -34,12 +80,11 @@ export default function DagticketForm() {
       {/* Lijst */}
       <div className="rounded-2xl border border-grey overflow-hidden">
         {VISITORS.map((n, i) => (
-          <a
+          <button
             key={n}
-            href={TIKKIE_LINKS[n]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex items-center justify-between px-6 py-4 hover:bg-forest/5 transition-colors group ${
+            onClick={() => handleSelect(n)}
+            disabled={loading !== null}
+            className={`w-full flex items-center justify-between px-6 py-4 hover:bg-forest/5 transition-colors group disabled:opacity-50 disabled:cursor-wait ${
               i < VISITORS.length - 1 ? 'border-b border-grey' : ''
             }`}
           >
@@ -50,13 +95,21 @@ export default function DagticketForm() {
               <span className="text-sub1 font-dm-sans text-forest font-medium">
                 {formatPrice(n)}
               </span>
-              <span className="text-forest/50 group-hover:text-forest transition-colors text-lg leading-none">
-                →
-              </span>
+              {loading === n ? (
+                <span className="w-5 h-5 rounded-full border-2 border-forest/30 border-t-forest animate-spin" />
+              ) : (
+                <span className="text-forest/50 group-hover:text-forest transition-colors text-lg leading-none">
+                  →
+                </span>
+              )}
             </div>
-          </a>
+          </button>
         ))}
       </div>
+
+      {error && (
+        <p className="mt-4 text-center text-body3 font-dm-sans text-red-600">{error}</p>
+      )}
 
     </div>
   )
