@@ -3,18 +3,18 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-// Statische Tikkie-links als fallback (als de API geen Tikkie-link terugstuurt)
-// Vul hieronder de juiste links in vanuit de ABN AMRO Tikkie Persoonlijk app.
-const TIKKIE_FALLBACK_LINKS: Record<number, string> = {
-  2:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  3:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  4:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  5:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  6:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  7:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  8:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  9:  'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
-  10: 'https://tikkie.me/pay/fie91d82s7h22v0cn7gt',
+// Vul hier je vaste Tikkie-links in (Tikkie app → Tikkie aanmaken → bewaar Tikkie).
+// Laat een regel leeg ('') als je die nog niet hebt aangemaakt.
+const TIKKIE_LINKS: Record<number, string> = {
+  2:  '', // €1,20 — vul in zodra je de vaste Tikkie hebt
+  3:  '', // €1,80
+  4:  '',
+  5:  '',
+  6:  '',
+  7:  '',
+  8:  '',
+  9:  '',
+  10: '',
 }
 
 const PRICE_PER_PERSON = 0.60
@@ -31,6 +31,12 @@ export default function DagticketForm() {
 
   async function handleSelect(persons: number) {
     if (loading !== null) return
+    const tikkieUrl = TIKKIE_LINKS[persons]
+    if (!tikkieUrl) {
+      setError('Deze optie is nog niet beschikbaar. Kies een ander aantal.')
+      return
+    }
+
     setLoading(persons)
     setError(null)
 
@@ -49,17 +55,9 @@ export default function DagticketForm() {
         return
       }
 
-      const { ticketId, tikkieUrl } = data
-
-      if (tikkieUrl) {
-        // Tikkie Business API: stuur door naar Tikkie (komt terug op /bedankt?ticket=...)
-        window.location.href = tikkieUrl
-      } else {
-        // Fallback: open statische Tikkie-link in nieuw tabblad, navigeer zelf naar bedankt
-        const fallback = TIKKIE_FALLBACK_LINKS[persons]
-        if (fallback) window.open(fallback, '_blank', 'noopener,noreferrer')
-        router.push(`/bedankt?ticket=${ticketId}`)
-      }
+      // Open Tikkie in nieuw tabblad, navigeer zelf naar de bedankt-pagina met QR
+      window.open(tikkieUrl, '_blank', 'noopener,noreferrer')
+      router.push(`/bedankt?ticket=${data.ticketId}`)
     } catch {
       setError('Er ging iets mis. Probeer het opnieuw.')
       setLoading(null)
@@ -77,7 +75,6 @@ export default function DagticketForm() {
         Kies het aantal bezoekers en je wordt direct doorgestuurd naar Tikkie.
       </p>
 
-      {/* Lijst */}
       <div className="rounded-2xl border border-grey overflow-hidden">
         {VISITORS.map((n, i) => (
           <button
