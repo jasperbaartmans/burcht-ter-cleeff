@@ -1,98 +1,64 @@
-'use client'
-
-import { useState } from 'react'
-import Button from '@/components/ui/Button'
+// Vul hieronder de Tikkie-links in die je aanmaakt via de ABN AMRO Tikkie Persoonlijk app.
+// Ga in de app naar "Tikkie aanmaken" → kies een vaste naam + bedrag → sla de link op.
+const TIKKIE_LINKS: Record<number, string> = {
+  2:  'https://tikkie.me/pay/VERVANG_DIT',
+  3:  'https://tikkie.me/pay/VERVANG_DIT',
+  4:  'https://tikkie.me/pay/VERVANG_DIT',
+  5:  'https://tikkie.me/pay/VERVANG_DIT',
+  6:  'https://tikkie.me/pay/VERVANG_DIT',
+  7:  'https://tikkie.me/pay/VERVANG_DIT',
+  8:  'https://tikkie.me/pay/VERVANG_DIT',
+  9:  'https://tikkie.me/pay/VERVANG_DIT',
+  10: 'https://tikkie.me/pay/VERVANG_DIT',
+  11: 'https://tikkie.me/pay/VERVANG_DIT',
+  12: 'https://tikkie.me/pay/VERVANG_DIT',
+  13: 'https://tikkie.me/pay/VERVANG_DIT',
+}
 
 const PRICE_PER_PERSON = 0.60
-
 const VISITORS = Array.from({ length: 12 }, (_, i) => i + 2) // 2 t/m 13
 
+function formatPrice(n: number) {
+  return '€' + (n * PRICE_PER_PERSON).toFixed(2).replace('.', ',')
+}
+
 export default function DagticketForm() {
-  const [selected, setSelected] = useState(2)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  const total = (selected * PRICE_PER_PERSON).toFixed(2).replace('.', ',')
-
-  async function handleBetalen() {
-    setLoading(true)
-    setError(null)
-
-    try {
-      const res = await fetch('/api/tikkie', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ visitors: selected }),
-      })
-
-      const data = await res.json()
-
-      if (!res.ok) {
-        setError(data.error ?? 'Er ging iets mis, probeer het opnieuw.')
-        return
-      }
-
-      window.location.href = data.paymentUrl
-    } catch {
-      setError('Er ging iets mis, probeer het opnieuw.')
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return (
     <div className="max-w-[560px] mx-auto px-6 py-12 md:py-24">
 
-      {/* Koptekst — mobiel: "Dagkaartjes", desktop: volledige zin */}
       <h1 className="text-h3 font-dm-sans text-forest text-center mb-3">
         <span className="md:hidden">Dagkaartjes</span>
         <span className="hidden md:inline">Koop nu je dagkaartjes.</span>
       </h1>
       <p className="text-body2 font-dm-sans text-black text-center mb-10 md:mb-12">
-        Selecteer het aantal bezoekers en klik op &lsquo;betalen&rsquo;.
+        Kies het aantal bezoekers en je wordt direct doorgestuurd naar Tikkie.
       </p>
 
-      {/* Aantal bezoekers grid */}
-      <div className="rounded-2xl border border-grey overflow-hidden md:rounded-none md:border-0 md:overflow-visible w-full mb-6">
-        <div className="grid grid-cols-3 md:border-l md:border-t md:border-grey md:w-fit md:mx-auto">
-          {VISITORS.map((n) => (
-            <button
-              key={n}
-              onClick={() => setSelected(n)}
-              className={`h-16 md:w-[88px] md:h-[56px] text-sub2 font-dm-sans border-b border-r border-grey transition-colors ${
-                selected === n
-                  ? 'bg-forest text-white'
-                  : 'bg-white text-forest hover:bg-forest/5'
-              }`}
-            >
-              {n}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Totaal */}
-      <div className="bg-ivory border border-grey rounded-lg px-6 py-4 flex items-center justify-between mb-8">
-        <span className="text-body2 font-dm-sans text-black">Totaal</span>
-        <span className="text-sub1 font-dm-sans text-forest font-medium">{total}€</span>
-      </div>
-
-      {/* Foutmelding */}
-      {error && (
-        <p className="text-red-600 text-body2 font-dm-sans text-center mb-4">{error}</p>
-      )}
-
-      {/* Betalen */}
-      <div className="flex justify-center">
-        <Button
-          variant="primary"
-          size="lg"
-          className="w-full md:w-auto"
-          onClick={handleBetalen}
-          disabled={loading}
-        >
-          {loading ? 'Bezig…' : 'Betalen'}
-        </Button>
+      {/* Lijst */}
+      <div className="rounded-2xl border border-grey overflow-hidden">
+        {VISITORS.map((n, i) => (
+          <a
+            key={n}
+            href={TIKKIE_LINKS[n]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center justify-between px-6 py-4 hover:bg-forest/5 transition-colors group ${
+              i < VISITORS.length - 1 ? 'border-b border-grey' : ''
+            }`}
+          >
+            <span className="text-body2 font-dm-sans text-black">
+              {n} personen
+            </span>
+            <div className="flex items-center gap-4">
+              <span className="text-sub1 font-dm-sans text-forest font-medium">
+                {formatPrice(n)}
+              </span>
+              <span className="text-forest/50 group-hover:text-forest transition-colors text-lg leading-none">
+                →
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
 
     </div>
