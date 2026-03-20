@@ -11,6 +11,7 @@ export const speelregelsPage = defineType({
       type: 'object',
       fields: [
         defineField({ name: 'h1', title: 'Koptekst (H1)', type: 'string' }),
+        defineField({ name: 'h1En', title: 'Koptekst (H1) — Engels', type: 'string', description: 'Automatisch ingevuld via vertaling' }),
       ],
     }),
 
@@ -20,6 +21,7 @@ export const speelregelsPage = defineType({
       type: 'object',
       fields: [
         defineField({ name: 'h2', title: 'Koptekst (H2)', type: 'string' }),
+        defineField({ name: 'h2En', title: 'Koptekst (H2) — Engels', type: 'string', description: 'Automatisch ingevuld via vertaling' }),
         defineField({
           name: 'regels',
           title: 'Regels',
@@ -30,6 +32,8 @@ export const speelregelsPage = defineType({
               fields: [
                 defineField({ name: 'titel', title: 'Titel', type: 'string' }),
                 defineField({ name: 'tekst', title: 'Tekst', type: 'text', rows: 3 }),
+                defineField({ name: 'titelEn', title: 'Titel — Engels', type: 'string', description: 'Automatisch ingevuld via vertaling' }),
+                defineField({ name: 'tekstEn', title: 'Tekst — Engels', type: 'text', rows: 3, description: 'Automatisch ingevuld via vertaling' }),
                 defineField({
                   name: 'variant',
                   title: 'Kleur',
@@ -79,6 +83,7 @@ export const speelregelsPage = defineType({
       type: 'object',
       fields: [
         defineField({ name: 'tekst', title: 'Tekst', type: 'text', rows: 3 }),
+        defineField({ name: 'tekstEn', title: 'Tekst — Engels', type: 'text', rows: 3, description: 'Automatisch ingevuld via vertaling' }),
         defineField({ name: 'email', title: 'E-mailadres', type: 'string' }),
       ],
     }),
