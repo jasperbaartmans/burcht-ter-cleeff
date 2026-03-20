@@ -10,13 +10,10 @@ const TIKKIE_LINKS: Record<number, string> = {
   8:  'https://tikkie.me/pay/VERVANG_DIT',
   9:  'https://tikkie.me/pay/VERVANG_DIT',
   10: 'https://tikkie.me/pay/VERVANG_DIT',
-  11: 'https://tikkie.me/pay/VERVANG_DIT',
-  12: 'https://tikkie.me/pay/VERVANG_DIT',
-  13: 'https://tikkie.me/pay/VERVANG_DIT',
 }
 
 const PRICE_PER_PERSON = 0.60
-const VISITORS = Array.from({ length: 12 }, (_, i) => i + 2) // 2 t/m 13
+const VISITORS = Array.from({ length: 9 }, (_, i) => i + 2) // 2 t/m 10
 
 function formatPrice(n: number) {
   return '€' + (n * PRICE_PER_PERSON).toFixed(2).replace('.', ',')
