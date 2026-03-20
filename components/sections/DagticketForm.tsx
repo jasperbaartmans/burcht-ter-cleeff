@@ -9,16 +9,11 @@ const TIKKIE_LINKS: Record<number, string> = {
   2:  'https://tikkie.me/pay/k8g247jcjtddpmvsepja',
   3:  'https://tikkie.me/pay/38u23ju2kptqohqbt262',
   4:  'https://tikkie.me/pay/3n4fg8anjgrin4ds8f20',
-  5:  '',
-  6:  '',
-  7:  '',
-  8:  '',
-  9:  '',
-  10: '',
+
 }
 
 const PRICE_PER_PERSON = 0.60
-const VISITORS = Array.from({ length: 9 }, (_, i) => i + 2) // 2 t/m 10
+const VISITORS = [2, 3, 4]
 
 function formatPrice(n: number) {
   return '€' + (n * PRICE_PER_PERSON).toFixed(2).replace('.', ',')
