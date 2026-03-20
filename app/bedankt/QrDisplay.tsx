@@ -44,7 +44,7 @@ export default function QrDisplay({ scanUrl, persons }: QrDisplayProps) {
         </p>
       </div>
       <p className="text-body3 font-dm-sans text-black/50 text-center">
-        Laat de QR-code scannen door de beheerder bij de ingang.
+        Bewaar je QR-code of bankbevestiging; onze beheerder controleert regelmatig of bezoekers netjes hebben betaald.
       </p>
     </div>
   )
