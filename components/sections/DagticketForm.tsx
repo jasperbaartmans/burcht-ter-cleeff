@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation'
 // Vul hier je vaste Tikkie-links in (Tikkie app → Tikkie aanmaken → bewaar Tikkie).
 // Laat een regel leeg ('') als je die nog niet hebt aangemaakt.
 const TIKKIE_LINKS: Record<number, string> = {
-  2:  '', // €1,20 — vul in zodra je de vaste Tikkie hebt
-  3:  '', // €1,80
-  4:  '',
+  2:  'https://tikkie.me/pay/k8g247jcjtddpmvsepja',
+  3:  'https://tikkie.me/pay/38u23ju2kptqohqbt262',
+  4:  'https://tikkie.me/pay/3n4fg8anjgrin4ds8f20',
   5:  '',
   6:  '',
   7:  '',
