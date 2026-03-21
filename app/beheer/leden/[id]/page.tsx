@@ -1,6 +1,6 @@
 import { redirect, notFound } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { getAdminUser } from '@/lib/auth/isAdmin'
 import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import { updateLid } from './actions'
@@ -54,8 +54,7 @@ interface Props {
 }
 
 export default async function LidDetailPage({ params }: Props) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getAdminUser()
   if (!user) redirect('/inloggen')
 
   const { id } = await params

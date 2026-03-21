@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { getAdminUser } from '@/lib/auth/isAdmin'
 import Button from '@/components/ui/Button'
 
 export const metadata = {
@@ -42,8 +42,7 @@ const statusClasses: Record<string, string> = {
 }
 
 export default async function LedenPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getAdminUser()
   if (!user) redirect('/inloggen')
 
   const adminSupabase = createAdminClient()

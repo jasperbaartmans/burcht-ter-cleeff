@@ -24,13 +24,14 @@ export default function InloggenPage() {
     setError(null)
 
     const supabase = createClient()
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
       setError('E-mailadres of wachtwoord onjuist.')
       setLoading(false)
     } else {
-      router.push('/mijn-omgeving')
+      const isAdmin = data.user?.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL
+      router.push(isAdmin ? '/beheer/dagtickets' : '/mijn-omgeving')
       router.refresh()
     }
   }

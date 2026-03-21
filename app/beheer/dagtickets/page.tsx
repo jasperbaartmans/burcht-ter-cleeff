@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { getAdminUser } from '@/lib/auth/isAdmin'
 import Button from '@/components/ui/Button'
 
 export const metadata = {
@@ -31,9 +31,7 @@ function formatDateLabel(dateStr: string) {
 }
 
 export default async function DagticketsPage({ searchParams }: Props) {
-  // Vereist inlog
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getAdminUser()
   if (!user) redirect('/inloggen')
 
   const params = await searchParams
