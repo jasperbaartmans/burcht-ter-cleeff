@@ -30,7 +30,8 @@ export default function InloggenPage() {
       setError('E-mailadres of wachtwoord onjuist.')
       setLoading(false)
     } else {
-      const isAdmin = data.user?.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL
+      const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase())
+      const isAdmin = adminEmails.includes(data.user?.email?.toLowerCase() ?? '')
       router.push(isAdmin ? '/beheer/dagtickets' : '/mijn-omgeving')
       router.refresh()
     }

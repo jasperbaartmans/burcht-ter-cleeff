@@ -59,7 +59,7 @@ export default async function LedenPage() {
 
   return (
     <>
-      <section className="bg-forest w-full pt-[69px]">
+      <section className="bg-sienna w-full pt-[69px]">
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 py-12 md:py-16">
           <p className="text-white/60 text-body2 font-dm-sans mb-1">Beheer</p>
           <h1 className="text-[42px] leading-[46px] tracking-[-0.03em] md:text-h1 font-dm-sans text-white">
@@ -73,10 +73,10 @@ export default async function LedenPage() {
 
           {/* Navigatie beheer */}
           <div className="flex gap-4 mb-10">
-            <Button as="link" href="/beheer/dagtickets" variant="ghost" size="sm">
+            <Button as="link" href="/beheer/dagtickets" variant="ghost-sienna" size="sm">
               Dagtickets
             </Button>
-            <Button as="link" href="/beheer/leden" variant="primary" size="sm">
+            <Button as="link" href="/beheer/leden" variant="sienna" size="sm">
               Leden
             </Button>
           </div>

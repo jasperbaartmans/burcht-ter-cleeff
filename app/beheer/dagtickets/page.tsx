@@ -57,7 +57,7 @@ export default async function DagticketsPage({ searchParams }: Props) {
 
   return (
     <>
-      <section className="bg-forest w-full pt-[69px]">
+      <section className="bg-sienna w-full pt-[69px]">
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 py-12 md:py-16">
           <p className="text-white/60 text-body2 font-dm-sans mb-1">Beheer</p>
           <h1 className="text-[42px] leading-[46px] tracking-[-0.03em] md:text-h1 font-dm-sans text-white">
@@ -71,17 +71,17 @@ export default async function DagticketsPage({ searchParams }: Props) {
 
           {/* Navigatie beheer */}
           <div className="flex gap-4 mb-10">
-            <Button as="link" href="/beheer/dagtickets" variant="primary" size="sm">
+            <Button as="link" href="/beheer/dagtickets" variant="sienna" size="sm">
               Dagtickets
             </Button>
-            <Button as="link" href="/beheer/leden" variant="ghost" size="sm">
+            <Button as="link" href="/beheer/leden" variant="ghost-sienna" size="sm">
               Leden
             </Button>
           </div>
 
           {/* Datumnavigatie */}
           <div className="flex items-center justify-between mb-8">
-            <Button as="link" href={`/beheer/dagtickets?datum=${prevDay}`} variant="ghost" size="sm">
+            <Button as="link" href={`/beheer/dagtickets?datum=${prevDay}`} variant="ghost-sienna" size="sm">
               ← Vorige dag
             </Button>
             <div className="text-center">
@@ -94,7 +94,7 @@ export default async function DagticketsPage({ searchParams }: Props) {
                 </Button>
               )}
             </div>
-            <Button as="link" href={`/beheer/dagtickets?datum=${nextDay}`} variant="ghost" size="sm">
+            <Button as="link" href={`/beheer/dagtickets?datum=${nextDay}`} variant="ghost-sienna" size="sm">
               Volgende dag →
             </Button>
           </div>

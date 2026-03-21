@@ -79,7 +79,7 @@ export default async function LidDetailPage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-forest w-full pt-[69px]">
+      <section className="bg-sienna w-full pt-[69px]">
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 py-12 md:py-16">
           <p className="text-white/60 text-body2 font-dm-sans mb-1">
             <Link href="/beheer/leden" className="hover:text-white transition-colors">Leden</Link>
@@ -100,7 +100,7 @@ export default async function LidDetailPage({ params }: Props) {
         <div className="max-w-[700px] mx-auto px-6 md:px-10 py-16 md:py-24">
 
           <div className="flex justify-between items-center mb-10">
-            <Button as="link" href="/beheer/leden" variant="ghost" size="sm">
+            <Button as="link" href="/beheer/leden" variant="ghost-sienna" size="sm">
               ← Terug naar leden
             </Button>
           </div>

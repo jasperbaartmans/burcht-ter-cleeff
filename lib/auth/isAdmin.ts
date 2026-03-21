@@ -1,15 +1,21 @@
 import { createClient } from '@/lib/supabase/server'
 
 /**
- * Controleert of de ingelogde gebruiker de beheerder is.
- * Vergelijkt het e-mailadres met ADMIN_EMAIL uit de omgevingsvariabelen.
+ * Controleert of de ingelogde gebruiker een beheerder is.
+ * Vergelijkt het e-mailadres met ADMIN_EMAILS (kommagescheiden lijst).
  */
 export async function getAdminUser() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) return null
-  if (user.email !== process.env.ADMIN_EMAIL) return null
+
+  const adminEmails = (process.env.ADMIN_EMAILS ?? '')
+    .split(',')
+    .map(e => e.trim().toLowerCase())
+    .filter(Boolean)
+
+  if (!adminEmails.includes(user.email?.toLowerCase() ?? '')) return null
 
   return user
 }
