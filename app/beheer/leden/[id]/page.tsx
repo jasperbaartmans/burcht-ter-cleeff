@@ -1,6 +1,7 @@
 import { redirect, notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import { updateLid } from './actions'
 
@@ -82,7 +83,7 @@ export default async function LidDetailPage({ params }: Props) {
       <section className="bg-forest w-full pt-[69px]">
         <div className="max-w-[1360px] mx-auto px-6 md:px-10 py-12 md:py-16">
           <p className="text-white/60 text-body2 font-dm-sans mb-1">
-            <a href="/beheer/leden" className="hover:text-white transition-colors">Leden</a>
+            <Link href="/beheer/leden" className="hover:text-white transition-colors">Leden</Link>
             {' '}/ {lid.lidnummer}
           </p>
           <div className="flex items-end gap-4">
