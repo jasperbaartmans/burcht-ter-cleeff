@@ -71,6 +71,16 @@ export default async function DagticketsPage({ searchParams }: Props) {
       <div className="bg-white min-h-screen">
         <div className="max-w-[800px] mx-auto px-6 md:px-10 py-16 md:py-24">
 
+          {/* Navigatie beheer */}
+          <div className="flex gap-4 mb-10">
+            <Button as="link" href="/beheer/dagtickets" variant="primary" size="sm">
+              Dagtickets
+            </Button>
+            <Button as="link" href="/beheer/leden" variant="ghost" size="sm">
+              Leden
+            </Button>
+          </div>
+
           {/* Datumnavigatie */}
           <div className="flex items-center justify-between mb-8">
             <Button as="link" href={`/beheer/dagtickets?datum=${prevDay}`} variant="ghost" size="sm">
