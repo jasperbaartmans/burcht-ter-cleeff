@@ -55,7 +55,7 @@ interface Props {
 
 export default async function LidDetailPage({ params }: Props) {
   const user = await getAdminUser()
-  if (!user) redirect('/inloggen')
+  if (!user) redirect('/beheer')
 
   const { id } = await params
 
@@ -124,7 +124,7 @@ export default async function LidDetailPage({ params }: Props) {
                   type="text"
                   defaultValue={lid.naam}
                   required
-                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                 />
               </div>
 
@@ -136,7 +136,7 @@ export default async function LidDetailPage({ params }: Props) {
                   type="email"
                   defaultValue={lid.email}
                   required
-                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                 />
               </div>
 
@@ -147,7 +147,7 @@ export default async function LidDetailPage({ params }: Props) {
                   name="telefoon"
                   type="text"
                   defaultValue={lid.telefoon}
-                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                 />
               </div>
             </fieldset>
@@ -163,7 +163,7 @@ export default async function LidDetailPage({ params }: Props) {
                   name="adres"
                   type="text"
                   defaultValue={lid.adres}
-                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                 />
               </div>
 
@@ -175,7 +175,7 @@ export default async function LidDetailPage({ params }: Props) {
                     name="postcode"
                     type="text"
                     defaultValue={lid.postcode}
-                    className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                    className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                   />
                 </div>
                 <div>
@@ -185,7 +185,7 @@ export default async function LidDetailPage({ params }: Props) {
                     name="plaats"
                     type="text"
                     defaultValue={lid.plaats}
-                    className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                    className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                   />
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default async function LidDetailPage({ params }: Props) {
                   id="betaalwijze"
                   name="betaalwijze"
                   defaultValue={lid.betaalwijze}
-                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                 >
                   {betaalwijzen.map(bw => (
                     <option key={bw} value={bw}>{bw}</option>
@@ -217,7 +217,7 @@ export default async function LidDetailPage({ params }: Props) {
                   type="date"
                   defaultValue={lid.geldig_tot}
                   required
-                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors"
+                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors"
                 />
                 {status === 'verlopen' && (
                   <p className="mt-2 text-body3 font-dm-sans text-sienna">
@@ -239,7 +239,7 @@ export default async function LidDetailPage({ params }: Props) {
                   rows={3}
                   defaultValue={lid.notitie ?? ''}
                   placeholder="Optionele notitie voor intern gebruik..."
-                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-forest transition-colors resize-none"
+                  className="w-full text-body2 font-dm-sans text-black bg-white border border-grey rounded-xl px-4 py-3 focus:outline-none focus:border-sienna transition-colors resize-none"
                 />
               </div>
             </fieldset>

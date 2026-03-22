@@ -43,7 +43,7 @@ const statusClasses: Record<string, string> = {
 
 export default async function LedenPage() {
   const user = await getAdminUser()
-  if (!user) redirect('/inloggen')
+  if (!user) redirect('/beheer')
 
   const adminSupabase = createAdminClient()
   const { data: leden } = await adminSupabase
@@ -85,11 +85,11 @@ export default async function LedenPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             <div className="rounded-2xl border border-grey p-6">
               <p className="text-body3 font-dm-sans text-black/50 mb-1">Totaal leden</p>
-              <p className="text-h3 font-dm-sans text-forest">{lijst.length}</p>
+              <p className="text-h3 font-dm-sans text-sienna">{lijst.length}</p>
             </div>
             <div className="rounded-2xl border border-grey p-6">
               <p className="text-body3 font-dm-sans text-black/50 mb-1">Actief</p>
-              <p className="text-h3 font-dm-sans text-forest">{actief}</p>
+              <p className="text-h3 font-dm-sans text-sienna">{actief}</p>
             </div>
             <div className="rounded-2xl border border-grey p-6">
               <p className="text-body3 font-dm-sans text-black/50 mb-1">Verloopt binnenkort</p>
@@ -138,7 +138,7 @@ export default async function LedenPage() {
                     </span>
                     <Link
                       href={`/beheer/leden/${lid.id}`}
-                      className="text-body3 font-dm-sans text-forest hover:underline whitespace-nowrap"
+                      className="text-body3 font-dm-sans text-sienna hover:underline whitespace-nowrap"
                     >
                       Bekijk →
                     </Link>

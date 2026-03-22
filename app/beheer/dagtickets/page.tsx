@@ -32,7 +32,7 @@ function formatDateLabel(dateStr: string) {
 
 export default async function DagticketsPage({ searchParams }: Props) {
   const user = await getAdminUser()
-  if (!user) redirect('/inloggen')
+  if (!user) redirect('/beheer')
 
   const params = await searchParams
   const today = new Date().toISOString().split('T')[0]
@@ -103,11 +103,11 @@ export default async function DagticketsPage({ searchParams }: Props) {
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div className="rounded-2xl border border-grey p-6">
               <p className="text-body3 font-dm-sans text-black/50 mb-1">Tickets verkocht</p>
-              <p className="text-h3 font-dm-sans text-forest">{count}</p>
+              <p className="text-h3 font-dm-sans text-sienna">{count}</p>
             </div>
             <div className="rounded-2xl border border-grey p-6">
               <p className="text-body3 font-dm-sans text-black/50 mb-1">Totaal personen</p>
-              <p className="text-h3 font-dm-sans text-forest">{totalPersons}</p>
+              <p className="text-h3 font-dm-sans text-sienna">{totalPersons}</p>
             </div>
           </div>
 
@@ -137,7 +137,7 @@ export default async function DagticketsPage({ searchParams }: Props) {
                   </div>
                   <a
                     href={`/scan/${ticket.id}`}
-                    className="text-body3 font-dm-sans text-forest hover:underline"
+                    className="text-body3 font-dm-sans text-sienna hover:underline"
                   >
                     Scan →
                   </a>

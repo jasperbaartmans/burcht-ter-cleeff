@@ -2,16 +2,15 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import Button from '@/components/ui/Button'
 
 const inputClass =
-  'w-full bg-white rounded-xl px-4 py-3 text-body2 font-dm-sans text-black border border-grey focus:outline-none focus:border-forest transition-colors'
+  'w-full bg-white rounded-xl px-4 py-3 text-body2 font-dm-sans text-black border border-grey focus:outline-none focus:border-sienna transition-colors'
 
-const labelClass = 'text-body3 font-dm-sans text-forest mb-1 block'
+const labelClass = 'text-body3 font-dm-sans text-sienna mb-1 block'
 
-export default function InloggenPage() {
+export default function BeheerLoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,20 +23,32 @@ export default function InloggenPage() {
     setError(null)
 
     const supabase = createClient()
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
       setError('E-mailadres of wachtwoord onjuist.')
       setLoading(false)
-    } else {
-      router.push('/mijn-omgeving')
-      router.refresh()
+      return
     }
+
+    const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase())
+    const isAdmin = adminEmails.includes(data.user?.email?.toLowerCase() ?? '')
+
+    if (!isAdmin) {
+      await supabase.auth.signOut()
+      setError('Je hebt geen toegang tot het beheerderspaneel.')
+      setLoading(false)
+      return
+    }
+
+    router.push('/beheer/dagtickets')
+    router.refresh()
   }
 
   return (
     <div className="min-h-screen bg-ivory flex items-center justify-center pt-[69px]">
       <div className="w-full max-w-sm px-6 py-10">
+        <p className="text-body3 font-dm-sans text-black/50 mb-2">Beheer</p>
         <h1 className="text-h2 font-dm-sans text-black mb-8">Inloggen</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div>
@@ -63,16 +74,10 @@ export default function InloggenPage() {
             />
           </div>
           {error && <p className="text-body3 font-dm-sans text-sienna">{error}</p>}
-          <Button type="submit" variant="primary" size="md" disabled={loading} className="w-full justify-center">
+          <Button type="submit" variant="sienna" size="md" disabled={loading} className="w-full justify-center">
             {loading ? 'Bezig...' : 'Inloggen'}
           </Button>
         </form>
-        <p className="mt-6 text-body3 font-dm-sans text-black">
-          Nog geen account?{' '}
-          <Link href="/registreren" className="text-forest hover:underline">
-            Registreren
-          </Link>
-        </p>
       </div>
     </div>
   )
