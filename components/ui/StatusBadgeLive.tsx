@@ -3,20 +3,31 @@
 import { useEffect, useState } from 'react'
 import StatusBadge from './StatusBadge'
 
-function getStatus(): { status: 'open' | 'gesloten'; label: string } {
+type BadgeState = {
+  status: 'open' | 'gesloten' | 'verhuurd'
+  label: string
+}
+
+function getStatus(isRentalDay: boolean): BadgeState {
   const now = new Date()
-  const h = now.getHours()
-  const m = now.getMinutes()
-  const totalMinutes = h * 60 + m
+  const totalMinutes = now.getHours() * 60 + now.getMinutes()
 
-  const openFrom = 9 * 60   // 09:00
-  const openUntil = 18 * 60 // 18:00
+  const rentalStart = 9 * 60   // 09:00
+  const rentalEnd   = 13 * 60  // 13:00
+  const openUntil   = 18 * 60  // 18:00
 
-  if (totalMinutes >= openFrom && totalMinutes < openUntil) {
+  if (isRentalDay && totalMinutes >= rentalStart && totalMinutes < rentalEnd) {
+    return { status: 'verhuurd', label: 'Verhuurd · 09:00–13:00u' }
+  }
+
+  if (totalMinutes >= rentalStart && totalMinutes < openUntil) {
     return { status: 'open', label: 'Open tot 18:00u' }
   }
 
-  if (totalMinutes < openFrom) {
+  if (totalMinutes < rentalStart) {
+    if (isRentalDay) {
+      return { status: 'gesloten', label: 'Gesloten · verhuurd 09:00–13:00u' }
+    }
     return { status: 'gesloten', label: 'Gesloten · open om 09:00u' }
   }
 
@@ -24,13 +35,23 @@ function getStatus(): { status: 'open' | 'gesloten'; label: string } {
 }
 
 export default function StatusBadgeLive({ className }: { className?: string }) {
-  const [badge, setBadge] = useState<{ status: 'open' | 'gesloten'; label: string } | null>(null)
+  const [badge, setBadge] = useState<BadgeState | null>(null)
 
   useEffect(() => {
-    setBadge(getStatus())
+    let interval: ReturnType<typeof setInterval>
 
-    // Herbereken elke minuut
-    const interval = setInterval(() => setBadge(getStatus()), 60_000)
+    fetch('/api/status')
+      .then((r) => r.json())
+      .then(({ isRentalDay }: { isRentalDay: boolean }) => {
+        setBadge(getStatus(isRentalDay))
+        interval = setInterval(() => setBadge(getStatus(isRentalDay)), 60_000)
+      })
+      .catch(() => {
+        // Fallback op tijdgebaseerde status bij netwerk fout
+        setBadge(getStatus(false))
+        interval = setInterval(() => setBadge(getStatus(false)), 60_000)
+      })
+
     return () => clearInterval(interval)
   }, [])
 
