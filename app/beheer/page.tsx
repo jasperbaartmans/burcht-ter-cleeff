@@ -23,7 +23,7 @@ export default function BeheerLoginPage() {
     setError(null)
 
     const supabase = createClient()
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
       setError('E-mailadres of wachtwoord onjuist.')
