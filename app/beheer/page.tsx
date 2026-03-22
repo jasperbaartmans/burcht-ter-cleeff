@@ -31,10 +31,8 @@ export default function BeheerLoginPage() {
       return
     }
 
-    const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS ?? '').split(',').map(e => e.trim().toLowerCase())
-    const isAdmin = adminEmails.includes(data.user?.email?.toLowerCase() ?? '')
-
-    if (!isAdmin) {
+    const res = await fetch('/api/beheer/check-admin')
+    if (!res.ok) {
       await supabase.auth.signOut()
       setError('Je hebt geen toegang tot het beheerderspaneel.')
       setLoading(false)
