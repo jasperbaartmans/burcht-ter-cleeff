@@ -72,9 +72,12 @@ export default async function LedenPage() {
         <div className="max-w-[1000px] mx-auto px-6 md:px-10 py-16 md:py-24">
 
           {/* Navigatie beheer */}
-          <div className="flex gap-4 mb-10">
+          <div className="flex gap-4 mb-10 flex-wrap">
             <Button as="link" href="/beheer/dagtickets" variant="ghost-sienna" size="sm">
               Dagtickets
+            </Button>
+            <Button as="link" href="/beheer/verhuur" variant="ghost-sienna" size="sm">
+              Verhuur
             </Button>
             <Button as="link" href="/beheer/leden" variant="sienna" size="sm">
               Leden
