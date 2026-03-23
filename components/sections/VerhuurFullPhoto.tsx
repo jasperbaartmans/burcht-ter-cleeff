@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function VerhuurFullPhoto() {
   return (
-    <section className="bg-ivory px-6 md:px-12 py-0 pb-16 md:pb-24">
+    <section className="bg-ivory px-6 md:px-10 py-0 pb-16 md:pb-24">
       <div className="max-w-[1360px] mx-auto">
         <div className="relative w-full aspect-[4/3] md:aspect-[16/7] rounded-3xl overflow-hidden bg-grey">
           <Image

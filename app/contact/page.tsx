@@ -1,6 +1,6 @@
 import { client } from '@/lib/sanity/client'
 import { contactPageQuery, type ContactPageData } from '@/lib/sanity/queries'
-import ContactHero from '@/components/sections/ContactHero'
+import PageHero from '@/components/sections/PageHero'
 import ContactIntro from '@/components/sections/ContactIntro'
 import ContactContent from '@/components/sections/ContactContent'
 
@@ -20,7 +20,7 @@ export default async function ContactPage() {
 
   return (
     <>
-      <ContactHero data={data?.hero} />
+      <PageHero image="/images/feature-family.jpg" alt="Contact met Speeltuin Burcht ter Cleeff" defaultH1="Contact" data={data?.hero} />
       <ContactIntro data={data?.intro} />
       <ContactContent />
     </>

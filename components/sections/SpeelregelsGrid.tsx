@@ -34,10 +34,10 @@ function RuleCard({ titel, tekst, variant, icon }: RuleCardProps) {
   return (
     <div className={`${bg} rounded-3xl p-10 flex flex-col gap-20`}>
       <div className="flex items-start justify-between gap-4">
-        <p className={`font-dm-sans ${titleColor}`} style={{ fontSize: '26px', lineHeight: '30px', letterSpacing: '-0.26px', fontWeight: '400' }}>{titel}</p>
+        <h3 className={`text-h4 font-dm-sans font-normal ${titleColor}`}>{titel}</h3>
         <span className="shrink-0">{icon}</span>
       </div>
-      <p className={`font-dm-sans font-normal ${textColor}`} style={{ fontSize: '20px', lineHeight: '28px' }}>{tekst}</p>
+      <p className={`text-body1 font-dm-sans font-normal ${textColor}`}>{tekst}</p>
     </div>
   )
 }
@@ -114,7 +114,7 @@ export default function SpeelregelsGrid({ data }: Props) {
   const col3 = all.slice(third * 2)
 
   return (
-    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-[1360px] mx-auto">
 
         <h2 className="text-h3 font-dm-sans text-black text-center mb-12">

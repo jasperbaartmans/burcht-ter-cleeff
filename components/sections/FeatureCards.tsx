@@ -32,8 +32,8 @@ export default function FeatureCards({ data }: Props) {
   const cards = data?.cards?.length ? data.cards : fallbackCards
 
   return (
-    <section className="bg-white py-16 md:py-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-10">
+      <div className="max-w-[1360px] mx-auto">
         <h2 className="text-h2 font-dm-sans text-black mb-10 md:mb-14 max-w-2xl">
           {h2}
         </h2>
@@ -56,7 +56,7 @@ export default function FeatureCards({ data }: Props) {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <p className="text-sub1 font-dm-sans font-medium text-forest">{card.label}</p>
+                  <p className="text-sub1 font-dm-sans text-forest">{card.label}</p>
                   <p className="text-body2 font-dm-sans text-black">{card.body}</p>
                 </div>
               </article>

@@ -1,99 +1,107 @@
 'use client'
 
 import { useState } from 'react'
-import Button from '@/components/ui/Button'
+import { useRouter } from 'next/navigation'
+
+// Vul hier je vaste Tikkie-links in (Tikkie app → Tikkie aanmaken → bewaar Tikkie).
+// Laat een regel leeg ('') als je die nog niet hebt aangemaakt.
+const TIKKIE_LINKS: Record<number, string> = {
+  2:  'https://tikkie.me/pay/k8g247jcjtddpmvsepja',
+  3:  'https://tikkie.me/pay/38u23ju2kptqohqbt262',
+  4:  'https://tikkie.me/pay/3n4fg8anjgrin4ds8f20',
+
+}
 
 const PRICE_PER_PERSON = 0.60
+const VISITORS = [2, 3, 4]
 
-const VISITORS = Array.from({ length: 12 }, (_, i) => i + 2) // 2 t/m 13
+function formatPrice(n: number) {
+  return '€' + (n * PRICE_PER_PERSON).toFixed(2).replace('.', ',')
+}
 
 export default function DagticketForm() {
-  const [selected, setSelected] = useState(2)
-  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+  const [loading, setLoading] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const total = (selected * PRICE_PER_PERSON).toFixed(2).replace('.', ',')
+  async function handleSelect(persons: number) {
+    if (loading !== null) return
+    const tikkieUrl = TIKKIE_LINKS[persons]
+    if (!tikkieUrl) {
+      setError('Deze optie is nog niet beschikbaar. Kies een ander aantal.')
+      return
+    }
 
-  async function handleBetalen() {
-    setLoading(true)
+    setLoading(persons)
     setError(null)
 
     try {
-      const res = await fetch('/api/tikkie', {
+      const res = await fetch('/api/dagticket', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ visitors: selected }),
+        body: JSON.stringify({ persons }),
       })
 
       const data = await res.json()
 
       if (!res.ok) {
-        setError(data.error ?? 'Er ging iets mis, probeer het opnieuw.')
+        setError(data.error ?? 'Er ging iets mis. Probeer het opnieuw.')
+        setLoading(null)
         return
       }
 
-      window.location.href = data.paymentUrl
+      // Open Tikkie in nieuw tabblad, navigeer zelf naar de bedankt-pagina met QR
+      window.open(tikkieUrl, '_blank', 'noopener,noreferrer')
+      router.push(`/bedankt?ticket=${data.ticketId}`)
     } catch {
-      setError('Er ging iets mis, probeer het opnieuw.')
-    } finally {
-      setLoading(false)
+      setError('Er ging iets mis. Probeer het opnieuw.')
+      setLoading(null)
     }
   }
 
   return (
     <div className="max-w-[560px] mx-auto px-6 py-12 md:py-24">
 
-      {/* Koptekst — mobiel: "Dagkaartjes", desktop: volledige zin */}
       <h1 className="text-h3 font-dm-sans text-forest text-center mb-3">
         <span className="md:hidden">Dagkaartjes</span>
         <span className="hidden md:inline">Koop nu je dagkaartjes.</span>
       </h1>
       <p className="text-body2 font-dm-sans text-black text-center mb-10 md:mb-12">
-        Selecteer het aantal bezoekers en klik op &lsquo;betalen&rsquo;.
+        Kies het aantal bezoekers en je wordt direct doorgestuurd naar Tikkie.
       </p>
 
-      {/* Aantal bezoekers grid */}
-      <div className="rounded-2xl border border-grey overflow-hidden md:rounded-none md:border-0 md:overflow-visible w-full mb-6">
-        <div className="grid grid-cols-3 md:border-l md:border-t md:border-grey md:w-fit md:mx-auto">
-          {VISITORS.map((n) => (
-            <button
-              key={n}
-              onClick={() => setSelected(n)}
-              className={`h-16 md:w-[88px] md:h-[56px] text-sub2 font-dm-sans border-b border-r border-grey transition-colors ${
-                selected === n
-                  ? 'bg-forest text-white'
-                  : 'bg-white text-forest hover:bg-forest/5'
-              }`}
-            >
-              {n}
-            </button>
-          ))}
-        </div>
+      <div className="rounded-2xl border border-grey overflow-hidden">
+        {VISITORS.map((n, i) => (
+          <button
+            key={n}
+            onClick={() => handleSelect(n)}
+            disabled={loading !== null}
+            className={`w-full flex items-center justify-between px-6 py-4 hover:bg-forest/5 transition-colors group disabled:opacity-50 disabled:cursor-wait ${
+              i < VISITORS.length - 1 ? 'border-b border-grey' : ''
+            }`}
+          >
+            <span className="text-body2 font-dm-sans text-black">
+              {n} personen
+            </span>
+            <div className="flex items-center gap-4">
+              <span className="text-sub1 font-dm-sans text-forest font-medium">
+                {formatPrice(n)}
+              </span>
+              {loading === n ? (
+                <span className="w-5 h-5 rounded-full border-2 border-forest/30 border-t-forest animate-spin" />
+              ) : (
+                <span className="text-forest/50 group-hover:text-forest transition-colors text-lg leading-none">
+                  →
+                </span>
+              )}
+            </div>
+          </button>
+        ))}
       </div>
 
-      {/* Totaal */}
-      <div className="bg-ivory border border-grey rounded-lg px-6 py-4 flex items-center justify-between mb-8">
-        <span className="text-body2 font-dm-sans text-black">Totaal</span>
-        <span className="text-sub1 font-dm-sans text-forest font-medium">{total}€</span>
-      </div>
-
-      {/* Foutmelding */}
       {error && (
-        <p className="text-red-600 text-body2 font-dm-sans text-center mb-4">{error}</p>
+        <p className="mt-4 text-center text-body3 font-dm-sans text-red-600">{error}</p>
       )}
-
-      {/* Betalen */}
-      <div className="flex justify-center">
-        <Button
-          variant="primary"
-          size="lg"
-          className="w-full md:w-auto"
-          onClick={handleBetalen}
-          disabled={loading}
-        >
-          {loading ? 'Bezig…' : 'Betalen'}
-        </Button>
-      </div>
 
     </div>
   )

@@ -6,6 +6,8 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useUser } from '@/components/providers/UserProvider'
 import { createClient } from '@/lib/supabase/client'
 import LogoIcon from '@/components/ui/LogoIcon'
+import { ui, t, type Locale } from '@/lib/i18n/translations'
+
 function ArrowRightIcon({ size }: { size: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -28,18 +30,27 @@ function XIcon({ size }: { size: number }) {
   )
 }
 
-const navLinks = [
-  { href: '/', label: 'Ontdek' },
-  { href: '/verhuur', label: 'Verhuur' },
-  { href: '/speelregels', label: 'Speelregels' },
-  { href: '/contact', label: 'Contact' },
-]
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   const { user } = useUser()
+
+  const isEnglish = pathname.startsWith('/en')
+  const locale: Locale = isEnglish ? 'en' : 'nl'
+  const prefix = isEnglish ? '/en' : ''
+
+  // Language toggle: strip or add /en prefix
+  const toggleHref = isEnglish
+    ? (pathname === '/en' ? '/' : pathname.slice(3))
+    : (pathname === '/' ? '/en' : `/en${pathname}`)
+
+  const navLinks = [
+    { href: isEnglish ? '/en' : '/', label: t(ui.nav.discover, locale) },
+    { href: `${prefix}/verhuur`, label: t(ui.nav.rental, locale) },
+    { href: `${prefix}/speelregels`, label: t(ui.nav.rules, locale) },
+    { href: `${prefix}/contact`, label: t(ui.nav.contact, locale) },
+  ]
 
   const displayName = user
     ? [user.user_metadata?.firstName, user.user_metadata?.lastName].filter(Boolean).join(' ') || user.email
@@ -52,12 +63,25 @@ export default function Navbar() {
     router.refresh()
   }
 
+  // Language switcher pill
+  const LangSwitcher = ({ className }: { className?: string }) => (
+    <Link
+      href={toggleHref}
+      className={`flex items-center gap-1 rounded-full border border-white/30 px-2.5 py-1 text-body3 font-dm-sans text-white hover:border-white/70 transition-colors ${className ?? ''}`}
+      aria-label={isEnglish ? 'Switch to Dutch' : 'Switch to English'}
+    >
+      <span className={isEnglish ? 'opacity-40' : 'opacity-100 font-medium'}>NL</span>
+      <span className="opacity-30">/</span>
+      <span className={isEnglish ? 'opacity-100 font-medium' : 'opacity-40'}>EN</span>
+    </Link>
+  )
+
   return (
     <nav className="absolute top-0 left-0 right-0 z-50">
       {/* Mobiele balk — zwart afgerond pill */}
       <div className="md:hidden px-1 pt-1">
         <div className="bg-black rounded-2xl h-16 flex items-center justify-between px-4">
-          <Link href="/" className="flex items-center gap-2.5">
+          <Link href={isEnglish ? '/en' : '/'} className="flex items-center gap-2.5">
             <LogoIcon className="text-white" />
             <span className="text-base font-dm-sans font-medium tracking-[-0.48px] text-white uppercase leading-none">
               Burcht ter Cleeff
@@ -66,7 +90,7 @@ export default function Navbar() {
           <button
             className="flex items-center justify-center w-8 h-8"
             onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label={menuOpen ? 'Menu sluiten' : 'Menu openen'}
+            aria-label={menuOpen ? t(ui.nav.closeMenu, locale) : t(ui.nav.openMenu, locale)}
             aria-expanded={menuOpen}
           >
             {menuOpen ? (
@@ -86,7 +110,7 @@ export default function Navbar() {
       <div className="hidden md:block">
         <div className="max-w-[1360px] mx-auto px-10 h-[69px] flex items-stretch relative">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0 self-center">
+        <Link href={isEnglish ? '/en' : '/'} className="flex items-center gap-2.5 shrink-0 self-center">
           <LogoIcon className="text-white" />
           <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
             Burcht ter Cleeff
@@ -113,8 +137,9 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Inloggen / Account */}
+        {/* Taalschakelaar + Inloggen / Account */}
         <div className="hidden md:flex items-center ml-auto self-center gap-4">
+          <LangSwitcher />
           {user ? (
             <>
               <Link
@@ -130,18 +155,18 @@ export default function Navbar() {
                 onClick={handleSignOut}
                 className="text-body3 font-dm-sans text-white/50 hover:text-white transition-colors"
               >
-                Uitloggen
+                {t(ui.nav.logout, locale)}
               </button>
             </>
           ) : (
             <Link
-              href="/inloggen"
+              href={`${prefix}/inloggen`}
               className="flex items-center gap-2 text-white hover:text-white/80 transition-colors group [text-shadow:0px_1px_3px_rgba(0,0,0,0.5)]"
             >
               <span className="w-8 h-8 rounded-2xl bg-white flex items-center justify-center shrink-0 text-forest group-hover:bg-white/90 transition-colors">
                 <ArrowRightIcon size={14} />
               </span>
-              <span className="text-body2 font-dm-sans">Inloggen</span>
+              <span className="text-body2 font-dm-sans">{t(ui.nav.login, locale)}</span>
             </Link>
           )}
         </div>
@@ -158,11 +183,11 @@ export default function Navbar() {
           {/* Donkere overlay — klik om te sluiten */}
           <div className="absolute inset-0 bg-black/70" onClick={() => setMenuOpen(false)} />
 
-          {/* Sienna kaart — start net onder de mobiele navbar (64px + 4px padding-top) */}
+          {/* Sienna kaart */}
           <div className="absolute top-[68px] left-0 right-2 bg-sienna rounded-2xl flex flex-col">
             {/* Top bar */}
             <div className="flex items-center justify-between px-6 h-[69px] shrink-0">
-              <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
+              <Link href={isEnglish ? '/en' : '/'} onClick={() => setMenuOpen(false)} className="flex items-center gap-2.5">
                 <LogoIcon className="text-white" />
                 <span className="text-[20px] font-dm-sans font-medium tracking-[-0.6px] text-white uppercase leading-none">
                   Burcht ter Cleeff
@@ -170,7 +195,7 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={() => setMenuOpen(false)}
-                aria-label="Menu sluiten"
+                aria-label={t(ui.nav.closeMenu, locale)}
                 className="flex items-center justify-center w-8 h-8"
               >
                 <XIcon size={24} />
@@ -212,23 +237,23 @@ export default function Navbar() {
                     onClick={() => { setMenuOpen(false); handleSignOut() }}
                     className="flex items-center gap-3 text-white/60 text-body2 font-dm-sans"
                   >
-                    Uitloggen
+                    {t(ui.nav.logout, locale)}
                   </button>
                 </>
               ) : (
                 <Link
-                  href="/inloggen"
+                  href={`${prefix}/inloggen`}
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center gap-3 text-white text-body2 font-dm-sans"
                 >
                   <span className="w-8 h-8 rounded-2xl bg-caramel flex items-center justify-center shrink-0 text-white">
                     <ArrowRightIcon size={16} />
                   </span>
-                  Inloggen
+                  {t(ui.nav.login, locale)}
                 </Link>
               )}
               <Link
-                href="/dagticket"
+                href={`${prefix}/dagticket`}
                 onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-3 text-white text-body2 font-dm-sans"
               >
@@ -237,8 +262,13 @@ export default function Navbar() {
                     <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                Koop een kaartje
+                {t(ui.nav.buyTicket, locale)}
               </Link>
+
+              {/* Taalschakelaar */}
+              <div className="pt-2 border-t border-white/20">
+                <LangSwitcher className="w-fit" />
+              </div>
             </div>
           </div>
         </div>

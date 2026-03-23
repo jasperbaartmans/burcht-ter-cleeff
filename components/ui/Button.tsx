@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 import Link from 'next/link'
 
-type Variant = 'primary' | 'ghost' | 'arrow' | 'text-arrow' | 'caramel' | 'sienna'
+type Variant = 'primary' | 'ghost' | 'ghost-sienna' | 'arrow' | 'text-arrow' | 'caramel' | 'sienna'
 type Size = 'sm' | 'md' | 'lg'
 
 interface ButtonAsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -43,6 +43,8 @@ const variantClasses: Record<Variant, string> = {
     'bg-forest text-white hover:bg-[#6a8822] active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
   ghost:
     'border border-forest text-forest hover:bg-forest hover:text-white active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
+  'ghost-sienna':
+    'border border-sienna text-sienna hover:bg-sienna hover:text-white active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
   caramel:
     'bg-caramel text-white hover:bg-[#9a6820] active:scale-95 rounded-full font-dm-sans font-medium transition-colors',
   sienna:

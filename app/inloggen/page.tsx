@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import Button from '@/components/ui/Button'
 
 const inputClass =
   'w-full bg-white rounded-xl px-4 py-3 text-body2 font-dm-sans text-black border border-grey focus:outline-none focus:border-forest transition-colors'
@@ -61,14 +62,10 @@ export default function InloggenPage() {
               className={inputClass}
             />
           </div>
-          {error && <p className="text-body3 font-dm-sans text-red-600">{error}</p>}
-          <button
-            type="submit"
-            disabled={loading}
-            className="bg-forest text-white text-body2 font-dm-sans rounded-xl px-4 py-3 hover:bg-forest/90 transition-colors disabled:opacity-50"
-          >
+          {error && <p className="text-body3 font-dm-sans text-sienna">{error}</p>}
+          <Button type="submit" variant="primary" size="md" disabled={loading} className="w-full justify-center">
             {loading ? 'Bezig...' : 'Inloggen'}
-          </button>
+          </Button>
         </form>
         <p className="mt-6 text-body3 font-dm-sans text-black">
           Nog geen account?{' '}

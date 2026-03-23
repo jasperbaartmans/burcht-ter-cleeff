@@ -1,5 +1,3 @@
-import { SymbolBadge } from '@/components/ui/symbols'
-
 interface Props {
   data?: {
     body1?: string
@@ -8,28 +6,20 @@ interface Props {
 }
 
 export default function VerhuurIntro({ data }: Props) {
-  const body1 = data?.body1 ?? 'Stel je een zonovergoten ochtend voor waarin je kinderen zich uitleven in een prachtige speeltuin, omringd door het geluid van lachende vrienden en vrolijke vlaggetjes. Zo ziet jullie feestje er misschien binnenkort wel uit.'
-  const body2 = data?.body2 ?? 'Onze speeltuin biedt de perfecte locatie voor een onvergetelijk kinderfeestje, waar kinderen zich kunnen verliezen in eindeloze avonturen. Als je jaarlid bent kun je de speeltuin huren, waarbij je exclusief gebruik maakt van de speeltuin tot 13:00 uur.'
+  const body1 = data?.body1 ?? 'Burcht ter Cleeff is te huur voor groepen, scholen, verenigingen en particulieren. De speeltuin biedt een unieke omgeving voor kinderfeestjes, schoolreisjes en andere activiteiten.'
+  const body2 = data?.body2 ?? 'Met ruimte voor groepen tot 150 personen en een prachtige ligging in de Schoterveense polder is dit de perfecte locatie voor jouw evenement. Neem contact op voor beschikbaarheid en tarieven.'
 
   return (
-    <section className="bg-ivory py-16 md:py-24 px-6 md:px-12 border-t border-grey">
-      <div className="max-w-[1360px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+    <section className="bg-ivory py-16 md:py-24 px-6 md:px-10 border-t border-grey">
+      <div className="max-w-[1360px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-x-8">
 
-        {/* Links: grote H2 met inline iconen */}
-        <div>
-          <h2 className="text-[32px] leading-[38px] tracking-[-0.03em] md:text-h2 font-dm-sans text-black">
-            Brengen jullie de vlaggetjes en het lekkers mee? Dan zorgen onze basisvoorzieningen
-            {' '}<SymbolBadge name="castle" size={28} />{' '}<SymbolBadge name="lamp" size={28} />{' '}<SymbolBadge name="picnicTable" size={28} />{' '}
-            ervoor dat het je aan niets ontbreekt.
-          </h2>
-        </div>
+        <h2 className="col-span-12 md:col-span-10 text-h2 font-dm-sans text-black leading-tight">
+          Brengen jullie de vlaggetjes en het lekkers mee? Dan zorgen onze basisvoorzieningen ervoor dat het je aan niets ontbreekt.
+        </h2>
 
-        {/* Rechts: body tekst */}
-        <div className="flex flex-col gap-5 md:pt-2">
+        <div className="col-span-12 md:col-start-7 md:col-span-6 flex flex-col gap-3 mt-8 md:mt-12">
+          <p className="text-body1 font-dm-sans text-black">{body1}</p>
           <p className="text-body1 font-dm-sans text-black">
-            {body1}
-          </p>
-          <p className="text-body2 font-dm-sans text-black">
             {body2}{' '}
             <a href="/speelregels" className="underline hover:text-black/80 transition-colors">
               Kijk hier voor het complete huurreglement.

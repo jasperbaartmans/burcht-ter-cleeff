@@ -11,6 +11,7 @@ export const contactPage = defineType({
       type: 'object',
       fields: [
         defineField({ name: 'h1', title: 'Koptekst (H1)', type: 'string' }),
+        defineField({ name: 'h1En', title: 'Koptekst (H1) — Engels', type: 'string', description: 'Automatisch ingevuld via vertaling' }),
       ],
     }),
 
@@ -20,6 +21,7 @@ export const contactPage = defineType({
       type: 'object',
       fields: [
         defineField({ name: 'tekst', title: 'Tekst', type: 'text', rows: 3 }),
+        defineField({ name: 'tekstEn', title: 'Tekst — Engels', type: 'text', rows: 3, description: 'Automatisch ingevuld via vertaling' }),
       ],
     }),
   ],

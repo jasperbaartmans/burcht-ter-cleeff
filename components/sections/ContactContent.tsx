@@ -23,7 +23,7 @@ export default function ContactContent() {
     'w-full bg-white rounded-xl px-4 py-3 text-body2 font-dm-sans text-black placeholder:text-black/30 border border-transparent focus:outline-none focus:border-forest transition-colors'
 
   return (
-    <section className="bg-white py-14 md:py-20 px-6 md:px-10">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-10">
       <div className="max-w-[1360px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-stretch">
 
         {/* Form card — first on mobile */}
