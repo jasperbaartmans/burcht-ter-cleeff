@@ -27,8 +27,8 @@ async function soap(action: string, body: string): Promise<string> {
 }
 
 function checkFout(xml: string, actie: string): void {
-  const code = tag(xml, 'Foutcode')
-  if (code && code !== '0') throw new Error(`${actie}: ${tag(xml, 'Omschrijving')} (code ${code})`)
+  const code = tag(xml, 'LastErrorCode')
+  if (code && code !== '') throw new Error(`${actie}: ${tag(xml, 'LastErrorDescription')} (code ${code})`)
 }
 
 // ── Sessie ───────────────────────────────────────────────────────────────────
@@ -36,16 +36,14 @@ function checkFout(xml: string, actie: string): void {
 export async function openSession(): Promise<string> {
   const xml = await soap('OpenSession', `
     <OpenSession xmlns="${NS}">
-      <oLoginData>
-        <Gebruikersnaam>${esc(process.env.EBOEKHOUDEN_GEBRUIKERSNAAM ?? '')}</Gebruikersnaam>
-        <Beveiligingscode1>${esc(process.env.EBOEKHOUDEN_SECURITYCODE1 ?? '')}</Beveiligingscode1>
-        <Beveiligingscode2>${esc(process.env.EBOEKHOUDEN_SECURITYCODE2 ?? '')}</Beveiligingscode2>
-        <AppName>BurchtTerCleeff</AppName>
-      </oLoginData>
+      <Username>${esc(process.env.EBOEKHOUDEN_GEBRUIKERSNAAM ?? '')}</Username>
+      <SecurityCode1>${esc(process.env.EBOEKHOUDEN_SECURITYCODE1 ?? '')}</SecurityCode1>
+      <SecurityCode2>${esc(process.env.EBOEKHOUDEN_SECURITYCODE2 ?? '')}</SecurityCode2>
+      <Source>BurchtTerCleeff</Source>
     </OpenSession>`)
 
   checkFout(xml, 'OpenSession')
-  const token = tag(xml, 'Sessietoken')
+  const token = tag(xml, 'SessionID')
   if (!token) throw new Error('Geen sessietoken ontvangen van e-boekhouden')
   return token
 }
@@ -53,12 +51,12 @@ export async function openSession(): Promise<string> {
 export async function closeSession(token: string): Promise<void> {
   await soap('CloseSession', `
     <CloseSession xmlns="${NS}">
-      <Sessietoken>${esc(token)}</Sessietoken>
+      <SessionID>${esc(token)}</SessionID>
     </CloseSession>`)
 }
 
 function creds(token: string): string {
-  return `<oCredentials><Sessietoken>${esc(token)}</Sessietoken><SecurityCode2>${esc(process.env.EBOEKHOUDEN_SECURITYCODE2 ?? '')}</SecurityCode2></oCredentials>`
+  return `<SessionID>${esc(token)}</SessionID><SecurityCode2>${esc(process.env.EBOEKHOUDEN_SECURITYCODE2 ?? '')}</SecurityCode2>`
 }
 
 // ── Relaties ─────────────────────────────────────────────────────────────────
@@ -75,16 +73,16 @@ export type Relatie = {
 
 function relatieBody(r: Relatie): string {
   return `
-    <Rel_Code>${esc(r.code)}</Rel_Code>
-    <Rel_Bedrijf>${esc(r.naam)}</Rel_Bedrijf>
-    <Rel_Contactpersoon></Rel_Contactpersoon>
-    <Rel_Email>${esc(r.email)}</Rel_Email>
-    <Rel_Adres>${esc(r.adres)}</Rel_Adres>
-    <Rel_Postcode>${esc(r.postcode)}</Rel_Postcode>
-    <Rel_Plaats>${esc(r.plaats)}</Rel_Plaats>
-    <Rel_Telefoon>${esc(r.telefoon)}</Rel_Telefoon>
-    <Rel_Bp>D</Rel_Bp>
-    <Rel_Land>NL</Rel_Land>`
+    <Code>${esc(r.code)}</Code>
+    <Bedrijf>${esc(r.naam)}</Bedrijf>
+    <Contactpersoon></Contactpersoon>
+    <Email>${esc(r.email)}</Email>
+    <Adres>${esc(r.adres)}</Adres>
+    <Postcode>${esc(r.postcode)}</Postcode>
+    <Plaats>${esc(r.plaats)}</Plaats>
+    <Telefoon>${esc(r.telefoon)}</Telefoon>
+    <BP>B</BP>
+    <Land>NL</Land>`
 }
 
 /** Geeft true terug als de relatie (debiteur) al bestaat in e-boekhouden. */
@@ -92,16 +90,16 @@ export async function relatieBestaatAl(token: string, code: string): Promise<boo
   const xml = await soap('GetRelaties', `
     <GetRelaties xmlns="${NS}">
       ${creds(token)}
-      <oFilter>
+      <cFilter>
         <Trefwoord></Trefwoord>
         <Code>${esc(code)}</Code>
-        <Bp>D</Bp>
-      </oFilter>
+        <ID>0</ID>
+      </cFilter>
     </GetRelaties>`)
 
-  const fout = tag(xml, 'Foutcode')
-  if (fout && fout !== '0') return false
-  return xml.includes('<Rel_ID>')
+  const fout = tag(xml, 'LastErrorCode')
+  if (fout && fout !== '') return false
+  return xml.includes('<Code>') && xml.includes(code)
 }
 
 export async function addRelatie(token: string, r: Relatie): Promise<void> {
