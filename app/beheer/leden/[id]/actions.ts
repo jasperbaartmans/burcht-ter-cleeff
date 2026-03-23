@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { syncLidNaarEboekhouden } from '@/lib/eboekhouden/syncLid'
 
 export async function updateLid(id: string, formData: FormData) {
   const adminSupabase = createAdminClient()
@@ -27,4 +28,16 @@ export async function updateLid(id: string, formData: FormData) {
 
   revalidatePath('/beheer/leden')
   revalidatePath(`/beheer/leden/${id}`)
+
+  // Haal lidnummer op voor e-boekhouden sync (lidnummer staat niet in het formulier)
+  const { data: lid } = await adminSupabase
+    .from('leden')
+    .select('lidnummer')
+    .eq('id', id)
+    .single()
+
+  if (lid?.lidnummer) {
+    // Fire-and-forget: sync naar e-boekhouden, blokkeert opslaan niet bij fout
+    syncLidNaarEboekhouden({ lidnummer: lid.lidnummer, ...updates })
+  }
 }

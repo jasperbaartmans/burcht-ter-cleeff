@@ -2,6 +2,7 @@
 
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getAdminUser } from '@/lib/auth/isAdmin'
+import { syncAlleLedenNaarEboekhouden } from '@/lib/eboekhouden/syncLid'
 
 export type SyncResult = {
   success: boolean
@@ -92,5 +93,61 @@ export async function syncLedenToMailerLite(): Promise<SyncResult> {
     skipped,
     errors: 0,
     message: parts.join(', ') + '.',
+  }
+}
+
+export async function syncLedenNaarEboekhouden(): Promise<SyncResult> {
+  const user = await getAdminUser()
+  if (!user) throw new Error('Niet ingelogd')
+
+  if (!process.env.EBOEKHOUDEN_GEBRUIKERSNAAM) {
+    return {
+      success: false,
+      synced: 0,
+      skipped: 0,
+      errors: 0,
+      message: 'e-Boekhouden credentials niet geconfigureerd.',
+    }
+  }
+
+  const adminSupabase = createAdminClient()
+  const { data: leden, error } = await adminSupabase
+    .from('leden')
+    .select('lidnummer, naam, email, adres, postcode, plaats, telefoon')
+    .order('naam', { ascending: true })
+
+  if (error) {
+    return {
+      success: false,
+      synced: 0,
+      skipped: 0,
+      errors: 0,
+      message: 'Kon leden niet ophalen uit de database.',
+    }
+  }
+
+  try {
+    const resultaat = await syncAlleLedenNaarEboekhouden(leden ?? [])
+
+    const delen: string[] = [`${resultaat.gesynchroniseerd} leden gesynchroniseerd`]
+    if (resultaat.overgeslagen > 0) delen.push(`${resultaat.overgeslagen} overgeslagen`)
+    if (resultaat.mislukt > 0) delen.push(`${resultaat.mislukt} mislukt`)
+
+    return {
+      success: resultaat.mislukt === 0,
+      synced: resultaat.gesynchroniseerd,
+      skipped: resultaat.overgeslagen,
+      errors: resultaat.mislukt,
+      message: delen.join(', ') + '.',
+    }
+  } catch (err) {
+    console.error('[e-boekhouden] bulk sync fout:', err)
+    return {
+      success: false,
+      synced: 0,
+      skipped: 0,
+      errors: 0,
+      message: err instanceof Error ? err.message : 'Verbinding met e-boekhouden mislukt.',
+    }
   }
 }
