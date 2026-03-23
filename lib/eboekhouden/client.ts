@@ -73,6 +73,8 @@ export type Relatie = {
 
 function relatieBody(r: Relatie): string {
   return `
+    <ID>0</ID>
+    <AddDatum>2000-01-01T00:00:00</AddDatum>
     <Code>${esc(r.code)}</Code>
     <Bedrijf>${esc(r.naam)}</Bedrijf>
     <Contactpersoon></Contactpersoon>
