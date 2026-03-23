@@ -1,5 +1,5 @@
-const ENDPOINT = 'https://soap.e-boekhouden.nl/boekhouden.asmx'
-const NS = 'http://www.e-boekhouden.nl/boekhouden'
+const ENDPOINT = 'https://soap.e-boekhouden.nl/soap.asmx'
+const NS = 'http://www.e-boekhouden.nl/soap'
 
 // ── XML helpers ──────────────────────────────────────────────────────────────
 
