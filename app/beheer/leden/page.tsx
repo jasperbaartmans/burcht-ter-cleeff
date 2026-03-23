@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getAdminUser } from '@/lib/auth/isAdmin'
 import Button from '@/components/ui/Button'
+import SyncButton from './SyncButton'
 
 export const metadata = {
   title: 'Leden beheer — Burcht ter Cleeff',
@@ -102,6 +103,14 @@ export default async function LedenPage() {
               <p className="text-body3 font-dm-sans text-black/50 mb-1">Verlopen</p>
               <p className="text-h3 font-dm-sans text-sienna">{verlopen}</p>
             </div>
+          </div>
+
+          {/* MailerLite sync */}
+          <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
+            <p className="text-body3 font-dm-sans text-black/50">
+              Synchroniseer alle leden naar MailerLite.
+            </p>
+            <SyncButton />
           </div>
 
           {/* Ledenlijst */}
